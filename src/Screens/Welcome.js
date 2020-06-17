@@ -54,7 +54,7 @@ const StyledContainer = styled.View`
   width: auto;
   position: relative;
 `;
-const WelcomeScreen = props => {
+const WelcomeScreen = ({navigation: {navigate}}) => {
   return (
     <StyledWrapper>
       <StyledImageContainer>
@@ -68,7 +68,7 @@ const WelcomeScreen = props => {
       </StyledImageContainer>
 
       <StyledButtonContainer>
-        <StyledTochable>
+        <StyledTochable onPress={() => navigate('ParentAuthScreen')}>
           <StyledText
             color={colors.primary}
             fontSize={wp('4.5%')}
