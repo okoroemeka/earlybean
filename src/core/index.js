@@ -16,6 +16,7 @@ const images = {
   tradeMarkParent: require(`${PATH}tradeMarkParent.png`),
   nextIcon: require(`${PATH}nexticon.png`),
   secondAuthImage: require(`${PATH}Group2.png`),
+  thirdAuthImage: require(`${PATH}Group5.png`),
 };
 
 export {colors, images};
