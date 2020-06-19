@@ -15,6 +15,7 @@ const images = {
   pregMom: require(`${PATH}pregMom.png`),
   tradeMarkParent: require(`${PATH}tradeMarkParent.png`),
   nextIcon: require(`${PATH}nexticon.png`),
+  secondAuthImage: require(`${PATH}Group2.png`),
 };
 
 export {colors, images};

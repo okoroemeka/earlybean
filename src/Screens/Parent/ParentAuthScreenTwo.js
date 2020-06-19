@@ -41,8 +41,10 @@ const StyledBody = styled.View`
 const StyledDotcontainer = styled.View`
   width: 100%;
   flex-direction: row;
-  padding: ${hp('4%')}px ${wp('0%')}px;
   justify-content: center;
+  padding: ${hp('4%')}px ${wp('0%')}px;
+  position: absolute;
+  bottom: 0px;
 `;
 const StyledDot = styled.View`
   width: 10px;
@@ -86,9 +88,9 @@ const ParentAuthScreenOne = ({navigation: {navigate}}) => {
         </StyledHeader>
         <StyledBody>
           <Image
-            imageUrl={images.pregMom}
-            imageHeight={35}
-            imageWidth={Platform.OS === 'android' ? 48 : 63}
+            imageUrl={images.secondAuthImage}
+            imageHeight={Platform.OS === 'android' ? 35 : 25}
+            imageWidth={Platform.OS === 'android' ? 85 : 80}
           />
           <Text
             textAlign="left"
@@ -96,7 +98,7 @@ const ParentAuthScreenOne = ({navigation: {navigate}}) => {
             color={colors.primary}
             width="100%"
             marginTop={hp('4%')}>
-            Welcome to earlybean
+            Save and grow your income by as much as 15% annually.
           </Text>
           <Text
             textAlign="left"
@@ -105,20 +107,19 @@ const ParentAuthScreenOne = ({navigation: {navigate}}) => {
             width="100%"
             marginTop={hp('3%')}
             lineHeight={Platform.OS === 'android' ? hp('3%') : hp('2.5%')}>
-            We help you plan ahead financially for your child’s future. With our
-            solution, your child learns all he/she needs to know as regards
-            money and you can help them secure a future for themselves.
+            Set aside a portion of your income and earn interests on your
+            savings.
           </Text>
           <StyledDotcontainer>
-            <StyledDot color={colors.primary} />
             <StyledDot />
+            <StyledDot color={colors.primary} />
             <StyledDot />
           </StyledDotcontainer>
         </StyledBody>
         <StyledButtonWrapper>
           <StyledButton
             height={hp('1%')}
-            onPress={() => navigate('ParentAuthScreenTwo')}>
+            onPress={() => navigate('ParentAuthScreenThree')}>
             <Text textAlign="left">Next</Text>
             <StyledImageNextIcon
               source={images.nextIcon}

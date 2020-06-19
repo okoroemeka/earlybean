@@ -10,9 +10,9 @@ const Stack = createStackNavigator();
 const Navigation = () => (
   <NavigationContainer>
     <Stack.Navigator
-      screenOptions={{
-        ...TransitionPresets.ModalSlideFromBottomIOS,
-      }}
+      // screenOptions={{
+      //   ...TransitionPresets.ModalSlideFromBottomIOS,
+      // }}
       headerMode="none"
       initialRouteName="Welcome">
       <Stack.Screen name="Welcome" component={Welcome} />
