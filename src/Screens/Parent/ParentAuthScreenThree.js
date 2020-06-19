@@ -59,18 +59,13 @@ const StyledButtonWrapper = styled.View`
 `;
 const StyledButton = styled.TouchableOpacity`
   flex-direction: row;
+  justify-content: center;
   width: ${props => props.width || 'auto'};
-  padding: ${hp('1%')}px ${wp('15%')}px;
+  padding: ${hp('1%')}px ${wp('0%')}px;
   border-radius: 5px;
   background-color: ${props => props.backgroundColor || colors.primary};
 `;
-const StyledImageNextIcon = styled.Image`
-  width: ${props => wp(props.width || 100)}px;
-  height: ${props => hp(props.height || 0)}px;
-  margin-left: auto;
-  margin-top: ${hp('1%')}px;
-`;
-const ParentAuthScreenTwo = ({navigation: {navigate}}) => {
+const ParentAuthScreenThree = ({navigation: {navigate}}) => {
   return (
     <StyledWrapper>
       <StyledWrapperSub>
@@ -88,9 +83,9 @@ const ParentAuthScreenTwo = ({navigation: {navigate}}) => {
         </StyledHeader>
         <StyledBody>
           <Image
-            imageUrl={images.secondAuthImage}
-            imageHeight={Platform.OS === 'android' ? 35 : 25}
-            imageWidth={Platform.OS === 'android' ? 85 : 80}
+            imageUrl={images.thirdAuthImage}
+            imageHeight={Platform.OS === 'android' ? 37 : 30}
+            imageWidth={Platform.OS === 'android' ? 62 : 70}
           />
           <Text
             textAlign="left"
@@ -98,7 +93,7 @@ const ParentAuthScreenTwo = ({navigation: {navigate}}) => {
             color={colors.primary}
             width="100%"
             marginTop={hp('4%')}>
-            Save and grow your income by as much as 15% annually.
+            Raise money-smart kids and independent adults.
           </Text>
           <Text
             textAlign="left"
@@ -107,25 +102,20 @@ const ParentAuthScreenTwo = ({navigation: {navigate}}) => {
             width="100%"
             marginTop={hp('3%')}
             lineHeight={Platform.OS === 'android' ? hp('3%') : hp('2.5%')}>
-            Set aside a portion of your income and earn interests on your
-            savings.
+            Kids gain controlled independence and great money habits as they
+            learn to earn, save and spend responsibly.
           </Text>
           <StyledDotcontainer>
             <StyledDot />
-            <StyledDot color={colors.primary} />
             <StyledDot />
+            <StyledDot color={colors.primary} />
           </StyledDotcontainer>
         </StyledBody>
         <StyledButtonWrapper>
           <StyledButton
             height={hp('1%')}
-            onPress={() => navigate('ParentAuthScreenThree')}>
-            <Text textAlign="left">Next</Text>
-            <StyledImageNextIcon
-              source={images.nextIcon}
-              width={wp('2%')}
-              height={Platform.OS === 'android' ? hp('0.3%') : hp('0.2%')}
-            />
+            onPress={() => navigate('SignUpScreen')}>
+            <Text textAlign="left">GET STARTED</Text>
           </StyledButton>
         </StyledButtonWrapper>
       </StyledWrapperSub>
@@ -133,4 +123,4 @@ const ParentAuthScreenTwo = ({navigation: {navigate}}) => {
   );
 };
 
-export default ParentAuthScreenTwo;
+export default ParentAuthScreenThree;
