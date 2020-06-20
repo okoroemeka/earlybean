@@ -161,7 +161,9 @@ const SignUp = ({navigation: {navigate}}) => {
                 placeholderTextColor={colors.placeholderColor}
               />
             </StyledView>
-            <StyledButton width="45%" onPress={() => navigate('')}>
+            <StyledButton
+              width="45%"
+              onPress={() => navigate('VerificationScreen')}>
               <Text textAlign="left">Next</Text>
               <StyledImageNextIcon
                 source={images.nextIcon}

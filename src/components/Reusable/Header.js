@@ -23,8 +23,8 @@ const StyledTradeImage = styled.Image`
   width: 8px;
   height: 8px;
   position: absolute;
-  top: ${Platform.OS === 'android' ? '22px' : '25px'};
-  left: ${Platform.OS === 'android' ? '175px' : '180px'};
+  top: ${Platform.OS === 'android' ? '20px' : '22px'};
+  left: ${Platform.OS === 'android' ? '176px' : '185px'};
 `;
 const Header = () => {
   return (

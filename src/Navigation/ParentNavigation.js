@@ -4,6 +4,7 @@ import ParentAuthScreenOne from '../Screens/Parent/ParentAuthScreenOne';
 import ParentAuthScreenTwo from '../Screens/Parent/ParentAuthScreenTwo';
 import ParentAuthScreenThree from '../Screens/Parent/ParentAuthScreenThree';
 import SignUpScreen from '../Screens/Parent/SignUpScreen';
+import VerificationScreen from '../Screens/Parent/VerificationScreen';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const ParentNavigation = () => (
       component={ParentAuthScreenThree}
     />
     <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+    <Stack.Screen name="VerificationScreen" component={VerificationScreen} />
   </Stack.Navigator>
 );
 
