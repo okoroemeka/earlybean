@@ -13,6 +13,8 @@ const StyledText = styled.Text`
   font-size: ${props => props.fontSize || wp('4%')}px;
   margin-top: ${props => props.marginTop || hp('0%')}px;
   line-height: ${props => props.lineHeight || hp('4%')}px;
+  border-bottom-width: ${props => props.borderBottomWidth || wp('0%')}px;
+  border-bottom-color: ${props => props.borderBottomcolor || colors.primary};
 `;
 
 const TextHelper = ({
@@ -23,6 +25,7 @@ const TextHelper = ({
   width,
   marginTop,
   lineHeight,
+  borderBottomWidth,
 }) => {
   return (
     <StyledText
@@ -31,7 +34,8 @@ const TextHelper = ({
       color={color}
       width={width}
       marginTop={marginTop}
-      lineHeight={lineHeight}>
+      lineHeight={lineHeight}
+      borderBottomWidth={borderBottomWidth}>
       {children}
     </StyledText>
   );

@@ -6,6 +6,7 @@ const colors = {
   white: '#FFFFFF',
   wineRed: '#D74E79',
   black: '#000000',
+  placeholderColor: '#D8D8D8',
 };
 
 const images = {
@@ -17,6 +18,7 @@ const images = {
   nextIcon: require(`${PATH}nexticon.png`),
   secondAuthImage: require(`${PATH}Group2.png`),
   thirdAuthImage: require(`${PATH}Group5.png`),
+  eyeIcon: require(`${PATH}eye.png`),
 };
 
 export {colors, images};
