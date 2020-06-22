@@ -3,6 +3,7 @@ import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import ParentAuthScreenOne from '../Screens/Parent/ParentAuthScreenOne';
 import ParentAuthScreenTwo from '../Screens/Parent/ParentAuthScreenTwo';
 import ParentAuthScreenThree from '../Screens/Parent/ParentAuthScreenThree';
+import SignUpScreen from '../Screens/Parent/SignUpScreen';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const ParentNavigation = () => (
       name="ParentAuthScreenThree"
       component={ParentAuthScreenThree}
     />
+    <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
   </Stack.Navigator>
 );
 
