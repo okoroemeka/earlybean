@@ -14,9 +14,19 @@ const StyledButton = styled.TouchableOpacity`
   border-radius: ${props => props.borderRadius || '0px'};
 `;
 
-const Button = ({width, height, children, borderRadius}) => {
+const Button = ({
+  width,
+  height,
+  children,
+  borderRadius,
+  handlePress = () => {},
+}) => {
   return (
-    <StyledButton width={width} height={height} borderRadius={borderRadius}>
+    <StyledButton
+      width={width}
+      height={height}
+      borderRadius={borderRadius}
+      onPress={handlePress}>
       {children}
     </StyledButton>
   );

@@ -63,7 +63,7 @@ const StyledFooterArea = styled.View`
   justify-content: flex-end;
 `;
 
-const VerifationScreen = () => {
+const VerifationScreen = ({navigation: {navigate}}) => {
   return (
     <StyledWrapper>
       <StyledWrapperSub>
@@ -142,7 +142,8 @@ const VerifationScreen = () => {
             <Button
               width="95%"
               height={Platform.OS === 'android' ? 7.1 : 5.8}
-              borderRadius="10px">
+              borderRadius="10px"
+              handlePress={() => navigate('ConfirmationScreen')}>
               <Text textAlign="center" color={colors.white}>
                 Verify my account
               </Text>
