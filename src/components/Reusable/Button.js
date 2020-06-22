@@ -11,11 +11,12 @@ const StyledButton = styled.TouchableOpacity`
   height: ${props => hp(props.height || 0)}px;
   background-color: ${props => props.backgroundColor || colors.primary};
   padding: ${hp('1%')}px ${wp('6%')}px;
+  border-radius: ${props => props.borderRadius || '0px'};
 `;
 
-const Button = ({width, height, children}) => {
+const Button = ({width, height, children, borderRadius}) => {
   return (
-    <StyledButton width={width} height={height}>
+    <StyledButton width={width} height={height} borderRadius={borderRadius}>
       {children}
     </StyledButton>
   );
