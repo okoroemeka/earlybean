@@ -20,6 +20,9 @@ const images = {
   thirdAuthImage: require(`${PATH}Group5.png`),
   eyeIcon: require(`${PATH}eye.png`),
   activeIcon: require(`${PATH}active.png`),
+  primaryAuthBackground: require(`${PATH}1.png`),
+  whiteLogo: require(`${PATH}whiteLogo.png`),
+  whiteTradeMark: require(`${PATH}whiteTrade.png`),
 };
 
 export {colors, images};

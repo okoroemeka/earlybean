@@ -67,7 +67,10 @@ const VerifationScreen = ({navigation: {navigate}}) => {
   return (
     <StyledWrapper>
       <StyledWrapperSub>
-        <Header />
+        <Header
+          topPosition={Platform.OS === 'android' ? '20px' : '20px'}
+          leftPositon={Platform.OS === 'android' ? '175px' : '182px'}
+        />
         <StyledFormInputWrapper>
           <StyledText
             lineHeight={hp('3%')}
@@ -141,7 +144,9 @@ const VerifationScreen = ({navigation: {navigate}}) => {
           <StyledButtonWrapper>
             <Button
               width="95%"
-              height={Platform.OS === 'android' ? 7.1 : 5.8}
+              paddingTopBottom={
+                Platform.OS === 'android' ? hp('1.9%') : hp('0.8%')
+              }
               borderRadius="10px"
               handlePress={() => navigate('ConfirmationScreen')}>
               <Text textAlign="center" color={colors.white}>
