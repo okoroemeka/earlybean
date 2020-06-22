@@ -45,11 +45,14 @@ const StyledTouchable = styled.TouchableOpacity`
   width: 100%;
   margin-top: ${hp('10%')}px;
 `;
-const ConfirmationScreen = () => {
+const ConfirmationScreen = ({navigation: {navigate}}) => {
   return (
     <StyledWrapper>
       <StyledWrapperSub>
-        <Header />
+        <Header
+          topPosition={Platform.OS === 'android' ? '21px' : '30px'}
+          leftPositon={Platform.OS === 'android' ? '175px' : '182px'}
+        />
         <StyledContentWrapper>
           <Text
             color={colors.primary}
@@ -99,7 +102,7 @@ const ConfirmationScreen = () => {
             lineHeight={Platform.OS === 'ios' ? hp('3.5%') : hp('4%')}>
             The Eearlybean Team
           </Text>
-          <StyledTouchable>
+          <StyledTouchable onPress={() => navigate('LoginScreen')}>
             <StyledText
               color={colors.primary}
               textAlign="center"

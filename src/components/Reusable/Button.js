@@ -8,25 +8,29 @@ import {colors} from '../../core';
 
 const StyledButton = styled.TouchableOpacity`
   width: ${props => props.width || 'auto'};
-  height: ${props => hp(props.height || 0)}px;
+  /* height: ${props => hp(props.height || 0)}px; */
   background-color: ${props => props.backgroundColor || colors.primary};
-  padding: ${hp('1%')}px ${wp('6%')}px;
+  padding: ${props => props.paddingTopBottom || hp('1%')}px ${props =>
+  props.marginLeftRight || wp('6%')}px;
   border-radius: ${props => props.borderRadius || '0px'};
 `;
 
 const Button = ({
   width,
-  height,
   children,
   borderRadius,
+  backgroundColor,
+  paddingTopBottom,
+  marginLeftRight,
   handlePress = () => {},
 }) => {
   return (
     <StyledButton
       width={width}
-      height={height}
+      paddingTopBottom={paddingTopBottom}
       borderRadius={borderRadius}
-      onPress={handlePress}>
+      onPress={handlePress}
+      backgroundColor={backgroundColor}>
       {children}
     </StyledButton>
   );

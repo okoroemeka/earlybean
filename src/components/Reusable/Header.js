@@ -13,7 +13,7 @@ const StyledHeader = styled.View`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  height: 10%;
+  height: ${props => props.height || '10%'};
   padding: ${hp('1%')}px ${wp('6%')}px;
   margin-bottom: ${hp('3%')}px;
   position: relative;
@@ -23,22 +23,33 @@ const StyledTradeImage = styled.Image`
   width: 8px;
   height: 8px;
   position: absolute;
-  top: ${Platform.OS === 'android' ? '20px' : '22px'};
-  left: ${Platform.OS === 'android' ? '176px' : '185px'};
+  top: ${props => props.topPosition || '22px'};
+  left: ${props => props.leftPositon || '185px'};
 `;
-const Header = () => {
+const Header = ({
+  logoUrl,
+  tradeMarkUrl,
+  textColor,
+  headerHeight,
+  topPosition,
+  leftPositon,
+}) => {
   return (
-    <StyledHeader>
+    <StyledHeader height={headerHeight}>
       <Image
-        imageUrl={images.parentBean}
+        imageUrl={logoUrl || images.parentBean}
         imageWidth={Platform.OS === 'android' ? 7 : 9}
         imageHeight={4}
         marginRight={wp('3%')}
       />
-      <Text color={colors.primary} fontSize={wp('5.9%')}>
+      <Text color={textColor || colors.black} fontSize={wp('5.9%')}>
         earlybean
       </Text>
-      <StyledTradeImage source={images.tradeMarkParent} />
+      <StyledTradeImage
+        source={tradeMarkUrl || images.tradeMarkParent}
+        topPosition={topPosition}
+        leftPositon={leftPositon}
+      />
     </StyledHeader>
   );
 };
