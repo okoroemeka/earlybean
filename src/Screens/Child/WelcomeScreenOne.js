@@ -11,7 +11,7 @@ const WelcomeScreenOne = ({navigation: {navigate}}) => {
       welcomeTexttwo="earlybean"
       welcomeTextThree="A space where kids and teens, like you enjoy some financial independence"
       screenNumber={1}
-      onPressHandler={() => navigate('childWelcomeScreenTwo')}
+      onPressHandler={() => navigate('WelcomeScreenTwo')}
     />
   );
 };
