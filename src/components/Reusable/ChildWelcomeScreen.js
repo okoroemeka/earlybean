@@ -54,7 +54,7 @@ const WelcomeScreen = ({
   backgroundImage,
   welcomeTextOne,
   welcomeTexttwo,
-  welcomeTextThree = '',
+  welcomeTextThree,
   screenNumber,
   onPressHandler,
 }) => {
@@ -86,18 +86,20 @@ const WelcomeScreen = ({
             fontSize={wp('7%')}>
             {welcomeTexttwo}
           </Text>
-          <Text
-            color={colors.black}
-            textAlign="left"
-            fontSize={wp('4%')}
-            marginTop={hp('3%')}
-            lineHeight={Platform.OS === 'ios' ? hp('2.5%') : hp('3.5%')}>
-            {welcomeTextThree}
-          </Text>
+          {welcomeTextThree && (
+            <Text
+              color={colors.black}
+              textAlign="left"
+              fontSize={wp('4%')}
+              marginTop={hp('3%')}
+              lineHeight={Platform.OS === 'ios' ? hp('2.5%') : hp('3.5%')}>
+              {welcomeTextThree}
+            </Text>
+          )}
           <StyledView>
             <Button
               paddingTopBottom={
-                Platform.OS === 'android' ? hp('1.5%') : hp('1%')
+                Platform.OS === 'android' ? hp('1.9%') : hp('1.3%')
               }
               backgroundColor={colors.childPrimaryColor}
               borderRadius="5px"
