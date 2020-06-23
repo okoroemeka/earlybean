@@ -8,9 +8,7 @@ import styled from 'styled-components/native';
 import {colors, images} from '../../core';
 import Header from '../../components/Reusable/Header';
 import Text from '../../components/Reusable/Text';
-import Image from '../../components/Reusable/Image';
 import Button from '../../components/Reusable/Button';
-import {color} from 'react-native-reanimated';
 
 const StyledWrapper = styled.ScrollView`
   width: 100%;
@@ -66,17 +64,6 @@ const StyledLine = styled.View`
 const LoginScreen = ({navigation: {navigate}}) => {
   const [showPassword, setShowPassword] = useState(false);
 
-  // <Header
-  //   headerHeight="10%"
-  //   justifyContent="flex-end"
-  //   logoUrl={images.whiteLogo}
-  //   tradeMarkUrl={images.whiteTradeMark}
-  //   textColor={colors.white}
-  //   leftPositon="392px"
-  //   topPosition={Platform.OS === 'ios' ? '22px' : '24px'}
-  //   logoWidth={2}
-  //   logoHeight={Platform.OS === 'ios' ? 3.1 : 4}
-  // />
   return (
     <StyledWrapper>
       <StyledSubWrapper>

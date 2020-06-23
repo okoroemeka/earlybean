@@ -10,7 +10,6 @@ import Header from '../../components/Reusable/Header';
 import Text from '../../components/Reusable/Text';
 import Image from '../../components/Reusable/Image';
 import Button from '../../components/Reusable/Button';
-import {color} from 'react-native-reanimated';
 
 const StyledWrapper = styled.View`
   flex: 1;
@@ -169,7 +168,7 @@ const LoginScreen = ({navigation: {navigate}}) => {
             </Text>
             <StyledTouchable marginTop={hp('0%')} marginLeft={wp('0%')}>
               <Text
-                color={color.white}
+                color={colors.white}
                 lineHeight={Platform.OS === 'android' ? hp('2.3%') : hp('2%')}
                 marginTop={hp('1%')}>
                 Click Here
