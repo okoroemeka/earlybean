@@ -27,6 +27,8 @@ const images = {
   childbackground: require(`${PATH}group8.png`),
   childTrade: require(`${PATH}childtrade.png`),
   childBean: require(`${PATH}childbean.png`),
+  childWelcomeScreenOne: require(`${PATH}childw1.png`),
+  childWelcomeScreenTwo: require(`${PATH}childw2.png`),
 };
 
 export {colors, images};
