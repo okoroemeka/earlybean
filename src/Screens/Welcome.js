@@ -76,7 +76,9 @@ const WelcomeScreen = ({navigation: {navigate}}) => {
             Adult
           </StyledText>
         </StyledTochable>
-        <StyledTochable borderColor={colors.wineRed}>
+        <StyledTochable
+          borderColor={colors.wineRed}
+          onPress={() => navigate('ChildNavigation')}>
           <StyledText
             color={colors.wineRed}
             fontSize={wp('4.5%')}
