@@ -12,7 +12,7 @@ import Image from '../../components/Reusable/Image';
 const StyledHeader = styled.View`
   flex-direction: row;
   align-items: center;
-  justify-content: ${props => props.justifyContent || 'flex-start'};
+  justify-content: flex-end;
   width: 100%;
   height: ${props => props.height || '10%'};
   padding: ${hp('1%')}px ${wp('6%')}px;
@@ -25,25 +25,22 @@ const StyledTradeImage = styled.Image`
   height: 8px;
   position: absolute;
   top: ${props => props.topPosition || '22px'};
-  left: ${props => props.leftPositon || '185px'};
+  right: ${props => props.leftPositon || '0px'};
 `;
 const Header = ({
   logoUrl,
-  logoHeight,
-  logoWidth,
   tradeMarkUrl,
   textColor,
   headerHeight,
   topPosition,
   leftPositon,
-  justifyContent,
 }) => {
   return (
-    <StyledHeader height={headerHeight} justifyContent={justifyContent}>
+    <StyledHeader height={headerHeight}>
       <Image
         imageUrl={logoUrl || images.parentBean}
-        imageWidth={logoWidth || Platform.OS === 'android' ? 7 : 9}
-        imageHeight={logoHeight || 4}
+        imageWidth={Platform.OS === 'android' ? 7 : 9}
+        imageHeight={4}
         marginRight={wp('3%')}
       />
       <Text color={textColor || colors.black} fontSize={wp('5.9%')}>

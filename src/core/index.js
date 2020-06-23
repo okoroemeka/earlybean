@@ -7,6 +7,7 @@ const colors = {
   wineRed: '#D74E79',
   black: '#000000',
   placeholderColor: '#D8D8D8',
+  childPrimaryColor: '#D74E79',
 };
 
 const images = {
@@ -23,6 +24,9 @@ const images = {
   primaryAuthBackground: require(`${PATH}1.png`),
   whiteLogo: require(`${PATH}whiteLogo.png`),
   whiteTradeMark: require(`${PATH}whiteTrade.png`),
+  childbackground: require(`${PATH}group8.png`),
+  childTrade: require(`${PATH}childtrade.png`),
+  childBean: require(`${PATH}childbean.png`),
 };
 
 export {colors, images};
