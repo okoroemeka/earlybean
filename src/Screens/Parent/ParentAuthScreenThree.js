@@ -8,6 +8,7 @@ import styled from 'styled-components/native';
 import {colors, images} from '../../core';
 import Text from '../../components/Reusable/Text';
 import Image from '../../components/Reusable/Image';
+import ParentWelcomeScreen from '../../components/Reusable/ParentWelcomeScreen';
 
 const StyledWrapper = styled.SafeAreaView`
   flex: 1;
@@ -67,59 +68,68 @@ const StyledButton = styled.TouchableOpacity`
 `;
 const ParentAuthScreenThree = ({navigation: {navigate}}) => {
   return (
-    <StyledWrapper>
-      <StyledWrapperSub>
-        <StyledHeader>
-          <Image
-            imageUrl={images.parentBean}
-            imageWidth={Platform.OS === 'android' ? 7 : 9}
-            imageHeight={4}
-            marginRight={wp('3%')}
-          />
-          <Text color={colors.primary} fontSize={wp('5.9%')}>
-            earlybean
-          </Text>
-          <StyledTradeImage source={images.tradeMarkParent} />
-        </StyledHeader>
-        <StyledBody>
-          <Image
-            imageUrl={images.thirdAuthImage}
-            imageHeight={Platform.OS === 'android' ? 37 : 30}
-            imageWidth={Platform.OS === 'android' ? 62 : 70}
-          />
-          <Text
-            textAlign="left"
-            fontSize={wp('5.5%')}
-            color={colors.primary}
-            width="100%"
-            marginTop={hp('4%')}>
-            Raise money-smart kids and independent adults.
-          </Text>
-          <Text
-            textAlign="left"
-            fontSize={wp('4%')}
-            color={colors.black}
-            width="100%"
-            marginTop={hp('3%')}
-            lineHeight={Platform.OS === 'android' ? hp('3%') : hp('2.5%')}>
-            Kids gain controlled independence and great money habits as they
-            learn to earn, save and spend responsibly.
-          </Text>
-          <StyledDotcontainer>
-            <StyledDot />
-            <StyledDot />
-            <StyledDot color={colors.primary} />
-          </StyledDotcontainer>
-        </StyledBody>
-        <StyledButtonWrapper>
-          <StyledButton
-            height={hp('1%')}
-            onPress={() => navigate('SignUpScreen')}>
-            <Text textAlign="left">GET STARTED</Text>
-          </StyledButton>
-        </StyledButtonWrapper>
-      </StyledWrapperSub>
-    </StyledWrapper>
+    <ParentWelcomeScreen
+      introTextOne="Secure your kids future, by starting a trust fund early."
+      introTextTwo="Set long-term savings plans for your kids, that can only be touched on your terms."
+      imageUrl={images.thirdAuthImage}
+      imageHeight={Platform.OS === 'android' ? 45 : 35}
+      imageWidth={Platform.OS === 'android' ? 85 : 80}
+      handlePress={() => navigate('ParentAuthScreenFour')}
+      screenNumber={3}
+    />
+    // <StyledWrapper>
+    //   <StyledWrapperSub>
+    //     <StyledHeader>
+    //       <Image
+    //         imageUrl={images.parentBean}
+    //         imageWidth={Platform.OS === 'android' ? 7 : 9}
+    //         imageHeight={4}
+    //         marginRight={wp('3%')}
+    //       />
+    //       <Text color={colors.primary} fontSize={wp('5.9%')}>
+    //         earlybean
+    //       </Text>
+    //       <StyledTradeImage source={images.tradeMarkParent} />
+    //     </StyledHeader>
+    //     <StyledBody>
+    //       <Image
+    //         imageUrl={images.thirdAuthImage}
+    //         imageHeight={Platform.OS === 'android' ? 37 : 30}
+    //         imageWidth={Platform.OS === 'android' ? 62 : 70}
+    //       />
+    //       <Text
+    //         textAlign="left"
+    //         fontSize={wp('5.5%')}
+    //         color={colors.primary}
+    //         width="100%"
+    //         marginTop={hp('4%')}>
+    //         Raise money-smart kids and independent adults.
+    //       </Text>
+    //       <Text
+    //         textAlign="left"
+    //         fontSize={wp('4%')}
+    //         color={colors.black}
+    //         width="100%"
+    //         marginTop={hp('3%')}
+    //         lineHeight={Platform.OS === 'android' ? hp('3%') : hp('2.5%')}>
+    //         Kids gain controlled independence and great money habits as they
+    //         learn to earn, save and spend responsibly.
+    //       </Text>
+    //       <StyledDotcontainer>
+    //         <StyledDot />
+    //         <StyledDot />
+    //         <StyledDot color={colors.primary} />
+    //       </StyledDotcontainer>
+    //     </StyledBody>
+    //     <StyledButtonWrapper>
+    //       <StyledButton
+    //         height={hp('1%')}
+    //         onPress={() => navigate('SignUpScreen')}>
+    //         <Text textAlign="left">GET STARTED</Text>
+    //       </StyledButton>
+    //     </StyledButtonWrapper>
+    //   </StyledWrapperSub>
+    // </StyledWrapper>
   );
 };
 
