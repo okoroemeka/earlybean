@@ -9,7 +9,7 @@ const WelcomeScreenTwo = ({navigation: {navigate}}) => {
       welcomeTextOne="Earn and save real"
       welcomeTexttwo="money"
       screenNumber={2}
-      onPressHandler={() => navigate('LoginScreen')}
+      onPressHandler={() => navigate('WelcomeScreenThree')}
     />
   );
 };

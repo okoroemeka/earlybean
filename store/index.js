@@ -3,7 +3,7 @@ import reduxThunk from 'redux-thunk';
 import authenticationReducer from './reducers/authentication';
 
 const rootReducer = combineReducers({
-  //   authentication: authenticationReducer,
+  authentication: 'authenticationReducer',
 });
 
 export const store = createStore(rootReducer, applyMiddleware(reduxThunk));

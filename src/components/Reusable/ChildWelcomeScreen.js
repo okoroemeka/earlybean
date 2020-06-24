@@ -119,6 +119,9 @@ const WelcomeScreen = ({
               <StyledDot
                 color={screenNumber === 2 ? colors.childPrimaryColor : 'gray'}
               />
+              <StyledDot
+                color={screenNumber === 3 ? colors.childPrimaryColor : 'gray'}
+              />
             </StyledDotcontainer>
           </StyledDotWrapper>
         </StyledSubContainer>

@@ -29,6 +29,7 @@ const images = {
   childBean: require(`${PATH}childbean.png`),
   childWelcomeScreenOne: require(`${PATH}childw1.png`),
   childWelcomeScreenTwo: require(`${PATH}childw2.png`),
+  childWelcomeScreenThree: require(`${PATH}4.png`),
 };
 
 export {colors, images};
