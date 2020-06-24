@@ -40,7 +40,6 @@ const StyledBody = styled.View`
 `;
 const StyledDotcontainer = styled.View`
   flex: 1;
-  /* width: 100%; */
   flex-direction: row;
   padding: ${hp('4%')}px ${wp('0%')}px;
   justify-content: center;
@@ -63,6 +62,7 @@ const StyledButton = styled.TouchableOpacity`
   padding: ${hp('1%')}px ${wp('15%')}px;
   border-radius: 5px;
   background-color: ${props => props.backgroundColor || colors.primary};
+  justify-content: ${props => props.justifyContent};
 `;
 const StyledImageNextIcon = styled.Image`
   width: ${props => wp(props.width || 100)}px;
@@ -125,7 +125,10 @@ const ParentAuthScreenOne = ({
           </StyledDotcontainer>
         </StyledBody>
         <StyledButtonWrapper>
-          <StyledButton height={hp('1%')} onPress={handlePress}>
+          <StyledButton
+            height={hp('1%')}
+            onPress={handlePress}
+            justifyContent={screenNumber !== 4 ? 'flex-start' : 'center'}>
             <Text textAlign="left">
               {screenNumber !== 4 ? 'Next' : 'GET STARTED'}
             </Text>
