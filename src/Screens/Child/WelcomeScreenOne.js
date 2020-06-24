@@ -9,7 +9,7 @@ const WelcomeScreenOne = ({navigation: {navigate}}) => {
       backgroundImage={images.childWelcomeScreenOne}
       welcomeTextOne="Welcome to"
       welcomeTexttwo="earlybean"
-      welcomeTextThree="A space where kids and teens, like you enjoy some financial independence"
+      welcomeTextThree="A digital piggybank where you can earn, save and control your money."
       screenNumber={1}
       onPressHandler={() => navigate('WelcomeScreenTwo')}
     />
