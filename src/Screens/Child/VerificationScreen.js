@@ -1,5 +1,4 @@
 import React from 'react';
-import {Platform} from 'react-native';
 import {colors, images} from '../../core';
 import Verification from '../../components/Reusable/Verification';
 
