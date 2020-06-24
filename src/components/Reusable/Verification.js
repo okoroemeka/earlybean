@@ -70,7 +70,7 @@ const StyledTouchable = styled.TouchableOpacity`
 const StyledLine = styled.View`
   width: ${props => props.width || '36%'};
   border-bottom-width: 1px;
-  border-color: ${colors.childPrimaryColor};
+  border-color: ${props => props.borderColor || colors.primary};
 `;
 
 const VerifationScreen = ({
@@ -202,7 +202,7 @@ const VerifationScreen = ({
                 fontSize={wp('3.3%')}>
                 CLICK HERE
               </Text>
-              <StyledLine width="100%" />
+              <StyledLine width="100%" borderColor={buttonColor} />
             </StyledTouchable>
           </StyledInputWrapper>
         </StyledFormInputWrapper>
@@ -222,7 +222,7 @@ const VerifationScreen = ({
                 fontSize={wp('3.3%')}>
                 LOG IN
               </Text>
-              <StyledLine width="100%" />
+              <StyledLine width="100%" borderColor={buttonColor} />
             </StyledTouchable>
           </StyledInputWrapper>
         </StyledFooterArea>
