@@ -123,7 +123,8 @@ const LoginScreen = ({navigation: {navigate}}) => {
               width="45%"
               paddingTopBottom={Platform.OS === 'ios' ? hp('0.4%') : hp('1%')}
               backgroundColor={colors.white}
-              borderRadius="10px">
+              borderRadius="10px"
+              handlePress={() => navigate('VerificationScreen')}>
               <Text textAlign="center" color={colors.childPrimaryColor}>
                 LOG IN
               </Text>
