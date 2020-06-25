@@ -22,11 +22,11 @@ const StyledSubWrapper = styled.SafeAreaView`
   top: 0px;
   left: 0px;
   z-index: 20;
-  padding: ${hp('2%')}px ${wp('4%')}px;
   background: transparent;
 `;
 const StyledContainer = styled.ScrollView`
   flex: 1;
+  padding: ${hp('2%')}px ${wp('4%')}px;
 `;
 const StyledFormWrapper = styled.View`
   width: 100%;
@@ -49,6 +49,7 @@ const StyledView = styled.View`
   justify-content: ${props => props.justifyContent || 'flex-start'};
   width: ${props => props.width || '100%'};
   height: ${props => props.height || 'auto'};
+  padding-left: ${props => props.paddingLeft || wp('0%')}px;
   margin-top: ${props => props.marginTop || hp('1.2%')}px;
   margin-bottom: ${props => props.marginBottom || hp('0%')}px;
 `;
@@ -64,11 +65,6 @@ const StyledEyeIcon = styled.Image`
 const StyledTouchable = styled.TouchableOpacity`
   margin-top: ${props => props.marginTop || hp('1%')}px;
   margin-left: ${props => props.marginLeft || wp('1.5%')}px;
-`;
-const StyledLine = styled.View`
-  width: ${props => props.width || '36%'};
-  border-bottom-width: 1px;
-  border-color: white;
 `;
 const LoginScreen = ({navigation: {navigate}}) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -153,29 +149,28 @@ const LoginScreen = ({navigation: {navigate}}) => {
                 fontSize={wp('3.3%')}>
                 CREATE ACCOUNT
               </Text>
-              <StyledLine />
             </StyledTouchable>
-          </StyledFormWrapper>
-          <StyledView
-            justifyContent="center"
-            marginTop={Platform.OS === 'android' ? hp('5%') : hp('10%')}
-            marginBottom={Platform.OS === 'android' ? hp('5%') : hp('10%')}>
-            <Text
-              color={colors.placeholderColor}
-              marginTop={hp('1%')}
-              fontSize={wp('3.3%')}>
-              Forgot Password?
-            </Text>
-            <StyledTouchable marginTop={hp('0%')} marginLeft={wp('0%')}>
+            <StyledView
+              justifyContent="flex-start"
+              marginTop={Platform.OS === 'android' ? hp('2%') : hp('1.2%')}
+              marginBottom={Platform.OS === 'android' ? hp('1%') : hp('1.2%')}
+              paddingLeft={Platform.OS === 'android' ? wp('1.5%') : wp('0.9%')}>
               <Text
-                color={colors.white}
-                lineHeight={Platform.OS === 'android' ? hp('2.3%') : hp('2%')}
-                marginTop={hp('1%')}>
-                Click Here
+                color={colors.placeholderColor}
+                marginTop={hp('1%')}
+                fontSize={wp('3.5%')}>
+                Forgot Password?
               </Text>
-              <StyledLine width="100%" />
-            </StyledTouchable>
-          </StyledView>
+              <StyledTouchable marginTop={hp('0%')} marginLeft={wp('0%')}>
+                <Text
+                  color={colors.white}
+                  lineHeight={Platform.OS === 'android' ? hp('2.3%') : hp('2%')}
+                  marginTop={hp('1%')}>
+                  Click Here
+                </Text>
+              </StyledTouchable>
+            </StyledView>
+          </StyledFormWrapper>
         </StyledContainer>
       </StyledSubWrapper>
     </StyledWrapper>

@@ -38,8 +38,9 @@ const StyledInputWrapper = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: ${props => props.justidyContent || 'space-between'};
-  margin-top: ${props => props.marginBottom || hp('0%')}px;
+  margin-top: ${props => props.marginTop || hp('0%')}px;
   margin-left: ${props => props.marginLeft || hp('0%')}px;
+  margin-right: ${props => props.marginRight || hp('0%')}px;
 `;
 const StyledInput = styled.TextInput`
   color: ${props => props.color || colors.black};
@@ -61,16 +62,12 @@ const StyledButtonWrapper = styled.View`
 const StyledFooterArea = styled.View`
   width: 100%;
   height: 20%;
-  justify-content: flex-end;
+  padding-left: ${Platform.OS === 'android' ? wp('6%') : wp('7.5%')}px;
+  /* justify-content: flex-start; */
 `;
 const StyledTouchable = styled.TouchableOpacity`
   margin-top: ${props => props.marginTop || hp('1%')}px;
   margin-left: ${props => props.marginLeft || wp('1.5%')}px;
-`;
-const StyledLine = styled.View`
-  width: ${props => props.width || '36%'};
-  border-bottom-width: 1px;
-  border-color: ${props => props.borderColor || colors.primary};
 `;
 
 const VerifationScreen = ({
@@ -189,26 +186,42 @@ const VerifationScreen = ({
               </Text>
             </Button>
           </StyledButtonWrapper>
-          <StyledInputWrapper justidyContent="center">
-            <StyledText color={colors.placeholderColor} fontSize={wp('3.1%')}>
+          <StyledInputWrapper justidyContent="flex-start">
+            <StyledText color={colors.placeholderColor} fontSize={wp('3.3%')}>
               Didn’t get a token?
             </StyledText>
             <StyledTouchable
-              marginTop={Platform.OS === 'android' ? hp('0.5%') : hp('0.09%')}>
+              marginTop={Platform.OS === 'android' ? hp('0.8%') : hp('0.03%')}>
               <Text
                 lineHeight={hp('2%')}
                 color={buttonColor}
                 textAlign="left"
-                fontSize={wp('3.3%')}>
-                CLICK HERE
+                fontSize={wp('3.5%')}>
+                Resend Token
               </Text>
-              <StyledLine width="100%" borderColor={buttonColor} />
+            </StyledTouchable>
+          </StyledInputWrapper>
+          <StyledInputWrapper
+            justidyContent="flex-start"
+            marginTop={Platform.OS === 'android' ? hp('1%') : hp('1.2%')}>
+            <StyledText color={colors.placeholderColor} fontSize={wp('3.3%')}>
+              Not jay?
+            </StyledText>
+            <StyledTouchable
+              marginTop={Platform.OS === 'android' ? hp('1%') : hp('0.03%')}>
+              <Text
+                lineHeight={hp('2%')}
+                color={buttonColor}
+                textAlign="left"
+                fontSize={wp('3.5%')}>
+                LOG IN
+              </Text>
             </StyledTouchable>
           </StyledInputWrapper>
         </StyledFormInputWrapper>
-        <StyledFooterArea>
+        {/* <StyledFooterArea>
           <StyledInputWrapper
-            justidyContent="center"
+            justidyContent="flex-start"
             marginBottom={Platform.OS === 'android' ? hp('10%') : hp('5%')}>
             <StyledText color={colors.placeholderColor} fontSize={wp('3.1%')}>
               Not jay?
@@ -219,13 +232,12 @@ const VerifationScreen = ({
                 lineHeight={hp('2%')}
                 color={buttonColor}
                 textAlign="left"
-                fontSize={wp('3.3%')}>
+                fontSize={wp('4.3%')}>
                 LOG IN
               </Text>
-              <StyledLine width="100%" borderColor={buttonColor} />
             </StyledTouchable>
           </StyledInputWrapper>
-        </StyledFooterArea>
+        </StyledFooterArea> */}
       </StyledWrapperSub>
     </StyledWrapper>
   );
