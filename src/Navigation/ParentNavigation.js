@@ -14,7 +14,8 @@ const Stack = createStackNavigator();
 const ParentNavigation = () => (
   <Stack.Navigator
     screenOptions={{
-      ...TransitionPresets.ModalSlideFromBottomIOS,
+      ...TransitionPresets.SlideFromRightIOS,
+      gestureEnabled: true,
     }}
     headerMode="none"
     initialRouteName="ParentAuthScreenOne">

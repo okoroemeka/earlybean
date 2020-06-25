@@ -6,9 +6,9 @@ import {
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
 import {colors, images} from '../../core';
-import Header from '../../components/Reusable/Header';
-import Text from '../../components/Reusable/Text';
-import Button from '../../components/Reusable/Button';
+import Header from '../../components/UI/Header';
+import Text from '../../components/UI/Text';
+import Button from '../../components/UI/Button';
 
 const StyledWrapper = styled.ScrollView`
   width: 100%;
