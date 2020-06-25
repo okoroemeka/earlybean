@@ -7,9 +7,9 @@ import Navigation from './src/Navigation';
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <Navigation />
-    </Provider>
+    // <Provider store={store}>
+    <Navigation />
+    // </Provider>
   );
 };
 

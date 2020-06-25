@@ -56,11 +56,6 @@ const StyledTouchable = styled.TouchableOpacity`
   margin-top: ${props => props.marginTop || hp('1%')}px;
   margin-left: ${props => props.marginLeft || wp('1.5%')}px;
 `;
-const StyledLine = styled.View`
-  width: ${props => props.width || '36%'};
-  border-bottom-width: 1px;
-  border-color: white;
-`;
 const LoginScreen = ({navigation: {navigate}}) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -135,10 +130,10 @@ const LoginScreen = ({navigation: {navigate}}) => {
               color={colors.placeholderColor}
               marginTop={hp('0%')}
               fontSize={wp('3.3%')}>
-              Didn't get a token?
+              Forgot your password?
             </Text>
             <StyledTouchable
-              marginTop={Platform.OS === 'android' ? hp('0%') : hp('0%')}>
+              marginTop={Platform.OS === 'android' ? hp('1.5%') : hp('0%')}>
               <Text
                 lineHeight={hp('2%')}
                 color={colors.white}
@@ -146,7 +141,6 @@ const LoginScreen = ({navigation: {navigate}}) => {
                 fontSize={wp('3.3%')}>
                 CLICK HERE
               </Text>
-              <StyledLine width="100%" />
             </StyledTouchable>
           </StyledView>
         </StyledFormWrapper>

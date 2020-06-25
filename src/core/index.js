@@ -6,7 +6,7 @@ const colors = {
   white: '#FFFFFF',
   wineRed: '#D74E79',
   black: '#000000',
-  placeholderColor: '#D8D8D8',
+  placeholderColor: '#9c9797',
   childPrimaryColor: '#D74E79',
 };
 
