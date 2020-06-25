@@ -6,10 +6,10 @@ import {
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
 import {colors, images} from '../../core';
-import Header from './Header';
-import Text from './Text';
-import Image from './Image';
-import Button from './Button';
+import Header from '../UI/Header';
+import Text from '../UI/Text';
+import Image from '../UI/Image';
+import Button from '../UI/Button';
 
 const StyledSubWrapper = styled.View`
   flex: 1;

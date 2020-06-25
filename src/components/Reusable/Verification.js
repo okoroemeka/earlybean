@@ -7,9 +7,9 @@ import {
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
 import {colors} from '../../core';
-import Header from '../../components/Reusable/Header';
-import Text from '../../components/Reusable/Text';
-import Button from '../../components/Reusable/Button';
+import Header from '../UI/Header';
+import Text from '../UI/Text';
+import Button from '../UI/Button';
 
 const StyledWrapper = styled.SafeAreaView`
   flex: 1;
@@ -20,8 +20,9 @@ const StyledWrapperSub = styled.ScrollView`
   padding: ${hp('2%')}px ${wp('4%')}px;
 `;
 const StyledFormInputWrapper = styled.View`
-  width: 100%;
-  height: 70%;
+  flex: 1;
+  /* width: 100%;
+  height: 70%; */
   padding: ${hp('1%')}px ${Platform.OS === 'android' ? wp('6%') : wp('7.5%')}px;
 `;
 const StyledText = styled.Text`
@@ -59,12 +60,12 @@ const StyledButtonWrapper = styled.View`
   margin-top: ${Platform.OS === 'ios' ? hp('3.3%') : hp('3.5')}px;
   margin-bottom: ${Platform.OS === 'ios' ? hp('3.3%') : hp('3.5')}px;
 `;
-const StyledFooterArea = styled.View`
-  width: 100%;
-  height: 20%;
-  padding-left: ${Platform.OS === 'android' ? wp('6%') : wp('7.5%')}px;
-  /* justify-content: flex-start; */
-`;
+// const StyledFooterArea = styled.View`
+//   width: 100%;
+//   height: 20%;
+//   padding-left: ${Platform.OS === 'android' ? wp('6%') : wp('7.5%')}px;
+//   /* justify-content: flex-start; */
+// `;
 const StyledTouchable = styled.TouchableOpacity`
   margin-top: ${props => props.marginTop || hp('1%')}px;
   margin-left: ${props => props.marginLeft || wp('1.5%')}px;
@@ -219,25 +220,6 @@ const VerifationScreen = ({
             </StyledTouchable>
           </StyledInputWrapper>
         </StyledFormInputWrapper>
-        {/* <StyledFooterArea>
-          <StyledInputWrapper
-            justidyContent="flex-start"
-            marginBottom={Platform.OS === 'android' ? hp('10%') : hp('5%')}>
-            <StyledText color={colors.placeholderColor} fontSize={wp('3.1%')}>
-              Not jay?
-            </StyledText>
-            <StyledTouchable
-              marginTop={Platform.OS === 'android' ? hp('0.5%') : hp('0.09%')}>
-              <Text
-                lineHeight={hp('2%')}
-                color={buttonColor}
-                textAlign="left"
-                fontSize={wp('4.3%')}>
-                LOG IN
-              </Text>
-            </StyledTouchable>
-          </StyledInputWrapper>
-        </StyledFooterArea> */}
       </StyledWrapperSub>
     </StyledWrapper>
   );

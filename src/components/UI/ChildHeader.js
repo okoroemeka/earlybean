@@ -6,8 +6,8 @@ import {
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
 import {colors, images} from '../../core';
-import Text from '../../components/Reusable/Text';
-import Image from '../../components/Reusable/Image';
+import Text from './Text';
+import Image from './Image';
 
 const StyledHeader = styled.View`
   flex-direction: row;

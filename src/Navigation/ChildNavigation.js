@@ -10,9 +10,10 @@ const Stack = createStackNavigator();
 
 const ChildNavigation = () => (
   <Stack.Navigator
-    // screenOptions={{
-    //   ...TransitionPresets.ModalSlideFromBottomIOS,
-    // }}
+    screenOptions={{
+      ...TransitionPresets.SlideFromRightIOS,
+      gestureEnabled: true,
+    }}
     headerMode="none">
     <Stack.Screen name="WelcomeScreenOne" component={WelcomeScreenOne} />
     <Stack.Screen name="WelcomeScreenTwo" component={WelcomeScreenTwo} />

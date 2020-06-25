@@ -11,7 +11,8 @@ const Navigation = () => (
   <NavigationContainer>
     <Stack.Navigator
       screenOptions={{
-        ...TransitionPresets.DefaultTransition,
+        ...TransitionPresets.SlideFromRightIOS,
+        gestureEnabled: true,
       }}
       headerMode="none"
       initialRouteName="Welcome">

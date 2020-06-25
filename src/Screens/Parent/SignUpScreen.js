@@ -6,8 +6,8 @@ import {
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
 import {colors, images} from '../../core';
-import Header from '../../components/Reusable/Header';
-import Text from '../../components/Reusable/Text';
+import Header from '../../components/UI/Header';
+import Text from '../../components/UI/Text';
 
 const StyledWrapper = styled.SafeAreaView`
   flex: 1;
