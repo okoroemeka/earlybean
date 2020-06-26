@@ -141,7 +141,8 @@ const LoginScreen = ({navigation: {navigate}}) => {
               </Button>
             </StyledView>
             <StyledTouchable
-              marginTop={Platform.OS === 'android' ? hp('5%') : hp('3%')}>
+              marginTop={Platform.OS === 'android' ? hp('5%') : hp('3%')}
+              onPress={() => navigate('SignUpScreen')}>
               <Text
                 lineHeight={hp('2%')}
                 color={colors.white}
