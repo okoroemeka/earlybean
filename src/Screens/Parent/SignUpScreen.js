@@ -179,7 +179,7 @@ const SignUp = ({navigation: {navigate}}) => {
             <Text color={colors.black} fontSize={wp('3%')}>
               Have an account?
             </Text>
-            <StyledTouchable>
+            <StyledTouchable onPress={() => navigate('LoginScreen')}>
               <Text color={colors.primary} fontSize={wp('3%')}>
                 LOG IN
               </Text>
