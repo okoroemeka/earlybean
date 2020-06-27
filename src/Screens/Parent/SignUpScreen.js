@@ -79,8 +79,9 @@ const SignUp = ({navigation: {navigate}}) => {
     <StyledWrapper>
       <StyledWrapperSub>
         <Header
-          topPosition={Platform.OS === 'android' ? '20px' : '25px'}
-          leftPositon={Platform.OS === 'android' ? '175px' : '182px'}
+          topPosition={Platform.OS === 'android' ? '19px' : '24px'}
+          leftPositon={Platform.OS === 'android' ? '185px' : '192px'}
+          textColor={colors.primary}
         />
         <StyledFormWrapper>
           <Text

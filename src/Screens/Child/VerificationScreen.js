@@ -1,4 +1,5 @@
 import React from 'react';
+import {Platform} from 'react-native';
 import {colors, images} from '../../core';
 import Verification from '../../components/Reusable/Verification';
 
@@ -7,7 +8,7 @@ const VerifationScreen = ({navigation: {navigate}}) => {
     <Verification
       logoImage={images.childBean}
       tradeMarkImage={images.childTrade}
-      tradeIconTopPosition="20px"
+      tradeIconTopPosition={Platform.OS === 'ios' ? '18px' : '10px'}
       tradeIconLeftPosition="360px"
       justifyHeaderContent="flex-end"
       greetingTextColor={colors.black}

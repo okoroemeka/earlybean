@@ -20,6 +20,7 @@
 		D4D570F47353AF8A8F49E262 /* libPods-EarlyBean-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD910ED2AA0114A1911AD2B5 /* libPods-EarlyBean-tvOSTests.a */; };
 		DE61D5A0A94B77AF1FACD5B4 /* libPods-EarlyBean-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5065E1DF2308FBEAE68AF50 /* libPods-EarlyBean-tvOS.a */; };
 		FEE25E788AE4D5154F076411 /* libPods-EarlyBean-EarlyBeanTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC597EA5BF02661AAFA73E23 /* libPods-EarlyBean-EarlyBeanTests.a */; };
+		9714DF2CF5F840B1880A6EA7 /* LucidaGrande.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52E83F730E8A49A9AF06B1BC /* LucidaGrande.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F0CEC614643B31D3C7EB8F77 /* Pods-EarlyBean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlyBean.debug.xcconfig"; path = "Target Support Files/Pods-EarlyBean/Pods-EarlyBean.debug.xcconfig"; sourceTree = "<group>"; };
+		52E83F730E8A49A9AF06B1BC /* LucidaGrande.ttf */ = {isa = PBXFileReference; name = "LucidaGrande.ttf"; path = "../src/assets/fonts/LucidaGrande.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D8EC27678986F3D64CE5AE79 /* Pods */,
+				AF9099C4CB3E4CE5AA61E564 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -197,6 +200,15 @@
 			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		AF9099C4CB3E4CE5AA61E564 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				52E83F730E8A49A9AF06B1BC /* LucidaGrande.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -340,6 +352,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				9714DF2CF5F840B1880A6EA7 /* LucidaGrande.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
