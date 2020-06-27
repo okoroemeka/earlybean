@@ -6,6 +6,7 @@ import {
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
 import {colors, images} from '../../core';
+// import {fonts} from '../../assets/fonts';
 import Header from '../../components/UI/Header';
 import Text from '../../components/UI/Text';
 
@@ -30,16 +31,17 @@ const StyledText = styled.Text`
   text-align: ${props => props.textAlign || 'center'};
   color: ${props => props.color || colors.white};
   font-size: ${props => props.fontSize || wp('4%')}px;
+  font-family: 'LucidaGrande';
   margin-top: ${props => props.marginTop || hp('0%')}px;
   border-bottom-width: ${props => props.borderBottomWidth || wp('0%')}px;
   border-bottom-color: ${props => props.borderBottomcolor || colors.primary};
 `;
-const StyledTradeImage = styled.Image`
+const StyledVerifiedImage = styled.Image`
   width: ${Platform.OS === 'ios' ? '10px' : '12px'};
   height: ${Platform.OS === 'ios' ? '10px' : '12px'};
   position: absolute;
   top: ${Platform.OS === 'android' ? '1px' : '5px'};
-  left: ${Platform.OS === 'android' ? '112px' : '110px'};
+  left: ${Platform.OS === 'android' ? '122px' : '110px'};
 `;
 const StyledTouchable = styled.TouchableOpacity`
   width: 100%;
@@ -51,7 +53,8 @@ const ConfirmationScreen = ({navigation: {navigate}}) => {
       <StyledWrapperSub>
         <Header
           topPosition={Platform.OS === 'android' ? '21px' : '30px'}
-          leftPositon={Platform.OS === 'android' ? '175px' : '182px'}
+          leftPositon={Platform.OS === 'android' ? '185px' : '192px'}
+          textColor={colors.primary}
         />
         <StyledContentWrapper>
           <Text
@@ -67,9 +70,9 @@ const ConfirmationScreen = ({navigation: {navigate}}) => {
               fontSize={Platform.OS === 'ios' ? wp('3%') : wp('3.3%')}
               textAlign="left"
               lineHeight={hp('3%')}>
-              ACCOUNT ACTIVE,
+              ACCOUNT ACTIVE
             </Text>
-            <StyledTradeImage source={images.activeIcon} />
+            <StyledVerifiedImage source={images.activeIcon} />
           </StyledTextWrapper>
           <Text
             color={colors.black}
@@ -102,7 +105,7 @@ const ConfirmationScreen = ({navigation: {navigate}}) => {
             lineHeight={Platform.OS === 'ios' ? hp('3.5%') : hp('4%')}>
             The Eearlybean Team
           </Text>
-          <StyledTouchable onPress={() => navigate('LoginScreen')}>
+          <StyledTouchable onPress={() => navigate('Dashboard')}>
             <StyledText
               color={colors.primary}
               textAlign="center"

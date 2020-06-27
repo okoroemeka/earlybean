@@ -21,8 +21,6 @@ const StyledWrapperSub = styled.ScrollView`
 `;
 const StyledFormInputWrapper = styled.View`
   flex: 1;
-  /* width: 100%;
-  height: 70%; */
   padding: ${hp('1%')}px ${Platform.OS === 'android' ? wp('6%') : wp('7.5%')}px;
 `;
 const StyledText = styled.Text`
@@ -31,6 +29,8 @@ const StyledText = styled.Text`
   color: ${props => props.color || colors.white};
   font-size: ${props => props.fontSize || wp('4%')}px;
   font-style: ${props => props.fontStyle || 'normal'};
+  font-family: 'LucidaGrande';
+  line-height: ${props => props.lineHeight || hp('0%')}px;
   margin-top: ${props => props.marginTop || hp('0%')}px;
   border-bottom-width: ${props => props.borderBottomWidth || wp('0%')}px;
   border-bottom-color: ${props => props.borderBottomcolor || colors.primary};
@@ -38,7 +38,7 @@ const StyledText = styled.Text`
 const StyledInputWrapper = styled.View`
   width: 100%;
   flex-direction: row;
-  justify-content: ${props => props.justidyContent || 'space-between'};
+  justify-content: ${props => props.justifyContent || 'space-between'};
   margin-top: ${props => props.marginTop || hp('0%')}px;
   margin-left: ${props => props.marginLeft || hp('0%')}px;
   margin-right: ${props => props.marginRight || hp('0%')}px;
@@ -60,14 +60,10 @@ const StyledButtonWrapper = styled.View`
   margin-top: ${Platform.OS === 'ios' ? hp('3.3%') : hp('3.5')}px;
   margin-bottom: ${Platform.OS === 'ios' ? hp('3.3%') : hp('3.5')}px;
 `;
-// const StyledFooterArea = styled.View`
-//   width: 100%;
-//   height: 20%;
-//   padding-left: ${Platform.OS === 'android' ? wp('6%') : wp('7.5%')}px;
-//   /* justify-content: flex-start; */
-// `;
+
 const StyledTouchable = styled.TouchableOpacity`
-  margin-top: ${props => props.marginTop || hp('1%')}px;
+  /* margin-top: ${props =>
+    props.marginTop || Platform.OS === 'android' ? hp('0.8%') : hp('0%')}px; */
   margin-left: ${props => props.marginLeft || wp('1.5%')}px;
 `;
 
@@ -118,13 +114,14 @@ const VerifationScreen = ({
             color={colors.black}
             textAlign="left"
             fontSize={wp('3.5%')}
-            lineHeight={hp('2%')}
+            lineHeight={Platform.OS === 'ios' ? hp('2%') : hp('3%')}
             marginTop={hp('2%')}>
             {instruction}
           </StyledText>
           <StyledText
             color={colors.placeholderColor}
             fontSize={wp('4.5%')}
+            lineHeight={Platform.OS === 'ios' ? hp('2%') : hp('3%')}
             fontStyle="italic"
             marginTop={hp('6%')}>
             Enter code here
@@ -187,14 +184,17 @@ const VerifationScreen = ({
               </Text>
             </Button>
           </StyledButtonWrapper>
-          <StyledInputWrapper justidyContent="flex-start">
-            <StyledText color={colors.placeholderColor} fontSize={wp('3.3%')}>
+          <StyledInputWrapper justifyContent="flex-start">
+            <StyledText
+              lineHeight={Platform.OS === 'android' ? hp('2%') : hp('1.5%')}
+              color={colors.placeholderColor}
+              fontSize={wp('3.3%')}>
               Didn’t get a token?
             </StyledText>
             <StyledTouchable
               marginTop={Platform.OS === 'android' ? hp('0.8%') : hp('0.03%')}>
               <Text
-                lineHeight={hp('2%')}
+                lineHeight={Platform.OS === 'ios' ? hp('1.5%') : hp('2%')}
                 color={buttonColor}
                 textAlign="left"
                 fontSize={wp('3.5%')}>
@@ -203,18 +203,21 @@ const VerifationScreen = ({
             </StyledTouchable>
           </StyledInputWrapper>
           <StyledInputWrapper
-            justidyContent="flex-start"
+            justifyContent="flex-start"
             marginTop={Platform.OS === 'android' ? hp('1%') : hp('1.2%')}>
-            <StyledText color={colors.placeholderColor} fontSize={wp('3.3%')}>
+            <StyledText
+              lineHeight={Platform.OS === 'android' ? hp('2%') : hp('1.5%')}
+              color={colors.placeholderColor}
+              fontSize={wp('3.3%')}>
               Not jay?
             </StyledText>
             <StyledTouchable
               marginTop={Platform.OS === 'android' ? hp('1%') : hp('0.03%')}>
               <Text
-                lineHeight={hp('2%')}
+                lineHeight={Platform.OS === 'ios' ? hp('1.5%') : hp('1.8%')}
                 color={buttonColor}
                 textAlign="left"
-                fontSize={wp('3.5%')}>
+                fontSize={wp('3.3%')}>
                 LOG IN
               </Text>
             </StyledTouchable>

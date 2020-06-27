@@ -48,6 +48,7 @@ const StyledText = styled.Text`
   text-align: ${props => props.textAlign || 'center'};
   color: ${props => props.color || colors.white};
   font-size: ${props => props.fontSize || wp('4%')}px;
+  font-family: 'LucidaGrande';
 `;
 const StyledContainer = styled.View`
   flex-direction: row;

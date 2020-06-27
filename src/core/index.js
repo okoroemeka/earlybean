@@ -31,6 +31,7 @@ const images = {
   childWelcomeScreenOne: require(`${PATH}childw1.png`),
   childWelcomeScreenTwo: require(`${PATH}childw2.png`),
   childWelcomeScreenThree: require(`${PATH}4.png`),
+  HomeIcon: require(`${PATH}home.svg`),
 };
 
 export {colors, images};
