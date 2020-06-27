@@ -5,7 +5,7 @@ import {
 } from 'react-native-responsive-screen';
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
-import {colors, images} from '../../core';
+import {colors, images, fonts} from '../../core';
 import Header from '../../components/UI/Header';
 import Text from '../../components/UI/Text';
 
@@ -30,6 +30,7 @@ const StyledText = styled.Text`
   text-align: ${props => props.textAlign || 'center'};
   color: ${props => props.color || colors.white};
   font-size: ${props => props.fontSize || wp('4%')}px;
+  font-style: ${fonts.primary};
   margin-top: ${props => props.marginTop || hp('0%')}px;
   border-bottom-width: ${props => props.borderBottomWidth || wp('0%')}px;
   border-bottom-color: ${props => props.borderBottomcolor || colors.primary};
@@ -102,7 +103,7 @@ const ConfirmationScreen = ({navigation: {navigate}}) => {
             lineHeight={Platform.OS === 'ios' ? hp('3.5%') : hp('4%')}>
             The Eearlybean Team
           </Text>
-          <StyledTouchable onPress={() => navigate('LoginScreen')}>
+          <StyledTouchable onPress={() => navigate('Dashboard')}>
             <StyledText
               color={colors.primary}
               textAlign="center"

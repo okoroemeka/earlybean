@@ -9,6 +9,9 @@ const colors = {
   placeholderColor: '#9c9797',
   childPrimaryColor: '#D74E79',
 };
+const fonts = {
+  primary: 'Lucida Grande',
+};
 
 const images = {
   bean: require(`${PATH}bean.png`),
@@ -31,6 +34,7 @@ const images = {
   childWelcomeScreenOne: require(`${PATH}childw1.png`),
   childWelcomeScreenTwo: require(`${PATH}childw2.png`),
   childWelcomeScreenThree: require(`${PATH}4.png`),
+  HomeIcon: require(`${PATH}home.svg`),
 };
 
-export {colors, images};
+export {colors, images, fonts};

@@ -5,7 +5,6 @@ import {
 } from 'react-native-responsive-screen';
 import styled from 'styled-components/native';
 import {colors} from '../../core';
-import Text from '../../components/Reusable/Text';
 
 const StyledInput = styled.TextInput`
   color: ${props => props.color || colors.black};
