@@ -6,7 +6,7 @@ import {
 } from 'react-native-responsive-screen';
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
-import {colors} from '../../core';
+import {colors, fonts} from '../../core';
 import Header from '../UI/Header';
 import Text from '../UI/Text';
 import Button from '../UI/Button';
@@ -21,8 +21,6 @@ const StyledWrapperSub = styled.ScrollView`
 `;
 const StyledFormInputWrapper = styled.View`
   flex: 1;
-  /* width: 100%;
-  height: 70%; */
   padding: ${hp('1%')}px ${Platform.OS === 'android' ? wp('6%') : wp('7.5%')}px;
 `;
 const StyledText = styled.Text`
@@ -30,7 +28,7 @@ const StyledText = styled.Text`
   text-align: ${props => props.textAlign || 'center'};
   color: ${props => props.color || colors.white};
   font-size: ${props => props.fontSize || wp('4%')}px;
-  font-style: ${props => props.fontStyle || 'normal'};
+  font-style: ${props => props.fontStyle || fonts.primary};
   margin-top: ${props => props.marginTop || hp('0%')}px;
   border-bottom-width: ${props => props.borderBottomWidth || wp('0%')}px;
   border-bottom-color: ${props => props.borderBottomcolor || colors.primary};
@@ -60,12 +58,7 @@ const StyledButtonWrapper = styled.View`
   margin-top: ${Platform.OS === 'ios' ? hp('3.3%') : hp('3.5')}px;
   margin-bottom: ${Platform.OS === 'ios' ? hp('3.3%') : hp('3.5')}px;
 `;
-// const StyledFooterArea = styled.View`
-//   width: 100%;
-//   height: 20%;
-//   padding-left: ${Platform.OS === 'android' ? wp('6%') : wp('7.5%')}px;
-//   /* justify-content: flex-start; */
-// `;
+
 const StyledTouchable = styled.TouchableOpacity`
   margin-top: ${props => props.marginTop || hp('1%')}px;
   margin-left: ${props => props.marginLeft || wp('1.5%')}px;
