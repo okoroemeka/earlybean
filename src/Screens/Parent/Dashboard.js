@@ -6,7 +6,6 @@ import {
 import {Platform, Text} from 'react-native';
 import styled from 'styled-components/native';
 import {colors, images} from '../../core';
-import HomeIcon from '../../assets/Images/home.svg';
 
 const StyledWrapper = styled.View`
   flex: 1;
@@ -26,30 +25,13 @@ const StyledBody = styled.View`
   background-color: white;
 `;
 
-const StyledFooter = styled.View`
-  width: 100%;
-  height: 8%;
-  background-color: ${colors.primary};
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-`;
-const StyledImageContainer = styled.View`
-  width: 10%;
-`;
 const Dashboard = () => {
-  //   const {HomeIcon} = images;
   return (
     <StyledWrapper>
       <StyledHeader />
       <StyledContainer>
         <StyledBody />
       </StyledContainer>
-      <StyledFooter>
-        <StyledImageContainer>
-          <HomeIcon width={'100'} height={'100'} />
-        </StyledImageContainer>
-      </StyledFooter>
     </StyledWrapper>
   );
 };

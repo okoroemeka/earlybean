@@ -9,7 +9,7 @@ import SignUpScreen from '../Screens/Parent/SignUpScreen';
 import VerificationScreen from '../Screens/Parent/VerificationScreen';
 import ConfirmationScreen from '../Screens/Parent/ConfirmationScreen';
 import LoginScreen from '../Screens/Parent/LoginScreen';
-import Dashboard from '../Screens/Parent/Dashboard';
+import Dashboard from './DashboardNavigtion';
 
 const Stack = createStackNavigator();
 
