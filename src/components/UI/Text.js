@@ -11,9 +11,10 @@ const StyledText = styled.Text`
   width: ${props => props.width || 'auto'};
   text-align: ${props => props.textAlign || 'center'};
   color: ${props => props.color || colors.white};
-  font-family: 'LucidaGrande';
+  font-family: ${props => props.fontFamily || 'Avenir'};
   font-size: ${props => props.fontSize || wp('4%')}px;
   font-style: ${props => props.fontStyle || 'normal'};
+  font-weight: ${props => props.fontWeight || 'normal'};
   margin-top: ${props => props.marginTop || hp('0%')}px;
   line-height: ${props => props.lineHeight || hp('4%')}px;
   border-bottom-width: ${props => props.borderBottomWidth || wp('0%')}px;
@@ -30,16 +31,20 @@ const TextHelper = ({
   lineHeight,
   borderBottomWidth,
   fontStyle,
+  fontFamily,
+  fontWeight,
 }) => {
   return (
     <StyledText
       textAlign={textAlign}
       fontSize={fontSize}
       color={color}
+      fontFamily={fontFamily}
       width={width}
       marginTop={marginTop}
       lineHeight={lineHeight}
       borderBottomWidth={borderBottomWidth}
+      fontWeight={fontWeight}
       fontStyle={fontStyle}>
       {children}
     </StyledText>

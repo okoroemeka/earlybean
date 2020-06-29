@@ -37,7 +37,7 @@ const StyledButtonContainer = styled.View`
 `;
 const StyledTochable = styled.TouchableOpacity`
   margin: 0 ${wp('2%')}px;
-  padding: ${hp('1%')}px ${wp('12%')}px;
+  padding: ${hp('1.5%')}px ${wp('12%')}px;
   background-color: ${colors.white};
   border: 1px solid ${props => props.borderColor || colors.primary};
   border-radius: 5px;

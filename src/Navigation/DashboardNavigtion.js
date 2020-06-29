@@ -1,15 +1,14 @@
 import React from 'react';
-import {Platform} from 'react-native';
 import {
-  widthPercentageToDP as wp,
   heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import styled from 'styled-components/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
 import {colors} from '../core';
 import DashboardScreen from '../Screens/Parent/Dashboard';
 import CustomIcon from '../core/CustomIcon';
-import TabNavHook from '../components/Hooks/TabNavHook';
 
 const StyledTouchable = styled.TouchableOpacity`
   width: 60px;
@@ -17,57 +16,98 @@ const StyledTouchable = styled.TouchableOpacity`
   border-radius: 30px;
   align-items: center;
   justify-content: center;
-  margin-top: ${hp('3.5%')}px;
-  padding-bottom: ${hp('1.5%')}px;
+  margin-top: ${hp('2%')}px;
   background-color: ${props => props.backgroundColor || colors.primary};
+`;
+const StyledView = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+  padding-bottom: ${hp('2.5%')}px;
+  background-color: ${colors.primary};
+`;
+const StyledText = styled.Text`
+  color: ${props => props.color || colors.white};
+  font-size: ${wp('3%')}px;
+  margin-top: ${hp('0.6%')}px;
 `;
 
 const Tab = createBottomTabNavigator();
 
+function MyTabBar({state, descriptors, navigation}) {
+  return (
+    <StyledView>
+      {state.routes.map((route, index) => {
+        const {options} = descriptors[route.key];
+        const label =
+          options.tabBarLabel !== undefined
+            ? options.tabBarLabel
+            : options.title !== undefined
+            ? options.title
+            : route.name;
+
+        const isFocused = state.index === index;
+        let iconName;
+        if (label == 'Home') {
+          iconName = 'homeIcon';
+        }
+        if (label == 'Save') {
+          iconName = 'saveicon';
+        }
+        if (label == 'Kids') {
+          iconName = 'kidsIcon';
+        }
+        if (label == 'History') {
+          iconName = 'historyIcon';
+        }
+        if (label == 'Wallet') {
+          iconName = 'walletIcon';
+        }
+        const onPress = () => {
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
+
+        const onLongPress = () => {
+          navigation.emit({
+            type: 'tabLongPress',
+            target: route.key,
+          });
+        };
+
+        return (
+          <StyledTouchable
+            accessibilityRole="button"
+            accessibilityStates={isFocused ? ['selected'] : []}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            key={index}
+            backgroundColor={isFocused && colors.white}>
+            <CustomIcon
+              name={iconName}
+              color={isFocused ? colors.primary : colors.white}
+              size={20}
+            />
+            <StyledText color={isFocused ? colors.primary : colors.white}>
+              {label}
+            </StyledText>
+          </StyledTouchable>
+        );
+      })}
+    </StyledView>
+  );
+}
+
 const DashboardNavigator = () => {
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused, color, size}) => {
-          const [backgroundColor, setBackgroundColor] = TabNavHook(
-            colors.white,
-          );
-          let iconName;
-          if (route.name == 'Home') {
-            iconName = 'homeIcon';
-          }
-          if (route.name == 'Save') {
-            iconName = 'saveicon';
-          }
-          if (route.name == 'Kids') {
-            iconName = 'kidsIcon';
-          }
-          if (route.name == 'History') {
-            iconName = 'historyIcon';
-          }
-          if (route.name == 'Wallet') {
-            iconName = 'walletIcon';
-          }
-          return (
-            <StyledTouchable
-              backgroundColor={focused && backgroundColor}
-              onPress={() => setBackgroundColor(colors.white)}>
-              <CustomIcon name={iconName} color={color} size={size} />
-            </StyledTouchable>
-          );
-        },
-      })}
-      tabBarOptions={{
-        activeTintColor: colors.primary,
-        inactiveTintColor: colors.white,
-        activeBackgroundColor: colors.primary,
-        style: {
-          height: Platform.OS == 'ios' ? 110 : 75,
-          paddingBottom: Platform.OS == 'ios' ? 40 : 15,
-          backgroundColor: colors.primary,
-        },
-      }}>
+    <Tab.Navigator tabBar={props => <MyTabBar {...props} />}>
       <Tab.Screen name="Home" component={DashboardScreen} />
       <Tab.Screen name="Save" component={DashboardScreen} />
       <Tab.Screen name="Kids" component={DashboardScreen} />
