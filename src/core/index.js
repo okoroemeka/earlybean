@@ -4,10 +4,12 @@ const colors = {
   primary: '#673580',
   purpleSplash: '#E6A1BE',
   white: '#FFFFFF',
+  milkWhite: '#F2F2F2',
   wineRed: '#D74E79',
   black: '#000000',
   placeholderColor: '#9c9797',
   childPrimaryColor: '#D74E79',
+  buttonColor: '#E3A9F3',
 };
 
 const images = {
@@ -32,6 +34,13 @@ const images = {
   childWelcomeScreenTwo: require(`${PATH}childw2.png`),
   childWelcomeScreenThree: require(`${PATH}4.png`),
   HomeIcon: require(`${PATH}home.svg`),
+  plusIcon: require(`${PATH}plus.png`),
+  createTrust: require(`${PATH}Group-343.png`),
+  setPersonalGoal: require(`${PATH}Group-342.png`),
+  swipeImage: require(`${PATH}swipe.png`),
+  drawer: require(`${PATH}drawerIcon.png`),
+  notification: require(`${PATH}Notification.png`),
+  backWardIcon: require(`${PATH}backwardIcon.png`),
 };
 
 export {colors, images};
