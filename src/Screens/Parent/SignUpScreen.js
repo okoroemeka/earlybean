@@ -1,13 +1,24 @@
-import React, {useState} from 'react';
+import React, {
+  useState,
+  useReducer,
+  useEffect,
+  useCallback,
+  Fragment,
+} from 'react';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {Platform} from 'react-native';
+import {Platform, Alert, ActivityIndicator} from 'react-native';
 import styled from 'styled-components/native';
+import {useMutation} from '@apollo/react-hooks';
+
 import {colors, images} from '../../core';
 import Header from '../../components/UI/Header';
 import Text from '../../components/UI/Text';
+import TextInput from '../../components/UI/TextInput';
+import {SIGNUP_MUTATION} from '../../../utils/apollo/mutations';
+import {set} from 'react-native-reanimated';
 
 const StyledWrapper = styled.SafeAreaView`
   flex: 1;
@@ -22,22 +33,9 @@ const StyledFormWrapper = styled.View`
   height: 80%;
   padding: ${hp('2%')}px ${Platform.OS === 'android' ? wp('6%') : wp('7.5%')}px;
 `;
-const StyledInput = styled.TextInput`
-  color: ${props => props.color || colors.black};
-  width: ${props => props.width || '100%'};
-  height: ${props => props.height || hp('2%')}px;
-  font-size: ${wp('4.5%')}px;
-  padding: ${props => props.paddingTopDown || hp('1%')}px
-    ${props => props.paddingLeftAndRight || wp('1%')}px;
-  border: ${props => props.border || 'none'};
-  border-bottom-color: ${colors.primary};
-  border-bottom-width: 1px;
-`;
-
 const StyledForm = styled.View`
   width: 100%;
 `;
-
 const StyledView = styled.View`
   width: ${props => props.width || '100%'};
   height: ${props => props.height || 'auto'};
@@ -73,8 +71,107 @@ const StyledEyeIcon = styled.Image`
 const StyledTouchable = styled.TouchableOpacity`
   margin-left: ${wp('1%')}px;
 `;
+
+const initialState = {
+  inputValues: {
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    password: '',
+  },
+  inputValidities: {
+    firstName: false,
+    lastName: false,
+    phone: '',
+    email: false,
+    password: false,
+  },
+  formIsValid: false,
+};
+
+const FORM_IN_UPDATAE = 'FORM_IN_UPDATAE';
+const formReducer = (state, action) => {
+  switch (action.type) {
+    case FORM_IN_UPDATAE:
+      const updatedInputValues = {
+        ...state.inputValues,
+        [action.inputName]: action.value,
+      };
+      const updatedInputValidity = {
+        ...state.inputValidities,
+        [action.inputName]: action.isValid,
+      };
+      let updatedformIsValid = true;
+      for (let key in updatedInputValidity) {
+        updatedformIsValid = updatedformIsValid && updatedInputValidity[key];
+      }
+      return {
+        formIsValid: updatedformIsValid,
+        inputValues: updatedInputValues,
+        inputValidities: updatedInputValidity,
+      };
+    default:
+      return state;
+  }
+};
+
 const SignUp = ({navigation: {navigate}}) => {
+  const [formState, dispatchFormState] = useReducer(formReducer, initialState);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [register, {data}] = useMutation(SIGNUP_MUTATION);
+
+  const inputChangeHandler = useCallback(
+    (inputName, inputValue, inputValidity) => {
+      dispatchFormState({
+        type: FORM_IN_UPDATAE,
+        value: inputValue,
+        isValid: inputValidity,
+        inputName: inputName,
+      });
+    },
+    [dispatchFormState],
+  );
+  useEffect(() => {
+    if (error) {
+      Alert.alert('Error', error, [{text: 'okay'}]);
+    }
+  }, [error]);
+
+  const handleSubmit = async () => {
+    try {
+      if (!formState.formIsValid) {
+        return setError('invalid form input');
+      }
+      if (
+        formState.inputValues.password != formState.inputValues.confirmPassword
+      ) {
+        return setError('Password do not match');
+      } else {
+        setError(null);
+        setLoading(true);
+        await register({
+          variables: {...formState.inputValues, accountType: 'parent'},
+        });
+        navigate('VerificationScreen');
+      }
+    } catch (e) {
+      if (e.message.includes('GraphQL error')) {
+        setError('Server error, please try again later');
+      } else {
+        setError(e.message);
+      }
+    }
+    setError(null);
+    setLoading(false);
+  };
+  useEffect(() => {
+    if (error) {
+      Alert.alert('Error', error, [{text: 'okay'}]);
+    }
+  }, [error]);
   return (
     <StyledWrapper>
       <StyledWrapperSub>
@@ -103,48 +200,87 @@ const SignUp = ({navigation: {navigate}}) => {
           </Text>
           <StyledForm>
             <StyledView flexDirection="row">
-              <StyledInput
+              <TextInput
+                id="firstName"
+                keyboardType="default"
+                required
+                autoCapitalize="none"
+                errorText="enter a valid first name"
+                initailValue=""
                 paddingTopDown={hp('0.5%')}
                 placeholder="First name"
-                width={'48%'}
+                textControlWidth={'48%'}
                 height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
                 placeholderTextColor={colors.placeholderColor}
+                onInputChange={inputChangeHandler}
               />
-              <StyledInput
+              <TextInput
+                id="lastName"
+                keyboardType="default"
+                required
+                autoCapitalize="none"
+                errorText="enter a valid surename"
+                initailValue=""
                 paddingTopDown={hp('0.5%')}
                 placeholder="Surname"
-                width={'48%'}
+                textControlWidth={'48%'}
                 height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
                 placeholderTextColor={colors.placeholderColor}
+                onInputChange={inputChangeHandler}
               />
             </StyledView>
             <StyledView flexDirection="row">
-              <StyledInput
+              <TextInput
+                id="email"
+                keyboardType="email-address"
+                required
+                email
+                autoCapitalize="none"
+                errorText="invalid email address"
+                initailValue=""
                 paddingTopDown={hp('0.5%')}
                 placeholder="Email"
-                width={'100%'}
+                textControlWidth={'100%'}
                 height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
                 placeholderTextColor={colors.placeholderColor}
+                onInputChange={inputChangeHandler}
               />
             </StyledView>
             <StyledView flexDirection="row">
-              <StyledInput
+              <TextInput
+                id="phone"
+                required
+                minLength={11}
+                maxLength={11}
+                autoCapitalize="none"
+                errorText="enter a valid Nigerian number"
+                initailValue=""
+                phone
                 keyboardType="numeric"
                 paddingTopDown={hp('0.5%')}
                 placeholder="Phone number"
-                width={'100%'}
+                textControlWidth={'100%'}
                 height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
                 placeholderTextColor={colors.placeholderColor}
+                onInputChange={inputChangeHandler}
               />
             </StyledView>
             <StyledView flexDirection="row">
-              <StyledInput
+              <TextInput
+                id="password"
+                keyboardType="default"
+                required
+                minLength={6}
+                autoCapitalize="none"
+                errorText="password length must be greater than 5"
+                initailValue=""
                 secureTextEntry={!showPassword}
                 paddingTopDown={hp('0.5%')}
                 placeholder="Password"
-                width={'100%'}
+                textControlWidth={'100%'}
                 height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
                 placeholderTextColor={colors.placeholderColor}
+                onInputChange={inputChangeHandler}
               />
               <StyledEyeIconWrapper
                 onPress={() => setShowPassword(!showPassword)}>
@@ -156,24 +292,42 @@ const SignUp = ({navigation: {navigate}}) => {
               </StyledEyeIconWrapper>
             </StyledView>
             <StyledView flexDirection="row">
-              <StyledInput
+              <TextInput
+                id="confirmPassword"
+                keyboardType="default"
+                required
+                minLength={6}
+                autoCapitalize="none"
+                errorText="password length must be greater than 5"
+                initailValue=""
                 secureTextEntry={true}
                 paddingTopDown={hp('0.5%')}
-                placeholder="Confirm Password"
-                width={'100%'}
+                placeholder="Confirm password"
+                textControlWidth={'100%'}
                 height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
                 placeholderTextColor={colors.placeholderColor}
+                onInputChange={inputChangeHandler}
               />
             </StyledView>
             <StyledButton
               width="45%"
-              onPress={() => navigate('VerificationScreen')}>
-              <Text textAlign="left">Next</Text>
-              <StyledImageNextIcon
-                source={images.nextIcon}
-                width={wp('1.8%')}
-                height={Platform.OS === 'android' ? hp('0.3%') : hp('0.17%')}
-              />
+              onPress={
+                loading ? () => navigate('VerificationScreen') : handleSubmit
+              }>
+              {!loading ? (
+                <Fragment>
+                  <Text textAlign="left">Next</Text>
+                  <StyledImageNextIcon
+                    source={images.nextIcon}
+                    width={wp('1.8%')}
+                    height={
+                      Platform.OS === 'android' ? hp('0.3%') : hp('0.17%')
+                    }
+                  />
+                </Fragment>
+              ) : (
+                <ActivityIndicator size="small" color={colors.white} />
+              )}
             </StyledButton>
           </StyledForm>
           <StyledView flexDirection="row" justifyContent="flex-start">
@@ -201,5 +355,7 @@ const SignUp = ({navigation: {navigate}}) => {
     </StyledWrapper>
   );
 };
-
+SignUp.navigationOptions = {
+  headerTitle: 'Authenticate',
+};
 export default SignUp;
