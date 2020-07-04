@@ -141,16 +141,18 @@ const SignUp = ({navigation: {navigate}}) => {
   }, [error]);
 
   const handleSubmit = async () => {
+    navigate('VerificationScreen');
+
     try {
+      setError(null);
       if (!formState.formIsValid) {
         return setError('invalid form input');
       }
       if (
         formState.inputValues.password != formState.inputValues.confirmPassword
       ) {
-        return setError('Password do not match');
+        setError('Password do not match');
       } else {
-        setError(null);
         setLoading(true);
         await register({
           variables: {...formState.inputValues, accountType: 'parent'},
@@ -162,10 +164,9 @@ const SignUp = ({navigation: {navigate}}) => {
         setError('Server error, please try again later');
       } else {
         setError(e.message);
+        setLoading(false);
       }
     }
-    setError(null);
-    setLoading(false);
   };
   useEffect(() => {
     if (error) {
@@ -311,9 +312,7 @@ const SignUp = ({navigation: {navigate}}) => {
             </StyledView>
             <StyledButton
               width="45%"
-              onPress={
-                loading ? () => navigate('VerificationScreen') : handleSubmit
-              }>
+              onPress={loading ? () => null : handleSubmit}>
               {!loading ? (
                 <Fragment>
                   <Text textAlign="left">Next</Text>
