@@ -18,7 +18,6 @@ import Header from '../../components/UI/Header';
 import Text from '../../components/UI/Text';
 import TextInput from '../../components/UI/TextInput';
 import {SIGNUP_MUTATION} from '../../../utils/apollo/mutations';
-import {set} from 'react-native-reanimated';
 
 const StyledWrapper = styled.SafeAreaView`
   flex: 1;
@@ -142,13 +141,11 @@ const SignUp = ({navigation: {navigate}}) => {
 
   const handleSubmit = async () => {
     navigate('VerificationScreen');
-
     try {
       setError(null);
       if (!formState.formIsValid) {
-        return setError('invalid form input');
-      }
-      if (
+        setError('invalid form input');
+      } else if (
         formState.inputValues.password != formState.inputValues.confirmPassword
       ) {
         setError('Password do not match');
@@ -164,9 +161,9 @@ const SignUp = ({navigation: {navigate}}) => {
         setError('Server error, please try again later');
       } else {
         setError(e.message);
-        setLoading(false);
       }
     }
+    setLoading(false);
   };
   useEffect(() => {
     if (error) {

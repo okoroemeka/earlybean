@@ -15,7 +15,7 @@ const StyledInput = styled.TextInput`
   padding: ${props => props.paddingTopDown || hp('1%')}px
     ${props => props.paddingLeftAndRight || wp('1%')}px;
   border: ${props => props.border || 'none'};
-  border-bottom-color: ${colors.primary};
+  border-bottom-color: ${props => props.borderBottomColor || colors.primary};
   border-bottom-width: 1px;
 `;
 const StyledView = styled.View`
@@ -101,6 +101,7 @@ const TextInput = props => {
     paddingLeftAndRight,
     placeholder,
     textControlWidth,
+    borderBottomColor,
   } = props;
   return (
     <StyledFormControl width={textControlWidth}>
@@ -114,6 +115,7 @@ const TextInput = props => {
         onChangeText={textChangeHandler}
         onBlur={lostFocusHandler}
         placeholder={placeholder || ''}
+        borderBottomColor={borderBottomColor}
       />
       {!inputState.isValid && inputState.touched && (
         <StyledView>
