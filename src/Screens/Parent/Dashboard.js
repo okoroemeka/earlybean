@@ -10,56 +10,30 @@ import {colors, images} from '../../core';
 import InfoCard from '../../components/UI/InfoCard';
 import InstructionCard from '../../components/UI/InstructionCard';
 import Text from '../../components/UI/Text';
-import Image from '../../components/UI/Image';
-import CustomIcon from '../../core/CustomIcon';
+import DashboarddHeader from '../../components/Reusable/DashboarddHeader';
+import RoundButton from '../../components/UI/RoundButton';
 
-const StyledInstructionWrapper = styled.View`
-  flex: 1;
-  align-items: center;
-  margin-top: ${hp('10.5%')}px;
-  margin-bottom: ${hp('1.5%')}px;
-`;
 const StyledHeaderStatus = styled.SafeAreaView`
   flex: 0;
   background-color: ${colors.primary};
 `;
-const StyledWrapper = styled.ScrollView`
+const StyledStatusBar = styled.StatusBar``;
+const StyledBodyContent = styled.ScrollView``;
+const StyledMainContainer = styled.View`
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   position: relative;
   background-color: ${colors.milkWhite};
 `;
-const StyledContainer = styled.SafeAreaView`
-  flex: 1;
-  margin-bottom: ${Platform.OS == 'ios' ? hp('0.8%') : hp('2%')}px;
-`;
 const StyledHeader = styled.View`
-  width: 100%;
-  flex-direction: row;
-  height: ${Platform.OS == 'ios' ? '17%' : '20%'};
-  padding-top: ${hp('1%')}px;
+  flex: ${Platform.OS == 'ios' ? 2 : 3};
   background-color: ${colors.primary};
 `;
+
 const StyledBody = styled.View`
-  flex: 1;
-  padding: ${hp('1%')}px ${wp('3%')}px;
+  flex: 5;
+  padding: ${hp('0%')}px ${wp('3%')}px;
 `;
-
-const StyledInfoWrapper = styled.View`
-  width: 100%;
-  height: ${hp('25%')}px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-`;
-
-const StyledIntroTextWrapper = styled.View`
-  width: 100%;
-  padding-left: ${Platform.OS == 'android' ? wp('5%') : wp('7%')}px;
-  margin-top: ${hp('3%')}px;
-  margin-bottom: ${hp('1.5%')}px;
-`;
-const StyledStatusBar = styled.StatusBar``;
 const StyledText = styled.Text`
   width: ${props => props.width || '100%'};
   text-align: ${props => props.textAlign || 'center'};
@@ -72,23 +46,22 @@ const StyledText = styled.Text`
   border-bottom-width: ${props => props.borderBottomWidth || wp('0%')}px;
   border-bottom-color: ${props => props.borderBottomcolor || colors.primary};
 `;
-const StyledImage = styled.Image`
-  width: ${wp('3.5%')}px;
-  height: ${hp('2%')}px;
+const StyledInstructionWrapper = styled.View`
+  flex: 1;
+  align-items: center;
+  margin-top: ${hp('10.5%')}px;
+  margin-bottom: ${hp('4.5%')}px;
+`;
+const StyledIntroTextWrapper = styled.View`
+  width: 100%;
+  padding-left: ${Platform.OS == 'android' ? wp('5%') : wp('7%')}px;
+  margin-top: ${hp('3%')}px;
+  margin-bottom: ${hp('1.5%')}px;
 `;
 const StyledInfoImage = styled.Image`
   width: 100%;
   height: 100%;
 `;
-const StyledButton = styled.TouchableOpacity`
-  justify-content: center;
-  align-items: center;
-  width: ${props => props.width || 'auto'};
-  height: ${props => props.height || 'auto'};
-  background-color: ${props => props.backgroundColor || colors.primary};
-  border-radius: ${props => props.borderRadius || '0px'};
-`;
-
 const StyledTextWrapper = styled.View`
   width: ${props => props.width || '100%'};
   height: 100%;
@@ -99,136 +72,43 @@ const StyledTextWrapper = styled.View`
   left: 0;
   background: transparent;
 `;
-/******************************/
-const StyledTitle = styled.View`
-  width: 75%;
-  height: 100%;
-  flex-direction: row;
-  margin-left: auto;
-`;
-const StyledView = styled.View`
-  width: ${props => props.width || '100%'};
-  height: ${props => props.height || '100%'};
-  background-color: ${props => props.color || colors.primary};
-`;
-const StyledRightIconContainer = styled.View`
-  width: 100%;
-  height: 100%;
-  padding-top: ${Platform.OS == 'android' ? hp('0.2%') : hp('0%')}px;
-  padding-bottom: ${Platform.OS == 'android' ? hp('4.8%') : hp('2.5%')}px;
-  padding-right: ${wp('6%')}px;
-  align-items: flex-end;
-  justify-content: space-between;
-`;
-const StyledHeadingTextWrapper = styled.View`
-  width: 100%;
-  flex-direction: row;
+const StyledButton = styled.TouchableOpacity`
   justify-content: center;
+  align-items: center;
+  width: ${props => props.width || 'auto'};
+  height: ${props => props.height || 'auto'};
+  background-color: ${props => props.backgroundColor || colors.primary};
+  border-radius: ${props => props.borderRadius || '0px'};
 `;
-const StyledLeftIconContainer = styled.View`
-  flex: 1;
-  justify-content: space-between;
-  padding-top: ${Platform.OS == 'android' ? hp('0.5%') : hp('0.3%')}px;
-  padding-left: ${Platform.OS == 'ios' ? wp('5%') : wp('4%')}px;
-  padding-bottom: ${Platform.OS == 'android' ? hp('4.8%') : hp('2.5%')}px;
+const StyledImage = styled.Image`
+  width: ${wp('3.5%')}px;
+  height: ${hp('2%')}px;
 `;
-const StyledLeftIconsWrapper = styled.View`
+const StyledInfoWrapper = styled.View`
   width: 100%;
+  height: ${hp('25%')}px;
   flex-direction: row;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-around;
 `;
-const StyledIconWrapper = styled.View`
-  padding-top: ${props => props.paddingTop || hp('0%')}px;
-`;
-const Dashboard = ({navigation: {navigate}, dashboardNumber = 0}) => {
+const Dashboard = ({navigation: {navigate}}) => {
   return (
     <Fragment>
       <StyledHeaderStatus />
-      <StyledWrapper>
+      <StyledMainContainer>
         <StyledStatusBar barStyle="light-content" />
-        <StyledContainer>
-          <StyledHeader>
-            <StyledLeftIconContainer>
-              <StyledLeftIconsWrapper>
-                <StyledIconWrapper
-                  paddingTop={Platform.OS == 'ios' ? hp('0.5%') : hp('0.8%')}
-                  marginRight={wp('2.5%')}>
-                  <Image
-                    imageUrl={images.drawer}
-                    imageWidth={5}
-                    imageHeight={Platform.OS == 'android' ? 1.5 : 1}
-                  />
-                </StyledIconWrapper>
-
-                <Image
-                  imageUrl={images.notification}
-                  imageWidth={Platform.OS == 'ios' ? 5 : 5.5}
-                  imageHeight={Platform.OS == 'ios' ? 2.5 : 3.5}
-                />
-              </StyledLeftIconsWrapper>
-              {dashboardNumber !== 0 && (
-                <StyledLeftIconsWrapper>
-                  <Image
-                    imageUrl={images.backWardIcon}
-                    imageWidth={Platform.OS == 'android' ? 10 : 10}
-                    imageHeight={Platform.OS == 'android' ? 3 : 2.5}
-                  />
-                </StyledLeftIconsWrapper>
-              )}
-            </StyledLeftIconContainer>
-            <StyledTitle>
-              <StyledView width="70%">
-                <StyledText fontWeight="bold" fontSize={wp('6%')}>
-                  Hello Biobele,
-                </StyledText>
-                <StyledText
-                  width="100%"
-                  fontSize={wp('3.5%')}
-                  marginTop={hp('0.5%')}>
-                  Account ID: 1098999765
-                </StyledText>
-                <StyledText
-                  fontSize={wp('2.5%')}
-                  marginTop={Platform.OS == 'ios' ? hp('3%') : hp('4%')}>
-                  Financial overview
-                </StyledText>
-                <StyledText
-                  fontSize={wp('3.5%')}
-                  marginTop={Platform.OS == 'ios' ? hp('3%') : hp('4%')}>
-                  Overall balance
-                </StyledText>
-                <StyledHeadingTextWrapper>
-                  <StyledIconWrapper
-                    paddingTop={Platform.OS == 'ios' ? hp('0.8%') : hp('1.2%')}>
-                    <CustomIcon
-                      name="NairaIcon"
-                      size={18}
-                      color={colors.white}
-                    />
-                  </StyledIconWrapper>
-                  <StyledText
-                    width="70%"
-                    fontSize={wp('6%')}
-                    fontWeight="bold"
-                    textAlign="left"
-                    marginTop={0}>
-                    25,000,000
-                  </StyledText>
-                </StyledHeadingTextWrapper>
-              </StyledView>
-              <StyledView width="30%" background="blue">
-                <StyledRightIconContainer>
-                  <CustomIcon name="logo" size={35} color={colors.white} />
-                  <Image
-                    imageUrl={images.swipeImage}
-                    imageWidth={Platform.OS == 'android' ? 10 : 10}
-                    imageHeight={Platform.OS == 'android' ? 3 : 2.5}
-                  />
-                </StyledRightIconContainer>
-              </StyledView>
-            </StyledTitle>
-          </StyledHeader>
-          <StyledBody>
+        <StyledHeader>
+          <DashboarddHeader
+            userFirstName="Biobele"
+            accountId={1209988666}
+            heading="Financial overview"
+            subHeading="Overall balance"
+            amount="25,000,000"
+            headerHeight={Platform.OS == 'ios' ? '92%' : '100%'}
+          />
+        </StyledHeader>
+        <StyledBody>
+          <StyledBodyContent>
             <StyledIntroTextWrapper>
               <Text
                 fontFamily="Avenir"
@@ -274,6 +154,7 @@ const Dashboard = ({navigation: {navigate}, dashboardNumber = 0}) => {
                 </StyledText>
                 <StyledButton
                   backgroundColor={colors.buttonColor}
+                  onPress={() => null}
                   borderRadius="20px"
                   width="40px"
                   height="40px">
@@ -312,13 +193,13 @@ const Dashboard = ({navigation: {navigate}, dashboardNumber = 0}) => {
                   fontSize={wp('3%')}>
                   Add a child
                 </StyledText>
-                <StyledButton
+                <RoundButton
                   backgroundColor={colors.buttonColor}
-                  borderRadius="20px"
-                  width="40px"
-                  height="40px">
+                  buttonBorderRadius="20px"
+                  buttonWidth="40px"
+                  buttonHeight="40px">
                   <StyledImage source={images.plusIcon} />
-                </StyledButton>
+                </RoundButton>
               </InfoCard>
             </StyledInfoWrapper>
             <StyledInstructionWrapper>
@@ -368,9 +249,9 @@ const Dashboard = ({navigation: {navigate}, dashboardNumber = 0}) => {
                 </StyledTextWrapper>
               </InstructionCard>
             </StyledInstructionWrapper>
-          </StyledBody>
-        </StyledContainer>
-      </StyledWrapper>
+          </StyledBodyContent>
+        </StyledBody>
+      </StyledMainContainer>
     </Fragment>
   );
 };

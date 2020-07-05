@@ -41,6 +41,8 @@ const images = {
   drawer: require(`${PATH}drawerIcon.png`),
   notification: require(`${PATH}Notification.png`),
   backWardIcon: require(`${PATH}backwardIcon.png`),
+  trustImage: require(`${PATH}Group-3445.png`),
+  topUPImage: require(`${PATH}Group-3446.png`),
 };
 
 export {colors, images};

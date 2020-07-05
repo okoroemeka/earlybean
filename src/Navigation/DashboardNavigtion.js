@@ -8,6 +8,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {colors} from '../core';
 import DashboardScreen from '../Screens/Parent/Dashboard';
+import DashboardOne from '../Screens/Parent/DashboardOne';
 import CustomIcon from '../core/CustomIcon';
 
 const StyledTouchable = styled.TouchableOpacity`
@@ -109,7 +110,7 @@ const DashboardNavigator = () => {
   return (
     <Tab.Navigator tabBar={props => <MyTabBar {...props} />}>
       <Tab.Screen name="Home" component={DashboardScreen} />
-      <Tab.Screen name="Save" component={DashboardScreen} />
+      <Tab.Screen name="Save" component={DashboardOne} />
       <Tab.Screen name="Kids" component={DashboardScreen} />
       <Tab.Screen name="History" component={DashboardScreen} />
       <Tab.Screen name="Wallet" component={DashboardScreen} />
