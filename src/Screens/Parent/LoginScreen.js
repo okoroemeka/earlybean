@@ -1,20 +1,25 @@
-import React, {useState} from 'react';
+import React, {useState, useReducer, useEffect, useCallback} from 'react';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {Platform} from 'react-native';
+import {Platform, ActivityIndicator, Alert} from 'react-native';
 import styled from 'styled-components/native';
+import {useMutation} from '@apollo/react-hooks';
+
 import {colors, images} from '../../core';
 import Header from '../../components/UI/Header';
 import Text from '../../components/UI/Text';
 import Image from '../../components/UI/Image';
 import Button from '../../components/UI/Button';
+import TextInput from '../../components/UI/TextInput';
+import {LOGIN_MUTATION} from '../../../utils/apollo/mutations';
 
 const StyledWrapper = styled.View`
   flex: 1;
   position: relative;
 `;
+const StyledStatusBar = styled.StatusBar``;
 const StyledSubWrapper = styled.SafeAreaView`
   width: 100%;
   height: 100%;
@@ -66,9 +71,90 @@ const StyledTouchable = styled.TouchableOpacity`
   margin-top: ${props => props.marginTop || hp('1%')}px;
   margin-left: ${props => props.marginLeft || wp('1.5%')}px;
 `;
+
+const initialState = {
+  inputValues: {
+    email: '',
+    password: '',
+  },
+  inputValidities: {
+    email: false,
+    password: false,
+  },
+  formIsValid: false,
+};
+
+const FORM_IN_UPDATAE = 'FORM_IN_UPDATAE';
+const formReducer = (state, action) => {
+  switch (action.type) {
+    case FORM_IN_UPDATAE:
+      const updatedInputValues = {
+        ...state.inputValues,
+        [action.inputName]: action.value,
+      };
+      const updatedInputValidity = {
+        ...state.inputValidities,
+        [action.inputName]: action.isValid,
+      };
+      let updatedformIsValid = true;
+      for (let key in updatedInputValidity) {
+        updatedformIsValid = updatedformIsValid && updatedInputValidity[key];
+      }
+      return {
+        formIsValid: updatedformIsValid,
+        inputValues: updatedInputValues,
+        inputValidities: updatedInputValidity,
+      };
+    default:
+      return state;
+  }
+};
+
 const LoginScreen = ({navigation: {navigate}}) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [formState, dispatchFormState] = useReducer(formReducer, initialState);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [login, {data}] = useMutation(LOGIN_MUTATION);
 
+  const inputChangeHandler = useCallback(
+    (inputName, inputValue, inputValidity) => {
+      dispatchFormState({
+        type: FORM_IN_UPDATAE,
+        value: inputValue,
+        isValid: inputValidity,
+        inputName: inputName,
+      });
+    },
+    [dispatchFormState],
+  );
+  const handleSubmit = async () => {
+    try {
+      setError(null);
+      if (!formState.formIsValid) {
+        setError('invalid form input');
+      } else {
+        setLoading(true);
+        await login({
+          variables: {...formState.inputValues},
+        });
+        navigate('VerificationScreen');
+      }
+    } catch (e) {
+      if (e.message.includes('GraphQL error')) {
+        setError('Server error, please try again later');
+      } else {
+        setError(e.message);
+      }
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (error) {
+      Alert.alert('Error', error, [{text: 'okay'}]);
+    }
+  }, [error]);
   return (
     <StyledWrapper>
       <Image
@@ -76,15 +162,17 @@ const LoginScreen = ({navigation: {navigate}}) => {
         imageWidth={100}
         imageHeight={100}
       />
+
       <StyledSubWrapper>
+        <StyledStatusBar barStyle="light-content" />
         <StyledContainer>
           <Header
             textColor={colors.white}
             logoUrl={images.whiteLogo}
             tradeMarkUrl={images.whiteTradeMark}
             headerHeight={'12%'}
-            topPosition={Platform.OS === 'android' ? '22px' : '35px'}
-            leftPositon={Platform.OS === 'android' ? '175px' : '183px'}
+            topPosition={Platform.OS === 'android' ? '22px' : '29px'}
+            leftPositon={Platform.OS === 'android' ? '175px' : '186px'}
           />
           <StyledFormWrapper>
             <Text textAlign="left" fontSize={wp('6%')}>
@@ -101,24 +189,42 @@ const LoginScreen = ({navigation: {navigate}}) => {
               We are glad to have you back
             </Text>
             <StyledView>
-              <StyledInput
-                color={colors.white}
+              <TextInput
+                id="email"
+                keyboardType="email-address"
+                required
+                email
+                autoCapitalize="none"
+                errorText="invalid email address"
+                initailValue=""
                 paddingTopDown={hp('0.5%')}
                 placeholder="Email"
-                width={'100%'}
+                textControlWidth={'100%'}
+                borderBottomColor={colors.white}
+                color={colors.white}
                 height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
                 placeholderTextColor={colors.placeholderColor}
+                onInputChange={inputChangeHandler}
               />
             </StyledView>
             <StyledView>
-              <StyledInput
-                color={colors.white}
+              <TextInput
+                id="password"
+                keyboardType="default"
+                required
+                minLength={6}
+                autoCapitalize="none"
+                errorText="password length must be greater than 5"
+                initailValue=""
                 secureTextEntry={!showPassword}
                 paddingTopDown={hp('0.5%')}
                 placeholder="Password"
-                width={'100%'}
+                borderBottomColor={colors.white}
+                color={colors.white}
+                textControlWidth={'100%'}
                 height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
                 placeholderTextColor={colors.placeholderColor}
+                onInputChange={inputChangeHandler}
               />
               <StyledEyeIconWrapper
                 onPress={() => setShowPassword(!showPassword)}>
@@ -131,12 +237,17 @@ const LoginScreen = ({navigation: {navigate}}) => {
             </StyledView>
             <StyledView marginTop={hp('4.5%')}>
               <Button
+                handlePress={loading ? () => null : handleSubmit}
                 width="45%"
                 paddingTopBottom={Platform.OS === 'ios' ? hp('0.4%') : hp('1%')}
                 backgroundColor={colors.white}
                 borderRadius="10px">
                 <Text textAlign="center" color={colors.primary}>
-                  LOG IN
+                  {!loading ? (
+                    'LOG IN'
+                  ) : (
+                    <ActivityIndicator size="small" color={colors.primary} />
+                  )}
                 </Text>
               </Button>
             </StyledView>
