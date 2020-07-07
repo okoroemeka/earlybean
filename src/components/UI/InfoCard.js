@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -18,6 +18,7 @@ const StyledCardWrapper = styled.View`
   background-color: ${props => props.backgroundColor || colors.white};
   border-radius: ${props => props.borderRadius || '50px'};
   box-shadow: 0px 8px 36px rgba(0, 0, 0, 0.0637566);
+  z-index: 10;
 `;
 
 const InfoCard = ({
@@ -28,6 +29,8 @@ const InfoCard = ({
   flexDirection,
   paddingLeftRight,
   paddingTopDown,
+  justifyContent,
+  alignItems,
 }) => {
   return (
     <StyledCardWrapper
@@ -36,6 +39,8 @@ const InfoCard = ({
       paddingTopDown={paddingTopDown}
       paddingLeftRight={paddingLeftRight}
       borderRadius={borderRadius}
+      justifyContent={justifyContent}
+      alignItems={alignItems}
       flexDirection={flexDirection}>
       {children}
     </StyledCardWrapper>

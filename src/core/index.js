@@ -10,6 +10,7 @@ const colors = {
   placeholderColor: '#9c9797',
   childPrimaryColor: '#D74E79',
   buttonColor: '#E3A9F3',
+  greenBrand: '#30C4AE',
 };
 
 const images = {
@@ -43,6 +44,7 @@ const images = {
   backWardIcon: require(`${PATH}backwardIcon.png`),
   trustImage: require(`${PATH}Group-3445.png`),
   topUPImage: require(`${PATH}Group-3446.png`),
+  userAvater: require(`${PATH}blackgal.png`),
 };
 
 export {colors, images};

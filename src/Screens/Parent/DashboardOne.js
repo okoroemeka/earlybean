@@ -11,6 +11,7 @@ import InstructionCard from '../../components/UI/InstructionCard';
 import DashboarddHeader from '../../components/Reusable/DashboarddHeader';
 import RoundButton from '../../components/UI/RoundButton';
 import CustomIcon from '../../core/CustomIcon';
+import CashTrustDashboard from './CashTrustDashboard';
 
 const StyledHeaderStatus = styled.SafeAreaView`
   flex: 0;
@@ -76,6 +77,88 @@ const StyledViewAllPlansContainer = styled.TouchableOpacity`
 `;
 
 const DashboardOne = ({navigation: {navigate}}) => {
+  const [viewAllPlan, setViewAllPlan] = React.useState(false);
+
+  const instructionWrapper = () => (
+    <StyledInstructionWrapper>
+      <InstructionCard
+        width={wp('90%')}
+        height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}>
+        <StyledInfoImage source={images.topUPImage} />
+        <StyledTextWrapper>
+          <StyledText
+            width="50%"
+            color={colors.primary}
+            textAlign="left"
+            paddingLeftRight={wp('5%')}
+            fontSize={wp('5%')}>
+            Top up an existing savings plan
+          </StyledText>
+        </StyledTextWrapper>
+        <StyledRoundButtonContainer>
+          <RoundButton
+            backgroundColor={colors.primary}
+            buttonBorderRadius="20px"
+            buttonWidth="40px"
+            buttonHeight="40px">
+            <CustomIcon name="plus" size={20} color={colors.purpleSplash} />
+          </RoundButton>
+        </StyledRoundButtonContainer>
+      </InstructionCard>
+      <InstructionCard
+        width={wp('90%')}
+        height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}>
+        <StyledInfoImage source={images.setPersonalGoal} />
+        <StyledTextWrapper>
+          <StyledText
+            width="40%"
+            color={colors.primary}
+            textAlign="left"
+            paddingLeftRight={wp('5%')}
+            fontSize={wp('5%')}>
+            Create a personal plan
+          </StyledText>
+        </StyledTextWrapper>
+      </InstructionCard>
+      <InstructionCard
+        width={wp('90%')}
+        height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}>
+        <StyledInfoImage source={images.createTrust} />
+        <StyledTextWrapper>
+          <StyledText
+            width="40%"
+            color={colors.primary}
+            textAlign="left"
+            paddingLeftRight={wp('5%')}
+            fontSize={wp('5%')}>
+            Create a family savings plan
+          </StyledText>
+        </StyledTextWrapper>
+      </InstructionCard>
+
+      <InstructionCard
+        width={wp('90%')}
+        height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}>
+        <StyledInfoImage source={images.trustImage} />
+        <StyledTextWrapper>
+          <StyledText
+            width="40%"
+            color={colors.primary}
+            textAlign="left"
+            paddingLeftRight={wp('5%')}
+            fontSize={wp('5%')}>
+            Create a cash trust fund
+          </StyledText>
+        </StyledTextWrapper>
+      </InstructionCard>
+      <StyledViewAllPlansContainer onPress={() => setViewAllPlan(true)}>
+        <StyledText color={colors.primary} fontSize={wp('3.5%')}>
+          VIEW ALL PLAN
+        </StyledText>
+      </StyledViewAllPlansContainer>
+    </StyledInstructionWrapper>
+  );
+
   return (
     <Fragment>
       <StyledHeaderStatus />
@@ -93,87 +176,7 @@ const DashboardOne = ({navigation: {navigate}}) => {
         </StyledHeader>
         <StyledBody>
           <StyledBodyContent>
-            <StyledInstructionWrapper>
-              <InstructionCard
-                width={wp('90%')}
-                height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}>
-                <StyledInfoImage source={images.topUPImage} />
-                <StyledTextWrapper>
-                  <StyledText
-                    width="50%"
-                    color={colors.primary}
-                    textAlign="left"
-                    paddingLeftRight={wp('5%')}
-                    fontSize={wp('5%')}>
-                    Top up an existing savings plan
-                  </StyledText>
-                </StyledTextWrapper>
-                <StyledRoundButtonContainer>
-                  <RoundButton
-                    backgroundColor={colors.primary}
-                    buttonBorderRadius="20px"
-                    buttonWidth="40px"
-                    buttonHeight="40px">
-                    <CustomIcon
-                      name="plus"
-                      size={20}
-                      color={colors.purpleSplash}
-                    />
-                  </RoundButton>
-                </StyledRoundButtonContainer>
-              </InstructionCard>
-              <InstructionCard
-                width={wp('90%')}
-                height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}>
-                <StyledInfoImage source={images.setPersonalGoal} />
-                <StyledTextWrapper>
-                  <StyledText
-                    width="40%"
-                    color={colors.primary}
-                    textAlign="left"
-                    paddingLeftRight={wp('5%')}
-                    fontSize={wp('5%')}>
-                    Create a personal plan
-                  </StyledText>
-                </StyledTextWrapper>
-              </InstructionCard>
-              <InstructionCard
-                width={wp('90%')}
-                height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}>
-                <StyledInfoImage source={images.createTrust} />
-                <StyledTextWrapper>
-                  <StyledText
-                    width="40%"
-                    color={colors.primary}
-                    textAlign="left"
-                    paddingLeftRight={wp('5%')}
-                    fontSize={wp('5%')}>
-                    Create a family savings plan
-                  </StyledText>
-                </StyledTextWrapper>
-              </InstructionCard>
-
-              <InstructionCard
-                width={wp('90%')}
-                height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}>
-                <StyledInfoImage source={images.trustImage} />
-                <StyledTextWrapper>
-                  <StyledText
-                    width="40%"
-                    color={colors.primary}
-                    textAlign="left"
-                    paddingLeftRight={wp('5%')}
-                    fontSize={wp('5%')}>
-                    Create a cash trust fund
-                  </StyledText>
-                </StyledTextWrapper>
-              </InstructionCard>
-              <StyledViewAllPlansContainer>
-                <StyledText color={colors.primary} fontSize={wp('3.5%')}>
-                  VIEW ALL PLAN
-                </StyledText>
-              </StyledViewAllPlansContainer>
-            </StyledInstructionWrapper>
+            {!viewAllPlan ? instructionWrapper() : <CashTrustDashboard />}
           </StyledBodyContent>
         </StyledBody>
       </StyledMainContainer>
