@@ -45,6 +45,7 @@ const images = {
   trustImage: require(`${PATH}Group-3445.png`),
   topUPImage: require(`${PATH}Group-3446.png`),
   userAvater: require(`${PATH}blackgal.png`),
+  masterCard: require(`${PATH}mastercard.png`),
 };
 
 export {colors, images};
