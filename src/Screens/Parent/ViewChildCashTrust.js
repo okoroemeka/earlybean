@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -8,7 +8,6 @@ import styled from 'styled-components/native';
 
 import {colors, images} from '../../core';
 import TextRemade from '../../components/UI/TextRemade';
-import BackIcon from '../../components/UI/BackIcon';
 import CustomIcon from '../../core/CustomIcon';
 import RoundButton from '../../components/UI/RoundButton';
 import Dot from '../../components/UI/Dot';
@@ -16,30 +15,6 @@ import Button from '../../components/UI/Button';
 import Line from '../../components/UI/Line';
 import CardWrapperWithHeader from '../../components/Reusable/CardWrapperWithHeader';
 
-const StyledWrapper = styled.SafeAreaView`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 125;
-`;
-const StyledHeaderStatus = styled.SafeAreaView`
-  flex: 0;
-  background-color: ${colors.primary};
-`;
-const StyledHeader = styled.View`
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px ${wp('5%')}px;
-  background-color: ${colors.primary};
-`;
-const StyledBody = styled.View`
-  flex: 10;
-  background-color: ${Platform.OS == 'android' ? colors.milkWhite : '#FEFEFE'};
-`;
 const StyledCardWrapper = styled.View`
   width: 100%;
   height: ${Platform.OS == 'ios' ? hp('15%') : hp('20%')}px;
