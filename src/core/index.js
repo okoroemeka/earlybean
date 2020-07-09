@@ -11,6 +11,8 @@ const colors = {
   childPrimaryColor: '#D74E79',
   buttonColor: '#E3A9F3',
   greenBrand: '#30C4AE',
+  brandYellow: '#F5A623',
+  brandBlue: '#4A90E2',
 };
 
 const images = {

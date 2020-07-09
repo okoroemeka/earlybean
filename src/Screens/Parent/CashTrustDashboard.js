@@ -11,6 +11,7 @@ import mockData from '../../../data/mockData';
 import {colors} from '../../core';
 import TextRemade from '../../components/UI/TextRemade';
 import Button from '../../components/UI/Button';
+import FamilySavingsCard from '../../components/Reusable/FamilySavingsCard';
 
 const StyledWrapper = styled.View`
   flex: 1;
@@ -46,7 +47,7 @@ const StyledButtonView = styled.View`
 `;
 
 const CashTrustDashboard = props => {
-  const [activeButton, setActiveButton] = React.useState(null);
+  const [activeButton, setActiveButton] = React.useState('cash');
   /**
    * render buttons
    */
@@ -107,6 +108,22 @@ const CashTrustDashboard = props => {
   };
 
   /**
+   * Render Family Savings
+   */
+
+  const renderFamilySavings = () => {
+    return mockData.familySavings.map(data => (
+      <FamilySavingsCard
+        purpose={data.purpose}
+        amount={data.goalAmount}
+        completionRate={data.completionRate}
+        constribution={data.constributionSoFar}
+        deadLine={data.deadLine}
+        interestRate={data.interestRate}
+      />
+    ));
+  };
+  /**
    * Toggle components
    */
   const toggleComponent = () => {
@@ -114,7 +131,7 @@ const CashTrustDashboard = props => {
       return null;
     }
     if (activeButton == 'family') {
-      return null;
+      return renderFamilySavings();
     }
     return renderCashTrust();
   };
