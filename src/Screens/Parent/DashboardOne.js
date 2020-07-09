@@ -18,7 +18,9 @@ const StyledHeaderStatus = styled.SafeAreaView`
   flex: 0;
   background-color: ${colors.primary};
 `;
-const StyledBodyContent = styled.ScrollView``;
+const StyledBodyContent = styled.ScrollView`
+  padding: ${hp('0%')}px ${wp('3%')}px;
+`;
 const StyledMainContainer = styled.View`
   width: 100%;
   min-height: 100%;
@@ -32,7 +34,6 @@ const StyledHeader = styled.View`
 
 const StyledBody = styled.View`
   flex: 5;
-  padding: ${hp('0%')}px ${wp('3%')}px;
 `;
 const StyledText = styled.Text`
   width: ${props => props.width || '100%'};
