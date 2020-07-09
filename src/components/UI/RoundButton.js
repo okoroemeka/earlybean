@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
+import {colors} from '../../core/index';
+
 const StyledButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
