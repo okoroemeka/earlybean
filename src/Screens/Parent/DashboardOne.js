@@ -12,7 +12,6 @@ import DashboarddHeader from '../../components/Reusable/DashboarddHeader';
 import RoundButton from '../../components/UI/RoundButton';
 import CustomIcon from '../../core/CustomIcon';
 import CashTrustDashboard from './CashTrustDashboard';
-import ViewChildCashTrust from './ViewChildCashTrust';
 
 const StyledHeaderStatus = styled.SafeAreaView`
   flex: 0;
@@ -79,7 +78,6 @@ const StyledViewAllPlansContainer = styled.TouchableOpacity`
 
 const DashboardOne = ({navigation: {navigate}}) => {
   const [viewAllPlan, setViewAllPlan] = React.useState(false);
-  const [displayDetials, setDisplayDetails] = React.useState(false);
 
   const instructionWrapper = () => (
     <StyledInstructionWrapper>
@@ -178,23 +176,10 @@ const DashboardOne = ({navigation: {navigate}}) => {
         </StyledHeader>
         <StyledBody>
           <StyledBodyContent>
-            {!viewAllPlan ? (
-              instructionWrapper()
-            ) : (
-              <CashTrustDashboard
-                handleDisplayCashTrust={() =>
-                  setDisplayDetails(!displayDetials)
-                }
-              />
-            )}
+            {!viewAllPlan ? instructionWrapper() : <CashTrustDashboard />}
           </StyledBodyContent>
         </StyledBody>
       </StyledMainContainer>
-      {displayDetials && (
-        <ViewChildCashTrust
-          handleDisplayCashTrust={() => setDisplayDetails(!displayDetials)}
-        />
-      )}
     </Fragment>
   );
 };

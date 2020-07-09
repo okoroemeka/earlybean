@@ -12,7 +12,7 @@ import TextRemade from '../../components/UI/TextRemade';
 import CustomIcon from '../../core/CustomIcon';
 import Line from '../UI/Line';
 
-const StyledChildCardWrapper = styled.TouchableOpacity`
+const StyledChildCardWrapper = styled.View`
   flex: 1;
   align-items: center;
   padding-top: ${props => props.marginTop || hp('1%')}px;
@@ -50,15 +50,9 @@ const StyledView = styled.View`
 const StyledCustomIconContainer = styled.View`
   padding-left: ${wp('1%')}px;
 `;
-const CreatTrustCard = ({
-  userAvater,
-  userName,
-  amount,
-  interestRate,
-  handlePress,
-}) => {
+const CreatTrustCard = ({userAvater, userName, amount, interestRate}) => {
   return (
-    <StyledChildCardWrapper onPress={handlePress}>
+    <StyledChildCardWrapper>
       <InfoCard
         width={wp('90%')}
         height={hp(Platform.OS == 'ios' ? '11%' : '14%')}
