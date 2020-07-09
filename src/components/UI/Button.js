@@ -12,7 +12,9 @@ const StyledButton = styled.TouchableOpacity`
   background-color: ${props => props.backgroundColor || colors.primary};
   padding: ${props => props.paddingTopBottom || hp('1%')}px
     ${props => props.paddingLeftRight || wp('6%')}px;
+  border-color: ${props => props.borderColor || 'transparent'};
   border-radius: ${props => props.borderRadius || '0px'};
+  border-width: ${props => props.borderWidth || '0px'};
   position: relative;
 `;
 
@@ -22,9 +24,11 @@ const Button = ({
   borderRadius,
   backgroundColor,
   paddingTopBottom,
+  borderWidth,
   height,
   paddingLeftRight,
   handlePress = () => {},
+  borderColor,
 }) => {
   return (
     <StyledButton
@@ -32,6 +36,8 @@ const Button = ({
       height={height}
       paddingTopBottom={paddingTopBottom}
       borderRadius={borderRadius}
+      borderWidth={borderWidth}
+      borderColor={borderColor}
       paddingLeftRight={paddingLeftRight}
       onPress={handlePress}
       backgroundColor={backgroundColor}>
