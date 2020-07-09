@@ -28,7 +28,7 @@ const StyledView = styled.View`
 const StyledTouchable = styled.TouchableOpacity`
   position: absolute;
   top: ${Platform.OS == 'ios' ? hp('1%') : hp('1.3%')}px;
-  left: ${Platform.OS == 'ios' ? wp('24%') : wp('28%')}px;
+  left: ${Platform.OS == 'ios' ? wp('13%') : wp('13.5%')}px;
 `;
 
 const StyledLineView = styled.View`
@@ -64,28 +64,32 @@ const FamilySavingsCard = ({
       height={hp(Platform.OS == 'ios' ? '18%' : '23%')}
       borderRadius="12px"
       flexDirection="row"
-      paddingTopDown={hp('1%')}
+      paddingTopDown={hp('1.5%')}
+      paddingLeftRight={wp('4%')}
       justifyContent="flex-start">
       <StyledView>
         <StyledView height="auto">
-          <TextRemade
-            width="auto"
-            color={colors.primary}
-            textAlign="left"
-            fontWeight="bold"
-            fontSize={wp('5%')}>
-            {purpose}
-          </TextRemade>
-          {formatedCompletionRate < 100 && (
-            <StyledView
+          <StyledView height="auto" width="80%">
+            <TextRemade
               width="auto"
-              paddingTop={Platform.OS == 'ios' ? hp('1%') : hp('1.4%')}
-              paddingLeft={wp('2%')}>
-              <CustomIcon name="lock" color={colors.greenBrand} />
-            </StyledView>
-          )}
+              color={colors.primary}
+              textAlign="left"
+              fontWeight="bold"
+              fontSize={wp('5%')}>
+              {purpose}
+            </TextRemade>
+            {formatedCompletionRate < 100 && (
+              <StyledView
+                width="auto"
+                paddingTop={Platform.OS == 'ios' ? hp('1%') : hp('1.4%')}
+                paddingLeft={wp('2%')}>
+                <CustomIcon name="lock" color={colors.greenBrand} />
+              </StyledView>
+            )}
+          </StyledView>
+
           <StyledView
-            width="auto"
+            width="20%"
             paddingTop={Platform.OS == 'ios' ? hp('1%') : hp('1.4%')}
             paddingLeft={wp('2%')}>
             <StyledTouchable>
