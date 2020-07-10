@@ -5,8 +5,8 @@ import {
 } from 'react-native-responsive-screen';
 import {Platform} from 'react-native';
 import styled from 'styled-components/native';
+
 import {colors, images} from '../../core';
-// import {fonts} from '../../assets/fonts';
 import Header from '../../components/UI/Header';
 import Text from '../../components/UI/Text';
 
@@ -52,8 +52,12 @@ const ConfirmationScreen = ({navigation: {navigate}}) => {
     <StyledWrapper>
       <StyledWrapperSub>
         <Header
-          topPosition={Platform.OS === 'android' ? '21px' : '30px'}
-          leftPositon={Platform.OS === 'android' ? '185px' : '192px'}
+          topPosition={
+            Platform.OS === 'android' ? `${hp('3.1%')}px` : `${hp('3.4%')}px`
+          }
+          leftPositon={
+            Platform.OS === 'android' ? `${wp('43%')}px` : `${wp('45.5%')}px`
+          }
           textColor={colors.primary}
         />
         <StyledContentWrapper>

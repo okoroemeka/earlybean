@@ -62,8 +62,6 @@ const StyledButtonWrapper = styled.View`
 `;
 
 const StyledTouchable = styled.TouchableOpacity`
-  /* margin-top: ${props =>
-    props.marginTop || Platform.OS === 'android' ? hp('0.8%') : hp('0%')}px; */
   margin-left: ${props => props.marginLeft || wp('1.5%')}px;
 `;
 
@@ -194,7 +192,7 @@ const VerifationScreen = ({
             <StyledTouchable
               marginTop={Platform.OS === 'android' ? hp('0.8%') : hp('0.03%')}>
               <Text
-                lineHeight={Platform.OS === 'ios' ? hp('1.5%') : hp('2%')}
+                lineHeight={Platform.OS === 'ios' ? hp('1.8%') : hp('2.1%')}
                 color={buttonColor}
                 textAlign="left"
                 fontSize={wp('3.5%')}>
@@ -214,7 +212,7 @@ const VerifationScreen = ({
             <StyledTouchable
               marginTop={Platform.OS === 'android' ? hp('1%') : hp('0.03%')}>
               <Text
-                lineHeight={Platform.OS === 'ios' ? hp('1.5%') : hp('1.8%')}
+                lineHeight={Platform.OS === 'ios' ? hp('1.9%') : hp('2%')}
                 color={buttonColor}
                 textAlign="left"
                 fontSize={wp('3.3%')}>
