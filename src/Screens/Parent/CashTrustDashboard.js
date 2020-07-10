@@ -46,7 +46,7 @@ const StyledButtonView = styled.View`
   box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.5);
 `;
 
-const CashTrustDashboard = props => {
+const CashTrustDashboard = ({handleDisplayCashTrust}) => {
   const [activeButton, setActiveButton] = React.useState('cash');
   /**
    * render buttons
@@ -102,7 +102,7 @@ const CashTrustDashboard = props => {
         userName={data.userFirstName}
         amount={data.amount}
         interestRate={data.interestRate}
-        handlePress={props.handleDisplayCashTrust}
+        handlePress={handleDisplayCashTrust}
       />
     ));
   };
@@ -112,14 +112,16 @@ const CashTrustDashboard = props => {
    */
 
   const renderFamilySavings = () => {
-    return mockData.familySavings.map(data => (
+    return mockData.familySavings.map((data, index) => (
       <FamilySavingsCard
+        key={index}
         purpose={data.purpose}
         amount={data.goalAmount}
         completionRate={data.completionRate}
         constribution={data.constributionSoFar}
         deadLine={data.deadLine}
         interestRate={data.interestRate}
+        handlePress={handleDisplayCashTrust}
       />
     ));
   };

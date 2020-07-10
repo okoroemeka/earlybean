@@ -29,8 +29,8 @@ const StyledTradeImage = styled.Image`
   width: 8px;
   height: 8px;
   position: absolute;
-  top: ${Platform.OS === 'android' ? '21px' : '30px'};
-  left: ${Platform.OS === 'android' ? '185px' : '195px'};
+  top: ${Platform.OS === 'android' ? hp('3.1%') : hp('3.5%')}px;
+  left: ${Platform.OS === 'android' ? wp('43%') : wp('45.5%')}px;
 `;
 const StyledBody = styled.View`
   width: 100%;

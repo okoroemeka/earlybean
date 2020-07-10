@@ -276,7 +276,9 @@ const LoginScreen = ({navigation: {navigate}}) => {
               <StyledTouchable marginTop={hp('0%')} marginLeft={wp('0%')}>
                 <Text
                   color={colors.white}
-                  lineHeight={Platform.OS === 'android' ? hp('2.3%') : hp('2%')}
+                  lineHeight={
+                    Platform.OS === 'android' ? hp('2.5%') : hp('2.4%')
+                  }
                   marginTop={hp('1%')}>
                   Click Here
                 </Text>
