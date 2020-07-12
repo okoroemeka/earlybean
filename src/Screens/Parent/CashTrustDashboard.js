@@ -11,7 +11,7 @@ import mockData from '../../../data/mockData';
 import {colors} from '../../core';
 import TextRemade from '../../components/UI/TextRemade';
 import Button from '../../components/UI/Button';
-import FamilySavingsCard from '../../components/Reusable/FamilySavingsCard';
+import SavingsCard from '../../components/Reusable/SavingsCard';
 
 const StyledWrapper = styled.View`
   flex: 1;
@@ -47,7 +47,8 @@ const StyledButtonView = styled.View`
 `;
 
 const CashTrustDashboard = ({handleDisplayCashTrust}) => {
-  const [activeButton, setActiveButton] = React.useState('cash');
+  const [activeButton, setActiveButton] = React.useState('personal');
+
   /**
    * render buttons
    */
@@ -102,7 +103,6 @@ const CashTrustDashboard = ({handleDisplayCashTrust}) => {
         userName={data.userFirstName}
         amount={data.amount}
         interestRate={data.interestRate}
-        handlePress={handleDisplayCashTrust}
       />
     ));
   };
@@ -112,8 +112,8 @@ const CashTrustDashboard = ({handleDisplayCashTrust}) => {
    */
 
   const renderFamilySavings = () => {
-    return mockData.familySavings.map((data, index) => (
-      <FamilySavingsCard
+    return mockData.Savings.map((data, index) => (
+      <SavingsCard
         key={index}
         purpose={data.purpose}
         amount={data.goalAmount}
@@ -121,7 +121,24 @@ const CashTrustDashboard = ({handleDisplayCashTrust}) => {
         constribution={data.constributionSoFar}
         deadLine={data.deadLine}
         interestRate={data.interestRate}
-        handlePress={handleDisplayCashTrust}
+      />
+    ));
+  };
+
+  /**
+   * Render personal savings plans
+   */
+  const renderPersonalSavings = () => {
+    return mockData.Savings.map((data, index) => (
+      <SavingsCard
+        key={index}
+        purpose={data.purpose}
+        amount={data.goalAmount}
+        completionRate={data.completionRate}
+        constribution={data.constributionSoFar}
+        deadLine={data.deadLine}
+        interestRate={data.interestRate}
+        handlePress={() => null}
       />
     ));
   };
@@ -130,7 +147,7 @@ const CashTrustDashboard = ({handleDisplayCashTrust}) => {
    */
   const toggleComponent = () => {
     if (activeButton == 'personal') {
-      return null;
+      return renderPersonalSavings();
     }
     if (activeButton == 'family') {
       return renderFamilySavings();
