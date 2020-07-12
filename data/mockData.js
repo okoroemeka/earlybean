@@ -32,7 +32,7 @@ const createTrustMock = [
   },
 ];
 
-const familySavings = [
+const Savings = [
   {
     purpose: 'Trip to La Campagne!',
     goalAmount: 'N100,000',
@@ -58,4 +58,4 @@ const familySavings = [
     deadLine: 'By 25 July 2030',
   },
 ];
-export default {createTrustMock, familySavings};
+export default {createTrustMock, Savings};
