@@ -7,6 +7,7 @@ import styled from 'styled-components/native';
 import {colors} from '../../core';
 
 const StyledButton = styled.TouchableOpacity`
+  flex-direction: ${props => props.flexDirection || 'column'};
   width: ${props => props.width || 'auto'};
   height: ${props => props.height || 'auto'};
   background-color: ${props => props.backgroundColor || colors.primary};
@@ -29,6 +30,7 @@ const Button = ({
   paddingLeftRight,
   handlePress = () => {},
   borderColor,
+  flexDirection,
 }) => {
   return (
     <StyledButton
@@ -39,6 +41,7 @@ const Button = ({
       borderWidth={borderWidth}
       borderColor={borderColor}
       paddingLeftRight={paddingLeftRight}
+      flexDirection={flexDirection}
       onPress={handlePress}
       backgroundColor={backgroundColor}>
       {children}

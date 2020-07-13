@@ -4,7 +4,9 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import styled from 'styled-components/native';
+
 import {colors} from '../../core';
+import Touchable from '../UI/Touchable';
 
 const StyledCardWrapper = styled.View`
   width: ${props => props.width || wp('100%')}px;
@@ -16,14 +18,22 @@ const StyledCardWrapper = styled.View`
   position: relative;
 `;
 
-const InstructionCard = ({width, height, children, marginBottom}) => {
+const InstructionCard = ({
+  width,
+  height,
+  children,
+  marginBottom,
+  handleCardPress,
+}) => {
   return (
-    <StyledCardWrapper
-      width={width}
-      height={height}
-      marginBottom={marginBottom}>
-      {children}
-    </StyledCardWrapper>
+    <Touchable handleOnpress={handleCardPress}>
+      <StyledCardWrapper
+        width={width}
+        height={height}
+        marginBottom={marginBottom}>
+        {children}
+      </StyledCardWrapper>
+    </Touchable>
   );
 };
 

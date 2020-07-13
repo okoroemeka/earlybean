@@ -12,11 +12,32 @@ import {colors} from '../../core';
 import TextRemade from '../../components/UI/TextRemade';
 import Button from '../../components/UI/Button';
 import SavingsCard from '../../components/Reusable/SavingsCard';
+import DashboarddHeader from '../../components/Reusable/DashboarddHeader';
 
+const StyledHeaderStatus = styled.SafeAreaView`
+  flex: 0;
+  background-color: ${colors.primary};
+`;
+const StyledMainContainer = styled.View`
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  background-color: ${colors.milkWhite};
+`;
+const StyledBody = styled.View`
+  flex: 5;
+`;
+const StyledBodyContent = styled.ScrollView`
+  padding: ${hp('0%')}px ${wp('3%')}px;
+`;
 const StyledWrapper = styled.View`
   flex: 1;
   padding-top: ${props => props.paddingTop || hp('3%')}px;
   align-items: center;
+`;
+const StyledHeader = styled.View`
+  flex: ${Platform.OS == 'ios' ? 2 : 3};
+  background-color: ${colors.primary};
 `;
 const StyledButtonWrapper = styled.View`
   flex-direction: row;
@@ -46,7 +67,7 @@ const StyledButtonView = styled.View`
   box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.5);
 `;
 
-const CashTrustDashboard = ({handleDisplayCashTrust}) => {
+const CashTrustDashboard = ({navigation: {navigate}}) => {
   const [activeButton, setActiveButton] = React.useState('personal');
 
   /**
@@ -103,6 +124,7 @@ const CashTrustDashboard = ({handleDisplayCashTrust}) => {
         userName={data.userFirstName}
         amount={data.amount}
         interestRate={data.interestRate}
+        handlePress={() => navigate('ViewChildCashTrustScreen')}
       />
     ));
   };
@@ -138,10 +160,10 @@ const CashTrustDashboard = ({handleDisplayCashTrust}) => {
         constribution={data.constributionSoFar}
         deadLine={data.deadLine}
         interestRate={data.interestRate}
-        handlePress={() => null}
       />
     ));
   };
+
   /**
    * Toggle components
    */
@@ -157,17 +179,38 @@ const CashTrustDashboard = ({handleDisplayCashTrust}) => {
 
   return (
     <Fragment>
-      <StyledWrapper>
-        {renderButtons()}
-        {toggleComponent()}
-        <StyledAddPlansContainer
-          marginBottom={Platform.OS == 'ios' ? hp('7%') : hp('3%')}
-          onPress={() => null}>
-          <TextRemade color={colors.primary} fontSize={wp('3.5%')} width="auto">
-            ADD A PLAN
-          </TextRemade>
-        </StyledAddPlansContainer>
-      </StyledWrapper>
+      <StyledHeaderStatus />
+      <StyledMainContainer>
+        <StyledHeader>
+          <DashboarddHeader
+            dashboardNumber={1}
+            userFirstName="Biobele"
+            accountId={1209988666}
+            heading="Financial overview"
+            subHeading="TOTAL SAVED"
+            amount="25,000,000"
+            headerHeight={Platform.OS == 'ios' ? '92%' : '100%'}
+          />
+        </StyledHeader>
+        <StyledBody>
+          <StyledBodyContent>
+            <StyledWrapper>
+              {renderButtons()}
+              {toggleComponent()}
+              <StyledAddPlansContainer
+                marginBottom={Platform.OS == 'ios' ? hp('7%') : hp('3%')}
+                onPress={() => null}>
+                <TextRemade
+                  color={colors.primary}
+                  fontSize={wp('3.5%')}
+                  width="auto">
+                  ADD A PLAN
+                </TextRemade>
+              </StyledAddPlansContainer>
+            </StyledWrapper>
+          </StyledBodyContent>
+        </StyledBody>
+      </StyledMainContainer>
     </Fragment>
   );
 };
