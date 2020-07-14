@@ -90,14 +90,14 @@ const SavingsCard = ({
             )}
           </StyledView>
 
-          <StyledView
+          {/* <StyledView
             width="20%"
             paddingTop={Platform.OS == 'ios' ? hp('1%') : hp('1.4%')}
             paddingLeft={wp('2%')}>
             <StyledTouchable>
               <CustomIcon name="editIcon" color={colors.placeholderColor} />
             </StyledTouchable>
-          </StyledView>
+          </StyledView> */}
         </StyledView>
         <StyledView height="auto" marginTop={hp('2.5%')}>
           <StyledView>
