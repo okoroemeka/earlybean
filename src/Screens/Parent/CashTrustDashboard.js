@@ -124,7 +124,9 @@ const CashTrustDashboard = ({navigation: {navigate}}) => {
         userName={data.userFirstName}
         amount={data.amount}
         interestRate={data.interestRate}
-        handlePress={() => navigate('ViewChildCashTrustScreen')}
+        handlePress={() =>
+          navigate('ViewChildCashTrustScreen', {data, plan: 'cash trust'})
+        }
       />
     ));
   };
@@ -143,6 +145,9 @@ const CashTrustDashboard = ({navigation: {navigate}}) => {
         constribution={data.constributionSoFar}
         deadLine={data.deadLine}
         interestRate={data.interestRate}
+        handlePress={() =>
+          navigate('ViewChildCashTrustScreen', {data, plan: 'family'})
+        }
       />
     ));
   };
@@ -160,6 +165,9 @@ const CashTrustDashboard = ({navigation: {navigate}}) => {
         constribution={data.constributionSoFar}
         deadLine={data.deadLine}
         interestRate={data.interestRate}
+        handlePress={() =>
+          navigate('ViewChildCashTrustScreen', {data, plan: 'personal'})
+        }
       />
     ));
   };
