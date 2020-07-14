@@ -25,11 +25,7 @@ const StyledView = styled.View`
   position: ${props => props.position || 'relative'};
 `;
 
-const StyledTouchable = styled.TouchableOpacity`
-  position: absolute;
-  top: ${Platform.OS == 'ios' ? hp('1%') : hp('1.3%')}px;
-  left: ${Platform.OS == 'ios' ? wp('13%') : wp('13.5%')}px;
-`;
+const StyledTouchable = styled.TouchableOpacity``;
 
 const StyledLineView = styled.View`
   width: ${props => props.width || '100%'};
@@ -48,6 +44,7 @@ const SavingsCard = ({
   constribution,
   deadLine,
   interestRate,
+  handlePress = () => null,
 }) => {
   let completionColor = colors.placeholderColor;
   const formatedCompletionRate = Number(completionRate.replace(/%/g, ''));
@@ -61,69 +58,44 @@ const SavingsCard = ({
   }
 
   return (
-    <InfoCard
-      width={wp('90%')}
-      height={hp(Platform.OS == 'ios' ? '18%' : '23%')}
-      borderRadius="12px"
-      flexDirection="row"
-      paddingTopDown={hp('1.5%')}
-      paddingLeftRight={wp('4%')}
-      justifyContent="flex-start">
-      <StyledView>
-        <StyledView height="auto">
-          <StyledView height="auto" width="80%">
-            <TextRemade
-              width="auto"
-              color={colors.primary}
-              textAlign="left"
-              fontWeight="bold"
-              fontSize={wp('5%')}>
-              {purpose}
-            </TextRemade>
-            {formatedCompletionRate < 100 && (
-              <StyledView
-                width="auto"
-                paddingTop={Platform.OS == 'ios' ? hp('1%') : hp('1.4%')}
-                paddingLeft={wp('2%')}>
-                <CustomIcon name="lock" color={colors.greenBrand} />
-              </StyledView>
-            )}
-          </StyledView>
-
-          {/* <StyledView
-            width="20%"
-            paddingTop={Platform.OS == 'ios' ? hp('1%') : hp('1.4%')}
-            paddingLeft={wp('2%')}>
-            <StyledTouchable>
-              <CustomIcon name="editIcon" color={colors.placeholderColor} />
-            </StyledTouchable>
-          </StyledView> */}
-        </StyledView>
-        <StyledView height="auto" marginTop={hp('2.5%')}>
-          <StyledView>
-            <TextRemade
-              width="auto"
-              color={colors.placeholderColor}
-              textAlign="left"
-              fontSize={wp('3%')}>
-              Goal
-            </TextRemade>
-            <StyledView width="auto" paddingLeft={wp('2%')}>
+    <StyledTouchable onPress={() => handlePress}>
+      <InfoCard
+        width={wp('90%')}
+        height={hp(Platform.OS == 'ios' ? '18%' : '23%')}
+        borderRadius="12px"
+        flexDirection="row"
+        paddingTopDown={hp('1.5%')}
+        paddingLeftRight={wp('4%')}
+        justifyContent="flex-start">
+        <StyledView>
+          <StyledView height="auto">
+            <StyledView height="auto" width="80%">
               <TextRemade
                 width="auto"
-                color={colors.placeholderColor}
+                color={colors.primary}
                 textAlign="left"
-                fontSize={wp('3%')}>
-                {amount}
+                fontWeight="bold"
+                fontSize={wp('5%')}>
+                {purpose}
               </TextRemade>
+              {formatedCompletionRate < 100 && (
+                <StyledView
+                  width="auto"
+                  paddingTop={Platform.OS == 'ios' ? hp('1%') : hp('1.4%')}
+                  paddingLeft={wp('2%')}>
+                  <CustomIcon name="lock" color={colors.greenBrand} />
+                </StyledView>
+              )}
             </StyledView>
-            <StyledView width="auto" marginLeft="auto">
+          </StyledView>
+          <StyledView height="auto" marginTop={hp('2.5%')}>
+            <StyledView>
               <TextRemade
                 width="auto"
                 color={colors.placeholderColor}
                 textAlign="left"
                 fontSize={wp('3%')}>
-                {completionRate}
+                Goal
               </TextRemade>
               <StyledView width="auto" paddingLeft={wp('2%')}>
                 <TextRemade
@@ -131,75 +103,93 @@ const SavingsCard = ({
                   color={colors.placeholderColor}
                   textAlign="left"
                   fontSize={wp('3%')}>
-                  {constribution}
+                  {amount}
                 </TextRemade>
               </StyledView>
-            </StyledView>
-          </StyledView>
-        </StyledView>
-        <StyledLineView marginTop={hp('0.5%')}>
-          <StyledLineView
-            position="absolute"
-            width={completionRate}
-            backgroundColor={completionColor}
-          />
-        </StyledLineView>
-        <StyledView height="auto" marginTop={hp('1.5%')}>
-          <StyledView>
-            <TextRemade
-              width="auto"
-              color={colors.black}
-              marginTop={hp('0.5%')}
-              textAlign="left"
-              fontSize={wp('3%')}>
-              {deadLine}
-            </TextRemade>
-            <StyledView width="auto" marginLeft="auto" alignItems="flex-end">
-              <StyledView width="auto">
-                <Button
-                  backgroundColor={colors.white}
-                  borderRadius="15px"
-                  borderColor={colors.primary}
-                  paddingTopBottom={
-                    Platform.OS == 'ios' ? hp('0.6%') : hp('0.9%')
-                  }
-                  paddingLeftRight={wp('3.5%')}
-                  borderWidth="1px">
-                  <TextRemade
-                    width="auto"
-                    textAlign="left"
-                    color={colors.primary}
-                    fontSize={wp('3%')}>
-                    End goal
-                  </TextRemade>
-                </Button>
-              </StyledView>
-            </StyledView>
-            {formatedCompletionRate !== 100 && (
-              <StyledView
-                width="auto"
-                paddingLeft={wp('2%')}
-                flexDirection="column">
-                <TextRemade
-                  width="auto"
-                  color={colors.greenBrand}
-                  textAlign="left"
-                  fontSize={wp('2.8%')}>
-                  {interestRate}
-                </TextRemade>
+              <StyledView width="auto" marginLeft="auto">
                 <TextRemade
                   width="auto"
                   color={colors.placeholderColor}
                   textAlign="left"
-                  fontSize={wp('2.7%')}>
-                  interest p.a
+                  fontSize={wp('3%')}>
+                  {completionRate}
                 </TextRemade>
+                <StyledView width="auto" paddingLeft={wp('2%')}>
+                  <TextRemade
+                    width="auto"
+                    color={colors.placeholderColor}
+                    textAlign="left"
+                    fontSize={wp('3%')}>
+                    {constribution}
+                  </TextRemade>
+                </StyledView>
               </StyledView>
-            )}
+            </StyledView>
+          </StyledView>
+          <StyledLineView marginTop={hp('0.5%')}>
+            <StyledLineView
+              position="absolute"
+              width={completionRate}
+              backgroundColor={completionColor}
+            />
+          </StyledLineView>
+          <StyledView height="auto" marginTop={hp('1.5%')}>
+            <StyledView>
+              <TextRemade
+                width="auto"
+                color={colors.black}
+                marginTop={hp('0.5%')}
+                textAlign="left"
+                fontSize={wp('3%')}>
+                {deadLine}
+              </TextRemade>
+              <StyledView width="auto" marginLeft="auto" alignItems="flex-end">
+                <StyledView width="auto">
+                  <Button
+                    backgroundColor={colors.white}
+                    borderRadius="15px"
+                    borderColor={colors.primary}
+                    paddingTopBottom={
+                      Platform.OS == 'ios' ? hp('0.6%') : hp('0.9%')
+                    }
+                    paddingLeftRight={wp('3.5%')}
+                    borderWidth="1px">
+                    <TextRemade
+                      width="auto"
+                      textAlign="left"
+                      color={colors.primary}
+                      fontSize={wp('3%')}>
+                      End goal
+                    </TextRemade>
+                  </Button>
+                </StyledView>
+              </StyledView>
+              {formatedCompletionRate !== 100 && (
+                <StyledView
+                  width="auto"
+                  paddingLeft={wp('2%')}
+                  flexDirection="column">
+                  <TextRemade
+                    width="auto"
+                    color={colors.greenBrand}
+                    textAlign="left"
+                    fontSize={wp('2.8%')}>
+                    {interestRate}
+                  </TextRemade>
+                  <TextRemade
+                    width="auto"
+                    color={colors.placeholderColor}
+                    textAlign="left"
+                    fontSize={wp('2.7%')}>
+                    interest p.a
+                  </TextRemade>
+                </StyledView>
+              )}
+            </StyledView>
           </StyledView>
         </StyledView>
-      </StyledView>
-    </InfoCard>
+      </InfoCard>
+    </StyledTouchable>
   );
 };
 
