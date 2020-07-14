@@ -66,11 +66,6 @@ const StyledTextWrapper = styled.View`
   background: transparent;
 `;
 
-const StyledRoundButtonContainer = styled.View`
-  position: absolute;
-  top: ${Platform.OS == 'android' ? hp('10%') : hp('8%')}px;
-  right: ${wp('10%')}px;
-`;
 const StyledViewAllPlansContainer = styled.TouchableOpacity`
   border-bottom-width: 1px;
   border-bottom-color: ${colors.primary};
@@ -94,15 +89,6 @@ const DashboardOne = ({navigation: {navigate}}) => {
             Top up an existing savings plan
           </StyledText>
         </StyledTextWrapper>
-        <StyledRoundButtonContainer>
-          <RoundButton
-            backgroundColor={colors.primary}
-            buttonBorderRadius="20px"
-            buttonWidth="40px"
-            buttonHeight="40px">
-            <CustomIcon name="plus" size={20} color={colors.purpleSplash} />
-          </RoundButton>
-        </StyledRoundButtonContainer>
       </InstructionCard>
       <InstructionCard
         width={wp('90%')}
