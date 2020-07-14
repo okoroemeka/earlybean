@@ -40,8 +40,21 @@ const StyledScrollView = styled.ScrollView`
   padding-left: ${wp('5%')}px;
   padding-right: ${wp('5%')}px;
 `;
+const StyledView = styled.View`
+  width: 100%;
+  height: 100%;
+  padding-bottom: ${props => props.paddingBottom || hp('4%')}px;
+  padding-left: ${wp('5%')}px;
+  padding-right: ${wp('5%')}px;
+`;
 
-const ViewChildCashTrust = ({handleDisplayCashTrust, headerText, children}) => {
+const ViewChildCashTrust = ({
+  handleDisplayCashTrust,
+  headerText,
+  children,
+  withoutScroll,
+  paddingBottom,
+}) => {
   return (
     <Fragment>
       <StyledHeaderStatus />
@@ -52,7 +65,11 @@ const ViewChildCashTrust = ({handleDisplayCashTrust, headerText, children}) => {
           <CustomIcon name="logo" color="white" size={30} />
         </StyledHeader>
         <StyledBody>
-          <StyledScrollView>{children}</StyledScrollView>
+          {withoutScroll ? (
+            <StyledView paddingBottom={paddingBottom}>{children}</StyledView>
+          ) : (
+            <StyledScrollView>{children}</StyledScrollView>
+          )}
         </StyledBody>
       </StyledWrapper>
     </Fragment>

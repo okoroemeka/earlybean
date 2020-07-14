@@ -3,6 +3,7 @@ const PATH = '../assets/Images/';
 const colors = {
   primary: '#673580',
   purpleSplash: '#E6A1BE',
+  dropDownItemBackground: '#E3A9F3',
   white: '#FFFFFF',
   milkWhite: '#F2F2F2',
   wineRed: '#D74E79',
@@ -48,6 +49,7 @@ const images = {
   topUPImage: require(`${PATH}Group-3446.png`),
   userAvater: require(`${PATH}blackgal.png`),
   masterCard: require(`${PATH}mastercard.png`),
+  forward: require(`${PATH}forward.png`),
 };
 
 export {colors, images};

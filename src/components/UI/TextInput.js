@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer, Fragment} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,

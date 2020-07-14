@@ -67,10 +67,10 @@ const StyledDebit = styled.View`
   margin-top: ${Platform.OS == 'android' ? hp('0.5%') : hp('0.3%')}px;
   margin-left: ${wp('0.5%')}px;
 `;
-const ViewChildCashTrust = ({handleDisplayCashTrust}) => {
+const ViewChildCashTrust = ({navigation}) => {
   return (
     <CardWrapperWithHeader
-      handleDisplayCashTrust={handleDisplayCashTrust}
+      handleDisplayCashTrust={() => navigation.goBack()}
       headerText={`${'Zara'}'s cash trust`}>
       <StyledCardWrapper>
         <StyledImage source={images.topUPImage} resizeMode="cover" />

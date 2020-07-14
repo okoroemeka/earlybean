@@ -18,6 +18,8 @@ const StyledText = styled.Text`
   font-weight: ${props => props.fontWeight || 'normal'};
   text-transform: ${props => props.textTransform || 'none'};
   margin-top: ${props => props.marginTop || hp('0%')}px;
+  padding: ${props => props.paddingTopDown || hp('0%')}px
+    ${props => props.paddingLeftAndRight || wp('0%')}px;
   border-bottom-width: ${props => props.borderBottomWidth || wp('0%')}px;
   border-bottom-color: ${props => props.borderBottomcolor || colors.primary};
 `;
@@ -36,6 +38,8 @@ const TextWithoutLineHeight = ({
   children,
   textTransform,
   maxWidth,
+  paddingTopDown,
+  paddingLeftAndRight,
 }) => {
   return (
     <StyledText
@@ -47,6 +51,8 @@ const TextWithoutLineHeight = ({
       fontStyle={fontStyle}
       fontWeight={fontWeight}
       marginTop={marginTop}
+      paddingTopDown={paddingTopDown}
+      paddingLeftAndRight={paddingLeftAndRight}
       borderBottomWidth={borderBottomWidth}
       maxWidth={maxWidth}
       textTransform={textTransform}
