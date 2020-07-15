@@ -17,7 +17,7 @@ const StyledCardWrapper = styled.View`
   width: 100%;
   height: 100%;
   align-items: flex-end;
-  padding: 0 ${hp('0.3%')}px;
+  padding: 0 ${hp('2.5%')}px;
   margin-top: ${props => props.marginTop || hp('4%')}px;
   position: relative;
 `;
@@ -155,7 +155,7 @@ const ViewChildCashTrust = ({navigation}) => {
 
   return (
     <CardWrapperWithHeader
-      handleDisplayCashTrust={() => navigation.goBack()}
+      handleGoBack={() => navigation.goBack()}
       withoutScroll
       paddingBottom={hp('5%')}
       headerText="Top up an existing plan">
@@ -178,7 +178,7 @@ const ViewChildCashTrust = ({navigation}) => {
         </StyledSelectDropdown>
         {displayPlanDropDown && (
           <StyledDropdownItemsContainer
-            right={Platform.OS == 'ios' ? wp('0.6%') : wp('0.5%')}
+            right={Platform.OS == 'ios' ? wp('5.5%') : wp('4.2%')}
             top={Platform.OS == 'ios' ? hp('4%') : hp('5%')}>
             {plans.map(({plan, active}, index) => (
               <StyledTouchable

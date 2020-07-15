@@ -48,8 +48,8 @@ const StyledView = styled.View`
   padding-right: ${wp('5%')}px;
 `;
 
-const ViewChildCashTrust = ({
-  handleDisplayCashTrust,
+const ViewPlan = ({
+  handleGoBack,
   headerText,
   children,
   withoutScroll,
@@ -60,7 +60,7 @@ const ViewChildCashTrust = ({
       <StyledHeaderStatus />
       <StyledWrapper>
         <StyledHeader>
-          <BackIcon handleBackButtonPress={handleDisplayCashTrust} />
+          <BackIcon handleBackButtonPress={handleGoBack} />
           <TextRemade width="auto">{headerText}</TextRemade>
           <CustomIcon name="logo" color="white" size={30} />
         </StyledHeader>
@@ -76,4 +76,4 @@ const ViewChildCashTrust = ({
   );
 };
 
-export default ViewChildCashTrust;
+export default ViewPlan;

@@ -2,9 +2,10 @@ import React from 'react';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 
 import DashboardSaveScreen from '../Screens/Parent/DashboardSaveScreen';
-import ViewChildCashTrust from '../Screens/Parent/ViewChildCashTrust';
+import ViewChildCashTrustScreen from '../Screens/Parent/ViewChildCashTrust';
 import CashTrustDashboardScreen from '../Screens/Parent/CashTrustDashboard';
-import TopExistingSaving from '../Screens/Parent/TopExistingSaving';
+import TopExistingSavingScreen from '../Screens/Parent/TopExistingSaving';
+import CreateSavingsPlanFormScreen from '../Screens/Parent/CreateSavingsPlanFormScreen';
 
 const Stack = createStackNavigator();
 
@@ -19,7 +20,7 @@ const SavingsNavigation = () => (
     <Stack.Screen name="DashboardSaveScreen" component={DashboardSaveScreen} />
     <Stack.Screen
       name="ViewChildCashTrustScreen"
-      component={ViewChildCashTrust}
+      component={ViewChildCashTrustScreen}
     />
     <Stack.Screen
       name="CashTrustDashboardScreen"
@@ -27,9 +28,12 @@ const SavingsNavigation = () => (
     />
     <Stack.Screen
       name="TopExistingSavingScreen"
-      component={TopExistingSaving}
+      component={TopExistingSavingScreen}
+    />
+    <Stack.Screen
+      name="CreateSavingsPlanFormScreen"
+      component={CreateSavingsPlanFormScreen}
     />
   </Stack.Navigator>
 );
-
 export default SavingsNavigation;
