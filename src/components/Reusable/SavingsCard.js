@@ -58,7 +58,7 @@ const SavingsCard = ({
   }
 
   return (
-    <StyledTouchable onPress={() => handlePress}>
+    <StyledTouchable onPress={handlePress}>
       <InfoCard
         width={wp('90%')}
         height={hp(Platform.OS == 'ios' ? '18%' : '23%')}

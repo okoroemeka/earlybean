@@ -67,11 +67,21 @@ const StyledDebit = styled.View`
   margin-top: ${Platform.OS == 'android' ? hp('0.5%') : hp('0.3%')}px;
   margin-left: ${wp('0.5%')}px;
 `;
-const ViewChildCashTrust = ({navigation}) => {
+const ViewChildCashTrust = ({navigation, route}) => {
+  const {
+    params: {data, plan},
+  } = route;
+
+  let cardTitle = '';
+  if (plan == 'cash trust') {
+    cardTitle = `${'Zara'}'s cash trust`;
+  } else {
+    cardTitle = data.purpose;
+  }
   return (
     <CardWrapperWithHeader
       handleDisplayCashTrust={() => navigation.goBack()}
-      headerText={`${'Zara'}'s cash trust`}>
+      headerText={cardTitle}>
       <StyledCardWrapper>
         <StyledImage source={images.topUPImage} resizeMode="cover" />
         <StyledTextWrapper>
