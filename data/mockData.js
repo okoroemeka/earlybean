@@ -58,4 +58,47 @@ const Savings = [
     deadLine: 'By 25 July 2030',
   },
 ];
-export default {createTrustMock, Savings};
+const initialFrequencyState = [
+  {frequency: 'Daily', active: true},
+  {frequency: 'Weekly', active: false},
+  {frequency: 'Monthly', active: false},
+];
+
+const initialSaveMethodState = [
+  {method: 'Manual', active: true},
+  {method: 'Automatically', active: false},
+];
+
+const initialChildrenState = [
+  {
+    id: 0,
+    imageUrl: images.userAvater,
+    childName: 'Zara',
+    active: false,
+  },
+  {
+    id: 1,
+    imageUrl: images.userAvater,
+    childName: 'Xavier',
+    active: false,
+  },
+  {
+    id: 2,
+    imageUrl: images.userAvater,
+    childName: 'Zachary',
+    active: false,
+  },
+  {
+    id: 3,
+    imageUrl: images.userAvater,
+    childName: 'Zoey',
+    active: false,
+  },
+];
+export default {
+  createTrustMock,
+  Savings,
+  initialFrequencyState,
+  initialSaveMethodState,
+  initialChildrenState,
+};

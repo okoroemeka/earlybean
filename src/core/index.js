@@ -50,6 +50,7 @@ const images = {
   userAvater: require(`${PATH}blackgal.png`),
   masterCard: require(`${PATH}mastercard.png`),
   forward: require(`${PATH}forward.png`),
+  tick: require(`${PATH}tick.png`),
 };
 
 export {colors, images};

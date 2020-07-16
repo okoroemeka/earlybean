@@ -129,7 +129,8 @@ const DashboardOne = ({navigation: {navigate}}) => {
 
       <InstructionCard
         width={wp('90%')}
-        height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}>
+        height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}
+        handleCardPress={() => navigate('CreateCashTrustFormScreen')}>
         <StyledInfoImage source={images.trustImage} />
         <StyledTextWrapper>
           <StyledText
