@@ -1,4 +1,4 @@
-import React, {useState, useReducer, useEffect} from 'react';
+import React, {useState, useReducer} from 'react';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -13,6 +13,10 @@ import CardWrapperWithHeader from '../../components/Reusable/CardWrapperWithHead
 import Image from '../../components/UI/Image';
 import Button from '../../components/UI/Button';
 import TextInput from '../../components/UI/TextInput';
+import ImageRemade from '../../components/UI/ImageRemade';
+import ViewHelper from '../../components/UI/View';
+import mockData from '../../../data/mockData';
+import Reducers from '../../../utils/Reducers';
 
 const StyledCardWrapper = styled.View`
   width: 100%;
@@ -100,55 +104,57 @@ const StyledRoundButton = styled.TouchableOpacity`
   border: ${props => props.border || 'none'};
 `;
 
-const initialFrequencyState = [
-  {frequency: 'Daily', active: true},
-  {frequency: 'Weekly', active: false},
-  {frequency: 'Monthly', active: false},
-];
+const StyledImageCardWrapper = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: ${hp('2%')}px;
+`;
 
-const initialSaveMethodState = [
-  {method: 'Manual', active: true},
-  {method: 'Automatically', active: false},
-];
+const StyledImageWrapper = styled.View`
+  width: ${props => (props.active ? '65px' : '60px')};
+  height: ${props => (props.active ? '65px' : '60px')};
+  justify-content: center;
+  align-items: center;
+  border-radius: ${props => (props.active ? '35px' : '30px')};
+  background-color: ${props => (props.active ? colors.primary : colors.white)};
+  position: relative;
+`;
 
-const reducer = (state, {type, payload}) => {
-  switch (type) {
-    case 'saveFrequency':
-      return state.map(item => {
-        if (item.frequency == payload) {
-          item.active = true;
-        } else {
-          item.active = false;
-        }
-        return item;
-      });
-    case 'saveMethod':
-      return state.map(paymentMethod => {
-        if (paymentMethod.method == payload) {
-          paymentMethod.active = true;
-        } else {
-          paymentMethod.active = false;
-        }
-        return paymentMethod;
-      });
-    case 'resetSaveFrequency':
-      return initialFrequencyState;
-    case 'resetSaveMethod':
-      return initialSaveMethodState;
-    default:
-      return state;
-  }
-};
+const StyledImageSubWrapper = styled.TouchableOpacity`
+  width: ${props => (props.active ? '55px' : '50px')};
+  height: ${props => (props.active ? '55px' : '50px')};
+  border-radius: ${props => (props.active ? '27px' : '25px')};
+  overflow: hidden;
+`;
 
-const CreatePersonalPlan = ({navigation, route}) => {
+const {
+  initialFrequencyState,
+  initialSaveMethodState,
+  initialChildrenState,
+} = mockData;
+const {createTrust} = Reducers;
+
+const CreatePersonalPlan = ({navigation}) => {
   const [frequencyState, dispatchFrequencyState] = useReducer(
-    reducer,
+    createTrust({
+      initialFrequencyState,
+      initialSaveMethodState,
+    }),
     initialFrequencyState,
   );
   const [saveMethodState, dispatchSaveMethodState] = useReducer(
-    reducer,
+    createTrust({
+      initialFrequencyState,
+      initialSaveMethodState,
+    }),
     initialSaveMethodState,
   );
+  const [childrenState, dispatchChildren] = useReducer(
+    createTrust(),
+    initialChildrenState,
+  );
+  const [chosenChild, setChosenChild] = useState('');
   const [activeFrequency, setActiveFrequency] = useState('');
   const [activeSaveMethod, setActiveSaveMethod] = useState('');
   const [displayPlanDropDown, setDisplayPlanDropDown] = useState(false);
@@ -158,91 +164,77 @@ const CreatePersonalPlan = ({navigation, route}) => {
     return dispatchFrequencyState(data);
   };
 
-  const handelSaveMethod = data => {
+  const handleSaveMethod = data => {
     setActiveSaveMethod(data.payload);
     return dispatchSaveMethodState(data);
   };
 
-  const handleFormReset = () => {
-    setActiveFrequency('');
-    setActiveSaveMethod('');
-    dispatchFrequencyState('resetSaveFrequency');
-    return setActiveSaveMethod('resetSaveMethod');
+  const handleSelectChild = data => {
+    setChosenChild(data.payload.childName);
+    return dispatchChildren(data);
   };
-
-  useEffect(() => {
-    handleFormReset();
-  }, []);
 
   return (
     <CardWrapperWithHeader
       handleGoBack={() => navigation.goBack()}
       paddingBottom={hp('5%')}
-      headerText={`Create a ${
-        route.params.plan == 'Personal' ? 'personal' : 'family'
-      } savings plan`}>
+      headerText="Create a trust fund">
       <StyledCardWrapper>
         <TextRemade
-          fontSize={wp('3%')}
+          fontSize={wp('3.5%')}
           textAlign="left"
           paddingLeftAndRight={wp('0%')}
           color={colors.placeholderColor}>
-          As much as you want to save for the future of your family and kids, we
-          know you also have your own dreams and goals. Save towards them and
-          keep a track of them here.
+          Here, you can set long-term savings plans for your kids, we guarantee
+          and grow the funds and pay out on your agreed terms.
         </TextRemade>
-        <StyledInputContianer marginTop={hp('2%')}>
-          <TextInput
-            id="goalName"
-            keyboardType="default"
-            required
-            autoCapitalize="none"
-            errorText="goal name can't be empty"
-            initailValue=""
-            placeholder="Name your goal"
-            color={colors.black}
-            height={Platform.OS === 'android' ? hp('6%') : hp('4%')}
-            placeholderTextColor={colors.placeholderColor}
-            borderBottomColor={colors.placeholderColor}
-            border={`1px solid ${colors.placeholderColor}`}
-            onInputChange={() => null}
-            fontSize={wp('3%')}
-          />
-        </StyledInputContianer>
-        <StyledInputContianer marginTop={hp('0.5%')}>
-          <StyledTextWrapper width="50%">
-            <TextRemade
-              width="100%"
-              fontSize={wp('3.3%')}
-              paddingLeftAndRight={wp('3%')}
-              textAlign="right"
-              color={colors.black}>
-              Total amount to save
-            </TextRemade>
-          </StyledTextWrapper>
-
-          <TextInput
-            color={colors.black}
-            id="totalAmount"
-            required
-            minLength={1}
-            autoCapitalize="none"
-            errorText="enter a valid amount"
-            initailValue=""
-            min={1}
-            keyboardType="numeric"
-            paddingTopDown={hp('0.5%')}
-            placeholder=""
-            textControlWidth={'50%'}
-            height={Platform.OS === 'android' ? hp('6%') : hp('4%')}
-            placeholderTextColor={colors.placeholderColor}
-            onInputChange={() => null}
-            borderBottomColor={colors.placeholderColor}
-            border={`1px solid ${colors.placeholderColor}`}
-            fontSize={wp('3.5%')}
-          />
-        </StyledInputContianer>
-        <StyledInputContianer marginTop={hp('0.5%')}>
+        <StyledImageCardWrapper>
+          {childrenState.map(({imageUrl, childName, active, id}, index) => (
+            <ViewHelper width="auto" height="auto" key={index}>
+              <StyledImageWrapper active={active}>
+                <StyledImageSubWrapper
+                  active={active}
+                  onPress={() =>
+                    handleSelectChild({
+                      type: 'selectChild',
+                      payload: {id: id, childName},
+                    })
+                  }>
+                  <ImageRemade imageUrl={imageUrl} resizeMode="cover" />
+                </StyledImageSubWrapper>
+                {active && (
+                  <ViewHelper
+                    width={'22px'}
+                    height={'22px'}
+                    position="absolute"
+                    top={0}
+                    right={0}
+                    padding={5}
+                    backgroundColor={colors.primary}
+                    alignItems="center"
+                    justifyContent="center"
+                    borderRadius={10}>
+                    <ImageRemade
+                      imageUrl={images.tick}
+                      imageWidth={'13px'}
+                      imageHeight={'13px'}
+                    />
+                  </ViewHelper>
+                )}
+              </StyledImageWrapper>
+              <TextRemade
+                width="auto"
+                fontSize={wp('3.5%')}
+                marginTop={hp('0.3%')}
+                textAlign="center"
+                paddingLeftAndRight={wp('0%')}
+                color={colors.placeholderColor}>
+                {childName}
+              </TextRemade>
+            </ViewHelper>
+          ))}
+        </StyledImageCardWrapper>
+        <StyledInputContianer marginTop={hp('2.5%')}>
           <TextRemade
             width="50%"
             fontSize={wp('3.3%')}
@@ -279,14 +271,14 @@ const CreatePersonalPlan = ({navigation, route}) => {
             textAlign="right"
             paddingLeftAndRight={wp('3%')}
             color={colors.black}>
-            For how long
+            Till when
           </TextRemade>
           <StyledSelectDropdown width="50%" onTouchStart={() => null}>
             <TextRemade
               textAlign="left"
               color={colors.black}
               fontSize={wp('3%')}>
-              {}
+              Select duration
             </TextRemade>
             <StyledIconContainer
               onPress={() => setDisplayPlanDropDown(!displayPlanDropDown)}>
@@ -328,7 +320,7 @@ const CreatePersonalPlan = ({navigation, route}) => {
             paddingLeftAndRight={wp('3%')}
             textAlign="right"
             color={colors.black}>
-            Amount to save daily
+            Amount to save monthly
           </TextRemade>
           <TextInput
             color={colors.black}
@@ -408,7 +400,7 @@ const CreatePersonalPlan = ({navigation, route}) => {
                   width="32px"
                   borderRadius="16px"
                   onPress={() =>
-                    handelSaveMethod({
+                    handleSaveMethod({
                       type: 'saveMethod',
                       payload: method,
                     })
