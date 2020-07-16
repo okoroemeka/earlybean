@@ -92,7 +92,10 @@ const DashboardOne = ({navigation: {navigate}}) => {
       </InstructionCard>
       <InstructionCard
         width={wp('90%')}
-        height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}>
+        height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}
+        handleCardPress={() =>
+          navigate('CreateSavingsPlanFormScreen', {plan: 'Personal'})
+        }>
         <StyledInfoImage source={images.setPersonalGoal} />
         <StyledTextWrapper>
           <StyledText
@@ -107,7 +110,10 @@ const DashboardOne = ({navigation: {navigate}}) => {
       </InstructionCard>
       <InstructionCard
         width={wp('90%')}
-        height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}>
+        height={Platform.OS == 'ios' ? hp('20%') : hp('25%')}
+        handleCardPress={() =>
+          navigate('CreateSavingsPlanFormScreen', {plan: 'Family'})
+        }>
         <StyledInfoImage source={images.createTrust} />
         <StyledTextWrapper>
           <StyledText
