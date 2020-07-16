@@ -2,14 +2,14 @@ import gql from 'graphql-tag';
 
 export const SIGNUP_MUTATION = gql`
   mutation SignUp(
-    $firstName: String
-    $lastName: String
-    $email: String
-    $phone: String
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $phone: String!
     $accountType: String
-    $password: String
+    $password: String!
   ) {
-    register(
+    signup(
       firstName: $firstName
       lastName: $lastName
       email: $email
@@ -18,7 +18,6 @@ export const SIGNUP_MUTATION = gql`
       password: $password
     ) {
       firstName
-      token
       isVerified
     }
   }
