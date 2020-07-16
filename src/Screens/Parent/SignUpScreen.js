@@ -46,6 +46,8 @@ const StyledView = styled.View`
 const StyledButton = styled.TouchableOpacity`
   flex-direction: row;
   width: ${props => props.width || 'auto'};
+  height: ${props => props.height || 'auto'};
+  justify-content: ${props => props.justifyContent || 'flex-start'};
   padding: ${Platform.OS === 'android' ? hp('1.4%') : hp('0.65%')}px
     ${wp('5%')}px;
   border-radius: 10px;
@@ -120,7 +122,7 @@ const SignUp = ({navigation: {navigate}}) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [register, {data}] = useMutation(SIGNUP_MUTATION);
+  const [signup, {data}] = useMutation(SIGNUP_MUTATION);
 
   const inputChangeHandler = useCallback(
     (inputName, inputValue, inputValidity) => {
@@ -133,6 +135,7 @@ const SignUp = ({navigation: {navigate}}) => {
     },
     [dispatchFormState],
   );
+
   useEffect(() => {
     if (error) {
       Alert.alert('Error', error, [{text: 'okay'}]);
@@ -140,7 +143,6 @@ const SignUp = ({navigation: {navigate}}) => {
   }, [error]);
 
   const handleSubmit = async () => {
-    navigate('VerificationScreen');
     try {
       setError(null);
       if (!formState.formIsValid) {
@@ -151,16 +153,21 @@ const SignUp = ({navigation: {navigate}}) => {
         setError('Password do not match');
       } else {
         setLoading(true);
-        await register({
-          variables: {...formState.inputValues, accountType: 'parent'},
+        const payload = {...formState.inputValues, accountType: 'adult'};
+        delete payload.confirmPassword;
+        await signup({
+          variables: {...payload},
         });
         navigate('VerificationScreen');
       }
     } catch (e) {
-      if (e.message.includes('GraphQL error')) {
+      if (
+        e.message.includes('GraphQL error') &&
+        !e.message.includes('User already exist')
+      ) {
         setError('Server error, please try again later');
       } else {
-        setError(e.message);
+        setError(e.message.replace('GraphQL error:', ''));
       }
     }
     setLoading(false);
@@ -313,6 +320,8 @@ const SignUp = ({navigation: {navigate}}) => {
             </StyledView>
             <StyledButton
               width="45%"
+              height={`${Platform.OS == 'ios' ? hp('5.2%') : hp('7.2%')}px`}
+              justifyContent={loading && 'center'}
               onPress={loading ? () => null : handleSubmit}>
               {!loading ? (
                 <Fragment>
