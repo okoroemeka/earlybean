@@ -143,6 +143,7 @@ const SignUp = ({navigation: {navigate}}) => {
   }, [error]);
 
   const handleSubmit = async () => {
+    navigate('VerificationScreen');
     try {
       setError(null);
       if (!formState.formIsValid) {

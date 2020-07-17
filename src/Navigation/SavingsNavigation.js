@@ -7,6 +7,7 @@ import CashTrustDashboardScreen from '../Screens/Parent/CashTrustDashboard';
 import TopExistingSavingScreen from '../Screens/Parent/TopExistingSaving';
 import CreateSavingsPlanFormScreen from '../Screens/Parent/CreateSavingsPlanFormScreen';
 import CreateCashTrustFormScreen from '../Screens/Parent/CreateCashTrustFormScreen';
+import PlanReviewScreen from '../Screens/Parent/PlanReviewScreen';
 
 const Stack = createStackNavigator();
 
@@ -39,6 +40,7 @@ const SavingsNavigation = () => (
       name="CreateCashTrustFormScreen"
       component={CreateCashTrustFormScreen}
     />
+    <Stack.Screen name="PlanReviewScreen" component={PlanReviewScreen} />
   </Stack.Navigator>
 );
 export default SavingsNavigation;
