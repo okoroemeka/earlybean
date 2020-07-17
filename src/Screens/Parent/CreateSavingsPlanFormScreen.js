@@ -433,6 +433,7 @@ const CreatePersonalPlan = ({navigation, route}) => {
         </StyledTextWrapper>
         <StyledButtonContianer>
           <Button
+            handlePress={() => navigation.navigate('PlanReviewScreen')}
             width={Platform.OS == 'ios' ? '34%' : '37%'}
             paddingTopBottom={
               Platform.OS == 'android' ? hp('1.6%') : hp('1.3%')
