@@ -122,7 +122,7 @@ const SignUp = ({navigation: {navigate}}) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [signup, {data}] = useMutation(SIGNUP_MUTATION);
+  const [signup, _] = useMutation(SIGNUP_MUTATION);
 
   const inputChangeHandler = useCallback(
     (inputName, inputValue, inputValidity) => {
@@ -143,7 +143,6 @@ const SignUp = ({navigation: {navigate}}) => {
   }, [error]);
 
   const handleSubmit = async () => {
-    navigate('VerificationScreen');
     try {
       setError(null);
       if (!formState.formIsValid) {
@@ -159,7 +158,9 @@ const SignUp = ({navigation: {navigate}}) => {
         await signup({
           variables: {...payload},
         });
-        navigate('VerificationScreen');
+        navigate('VerificationScreen', {
+          phone: payload.phone,
+        });
       }
     } catch (e) {
       if (

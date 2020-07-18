@@ -19,6 +19,8 @@ export const SIGNUP_MUTATION = gql`
     ) {
       firstName
       isVerified
+      phone
+      email
     }
   }
 `;
@@ -34,5 +36,16 @@ export const LOGIN_MUTATION = gql`
       token
       isVerified
     }
+  }
+`;
+
+export const VERIFY_CODE_MUTATION = gql`
+  mutation verifyUser($verificationCode: String!) {
+    verifyUser(verificationCode: $verificationCode)
+  }
+`;
+export const RESEND_VERIFY_CODE_MUTATION = gql`
+  mutation resendVerificationCode($phone: String!) {
+    resendVerificationCode(phone: $phone)
   }
 `;
