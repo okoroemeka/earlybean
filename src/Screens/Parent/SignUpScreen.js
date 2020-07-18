@@ -92,6 +92,7 @@ const initialState = {
 };
 
 const FORM_IN_UPDATAE = 'FORM_IN_UPDATAE';
+const RESET_FORM = 'RESET_FORM';
 const formReducer = (state, action) => {
   switch (action.type) {
     case FORM_IN_UPDATAE:
@@ -112,6 +113,8 @@ const formReducer = (state, action) => {
         inputValues: updatedInputValues,
         inputValidities: updatedInputValidity,
       };
+    case RESET_FORM:
+      return initialState;
     default:
       return state;
   }
@@ -122,7 +125,7 @@ const SignUp = ({navigation: {navigate}}) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [signup, {data}] = useMutation(SIGNUP_MUTATION);
+  const [signup, _] = useMutation(SIGNUP_MUTATION);
 
   const inputChangeHandler = useCallback(
     (inputName, inputValue, inputValidity) => {
@@ -159,7 +162,10 @@ const SignUp = ({navigation: {navigate}}) => {
         await signup({
           variables: {...payload},
         });
-        navigate('VerificationScreen');
+        dispatchFormState(RESET_FORM);
+        navigate('VerificationScreen', {
+          phone: payload.phone,
+        });
       }
     } catch (e) {
       if (

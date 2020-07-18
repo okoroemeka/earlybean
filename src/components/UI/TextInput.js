@@ -88,7 +88,7 @@ const TextInput = props => {
     if (props.maxLength != null && text.length > props.maxLength) {
       isValid = false;
     }
-    dispatch({type: INPUT_CHANGE, value: text, isValid});
+    dispatch({type: INPUT_CHANGE, value: text.trim(), isValid});
   };
   const lostFocusHandler = () => {
     dispatch({type: INPUT_BLUR});
