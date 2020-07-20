@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {Platform} from 'react-native';
+import {Platform, ActivityIndicator} from 'react-native';
 import styled from 'styled-components/native';
 import {colors} from '../../core';
 import Header from '../UI/Header';
@@ -29,7 +29,6 @@ const StyledText = styled.Text`
   color: ${props => props.color || colors.white};
   font-size: ${props => props.fontSize || wp('4%')}px;
   font-style: ${props => props.fontStyle || 'normal'};
-  font-family: 'LucidaGrande';
   line-height: ${props => props.lineHeight || hp('0%')}px;
   margin-top: ${props => props.marginTop || hp('0%')}px;
   border-bottom-width: ${props => props.borderBottomWidth || wp('0%')}px;
@@ -42,17 +41,19 @@ const StyledInputWrapper = styled.View`
   margin-top: ${props => props.marginTop || hp('0%')}px;
   margin-left: ${props => props.marginLeft || hp('0%')}px;
   margin-right: ${props => props.marginRight || hp('0%')}px;
+  position: relative;
 `;
 const StyledInput = styled.TextInput`
   color: ${props => props.color || colors.black};
+  text-align: center;
   width: ${props => props.width || '100%'};
   height: ${props => props.height || hp('2%')}px;
   font-size: ${wp('4.5%')}px;
-  padding: ${props => props.paddingTopDown || hp('1%')}px
-    ${props => props.paddingLeftAndRight || wp('1%')}px;
   border: ${props => props.border || 'none'};
-  border-bottom-color: ${props => props.borderBottomColor || colors.primary};
-  border-bottom-width: 1px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: ${props => props.left || 0};
 `;
 const StyledButtonWrapper = styled.View`
   width: 100%;
@@ -63,6 +64,26 @@ const StyledButtonWrapper = styled.View`
 
 const StyledTouchable = styled.TouchableOpacity`
   margin-left: ${props => props.marginLeft || wp('1.5%')}px;
+`;
+const StyledView = styled.View`
+  width: ${props => props.width || '100%'};
+  height: ${props => props.height || hp('2%')}px;
+  align-items: center;
+  justify-content: center;
+  font-size: ${wp('4.5%')}px;
+  padding: ${props => props.paddingTopDown || hp('1%')}px
+    ${props => props.paddingLeftAndRight || wp('1%')}px;
+  border: ${props => props.border || 'none'};
+  border-bottom-color: ${props => props.borderBottomColor || colors.primary};
+  border-bottom-width: 1px;
+`;
+
+const StyledInputText = styled.Text`
+  width: ${props => props.width || 'auto'};
+  text-align: ${props => props.textAlign || 'center'};
+  color: ${props => props.color || colors.black};
+  font-size: ${props => props.fontSize || wp('4%')}px;
+  font-style: ${props => props.fontStyle || 'normal'};
 `;
 
 const VerifationScreen = ({
@@ -79,6 +100,16 @@ const VerifationScreen = ({
   tradeIconTopPosition,
   tradeIconLeftPosition,
   inputBorderBottomColor,
+  inputRef,
+  inputValues,
+  selectedIndex,
+  handleChange,
+  handleKeyPress,
+  codeLength,
+  loading,
+  handleResendToken,
+  activeResend,
+  counter,
 }) => {
   return (
     <StyledWrapper>
@@ -125,80 +156,79 @@ const VerifationScreen = ({
             Enter code here
           </StyledText>
           <StyledInputWrapper>
+            {codeLength.map((_, index) => (
+              <StyledView
+                key={index}
+                paddingTopDown={hp('0.5%')}
+                width={`${wp('11%')}px`}
+                borderBottomColor={inputBorderBottomColor}
+                height={Platform.OS === 'android' ? hp('7%') : hp('5%')}>
+                <StyledInputText>{inputValues[index] || ''}</StyledInputText>
+              </StyledView>
+            ))}
             <StyledInput
+              value=""
+              onChangeText={handleChange}
+              ref={inputRef}
               keyboardType="numeric"
               paddingTopDown={hp('0.5%')}
-              width={'15%'}
+              onKeyPress={handleKeyPress}
               borderBottomColor={inputBorderBottomColor}
+              width={`${wp('11%')}px`}
               height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
-            />
-            <StyledInput
-              keyboardType="numeric"
-              paddingTopDown={hp('0.5%')}
-              borderBottomColor={inputBorderBottomColor}
-              width={'15%'}
-              height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
-            />
-            <StyledInput
-              keyboardType="numeric"
-              paddingTopDown={hp('0.5%')}
-              borderBottomColor={inputBorderBottomColor}
-              width={'15%'}
-              height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
-            />
-            <StyledInput
-              keyboardType="numeric"
-              paddingTopDown={hp('0.5%')}
-              borderBottomColor={inputBorderBottomColor}
-              width={'15%'}
-              height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
-            />
-            <StyledInput
-              keyboardType="numeric"
-              paddingTopDown={hp('0.5%')}
-              borderBottomColor={inputBorderBottomColor}
-              width={'15%'}
-              height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
-            />
-            <StyledInput
-              keyboardType="numeric"
-              paddingTopDown={hp('0.5%')}
-              borderBottomColor={inputBorderBottomColor}
-              width={'15%'}
-              height={Platform.OS === 'android' ? hp('7%') : hp('5%')}
+              left={`${wp(`${selectedIndex * 13}%`)}px`}
             />
           </StyledInputWrapper>
           <StyledButtonWrapper>
             <Button
+              alignItems="center"
+              justifyContent="center"
               width="95%"
-              paddingTopBottom={
-                Platform.OS === 'android' ? hp('1.9%') : hp('0.8%')
-              }
+              height={`${hp('6%')}px`}
               borderRadius="10px"
               backgroundColor={buttonColor}
-              handlePress={handleVerification}>
-              <Text textAlign="center" color={buttonTextColor}>
-                Verify my account
-              </Text>
+              handlePress={loading ? () => null : handleVerification}>
+              {!loading ? (
+                <Text textAlign="center" color={buttonTextColor} width="auto">
+                  Verify my account
+                </Text>
+              ) : (
+                <ActivityIndicator size="small" color={colors.white} />
+              )}
             </Button>
           </StyledButtonWrapper>
           <StyledInputWrapper justifyContent="flex-start">
-            <StyledText
-              lineHeight={Platform.OS === 'android' ? hp('2%') : hp('1.5%')}
-              color={colors.placeholderColor}
-              fontSize={wp('3.3%')}>
-              Didn’t get a token?
-            </StyledText>
-            <StyledTouchable
-              marginTop={Platform.OS === 'android' ? hp('0.8%') : hp('0.03%')}>
-              <Text
-                lineHeight={Platform.OS === 'ios' ? hp('1.8%') : hp('2.1%')}
-                color={buttonColor}
-                textAlign="left"
-                fontSize={wp('3.5%')}>
-                Resend Token
-              </Text>
-            </StyledTouchable>
+            {activeResend ? (
+              <StyledText
+                width="100%"
+                color={colors.black}
+                fontSize={wp('3.3%')}
+                textAlign="left">
+                Resending token in {counter}s
+              </StyledText>
+            ) : (
+              <Fragment>
+                <StyledText
+                  lineHeight={Platform.OS === 'android' ? hp('2%') : hp('1.5%')}
+                  color={colors.placeholderColor}
+                  fontSize={wp('3.3%')}>
+                  Didn’t get a token?
+                </StyledText>
+                <StyledTouchable
+                  marginTop={
+                    Platform.OS === 'android' ? hp('0.8%') : hp('0.03%')
+                  }
+                  onPress={handleResendToken}>
+                  <Text
+                    lineHeight={Platform.OS === 'ios' ? hp('1.8%') : hp('2.1%')}
+                    color={buttonColor}
+                    textAlign="left"
+                    fontSize={wp('3.5%')}>
+                    Resend Token
+                  </Text>
+                </StyledTouchable>
+              </Fragment>
+            )}
           </StyledInputWrapper>
           <StyledInputWrapper
             justifyContent="flex-start"

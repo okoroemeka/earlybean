@@ -11,6 +11,8 @@ const StyledButton = styled.TouchableOpacity`
   width: ${props => props.width || 'auto'};
   height: ${props => props.height || 'auto'};
   background-color: ${props => props.backgroundColor || colors.primary};
+  justify-content: ${props => props.justifyContent || 'flex-start'};
+  align-items: ${props => props.alignItems || 'flex-start'};
   padding: ${props => props.paddingTopBottom || hp('1%')}px
     ${props => props.paddingLeftRight || wp('6%')}px;
   border-color: ${props => props.borderColor || 'transparent'};
@@ -19,21 +21,23 @@ const StyledButton = styled.TouchableOpacity`
   position: relative;
 `;
 
-const Button = ({
-  width,
-  children,
-  borderRadius,
-  backgroundColor,
-  paddingTopBottom,
-  borderWidth,
-  height,
-  paddingLeftRight,
-  handlePress = () => {},
-  borderColor,
-  flexDirection,
-}) => {
+const Button = props => {
+  const {
+    width,
+    children,
+    borderRadius,
+    backgroundColor,
+    paddingTopBottom,
+    borderWidth,
+    height,
+    paddingLeftRight,
+    handlePress = () => {},
+    borderColor,
+    flexDirection,
+  } = props;
   return (
     <StyledButton
+      {...props}
       width={width}
       height={height}
       paddingTopBottom={paddingTopBottom}
