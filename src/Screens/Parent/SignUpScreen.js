@@ -160,6 +160,7 @@ const SignUp = ({navigation: {navigate}}) => {
         });
         navigate('VerificationScreen', {
           phone: payload.phone,
+          firstName: payload.firstName,
         });
       }
     } catch (e) {
