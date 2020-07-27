@@ -32,7 +32,6 @@ const StyledHeader = styled.View`
 
 const StyledBody = styled.View`
   flex: 5;
-  padding: ${hp('0%')}px ${wp('3%')}px;
 `;
 const StyledText = styled.Text`
   width: ${props => props.width || '100%'};
