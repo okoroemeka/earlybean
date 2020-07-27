@@ -126,6 +126,7 @@ const VerifationScreen = ({navigation: {navigate}, route}) => {
       activeResend={activeResend}
       counter={counter}
       userName={route.params.firstName}
+      handleLogin={() => navigate('LoginScreen')}
     />
   );
 };
