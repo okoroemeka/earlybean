@@ -110,6 +110,7 @@ const VerifationScreen = ({
   handleResendToken,
   activeResend,
   counter,
+  userName,
 }) => {
   return (
     <StyledWrapper>
@@ -237,7 +238,10 @@ const VerifationScreen = ({
               lineHeight={Platform.OS === 'android' ? hp('2%') : hp('1.5%')}
               color={colors.placeholderColor}
               fontSize={wp('3.3%')}>
-              Not jay?
+              Not{' '}
+              {userName?.replace(userName[0], userName[0].toUpperCase()) ||
+                'you'}
+              ?
             </StyledText>
             <StyledTouchable
               marginTop={Platform.OS === 'android' ? hp('1%') : hp('0.03%')}>

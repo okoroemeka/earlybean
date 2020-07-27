@@ -26,6 +26,7 @@ const VerifationScreen = ({navigation: {navigate}, route}) => {
   const inputRef = useRef();
   const selectedIndex =
     values.length < codeLength.length ? values.length : codeLength.length - 1;
+  const {firstName, email} = route.params;
 
   const handleChange = value => {
     if (values.length <= codeLength.length)
@@ -70,7 +71,7 @@ const VerifationScreen = ({navigation: {navigate}, route}) => {
       setActiveResend(true);
       setError(null);
       await resendVerificationCode({
-        variables: {phone: route.params.phone},
+        variables: {email},
       });
     } catch (e) {
       setError(e.message.replace('GraphQL error:', ''));
@@ -105,7 +106,10 @@ const VerifationScreen = ({navigation: {navigate}, route}) => {
         Platform.OS === 'android' ? `${wp('43%')}px` : `${wp('45.5%')}px`
       }
       greetingTextColor={colors.primary}
-      welcomeText="Hi Biobele"
+      welcomeText={`Hi ${firstName?.replace(
+        route.params.firstName[0],
+        route.params.firstName[0].toUpperCase(),
+      ) || ''}`}
       buttonTextColor={colors.white}
       instruction="Enter the token sent to your phone number"
       buttonColor={colors.primary}
@@ -121,6 +125,7 @@ const VerifationScreen = ({navigation: {navigate}, route}) => {
       handleResendToken={handleResendToken}
       activeResend={activeResend}
       counter={counter}
+      userName={route.params.firstName}
     />
   );
 };
