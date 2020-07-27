@@ -159,7 +159,7 @@ const SignUp = ({navigation: {navigate}}) => {
           variables: {...payload},
         });
         navigate('VerificationScreen', {
-          phone: payload.phone,
+          email: payload.email,
           firstName: payload.firstName,
         });
       }
