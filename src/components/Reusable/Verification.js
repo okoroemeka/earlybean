@@ -86,32 +86,34 @@ const StyledInputText = styled.Text`
   font-style: ${props => props.fontStyle || 'normal'};
 `;
 
-const VerifationScreen = ({
-  logoImage,
-  tradeMarkImage,
-  welcomeText,
-  instruction,
-  headerTextColor,
-  greetingTextColor,
-  justifyHeaderContent,
-  buttonColor,
-  buttonTextColor,
-  handleVerification,
-  tradeIconTopPosition,
-  tradeIconLeftPosition,
-  inputBorderBottomColor,
-  inputRef,
-  inputValues,
-  selectedIndex,
-  handleChange,
-  handleKeyPress,
-  codeLength,
-  loading,
-  handleResendToken,
-  activeResend,
-  counter,
-  userName,
-}) => {
+const VerifationScreen = props => {
+  const {
+    logoImage,
+    tradeMarkImage,
+    welcomeText,
+    instruction,
+    headerTextColor,
+    greetingTextColor,
+    justifyHeaderContent,
+    buttonColor,
+    buttonTextColor,
+    handleVerification,
+    tradeIconTopPosition,
+    tradeIconLeftPosition,
+    inputBorderBottomColor,
+    inputRef,
+    inputValues,
+    selectedIndex,
+    handleChange,
+    handleKeyPress,
+    codeLength,
+    loading,
+    handleResendToken,
+    activeResend,
+    counter,
+    userName,
+    handleLogin = () => null,
+  } = props;
   return (
     <StyledWrapper>
       <StyledWrapperSub>
@@ -244,7 +246,8 @@ const VerifationScreen = ({
               ?
             </StyledText>
             <StyledTouchable
-              marginTop={Platform.OS === 'android' ? hp('1%') : hp('0.03%')}>
+              marginTop={Platform.OS === 'android' ? hp('1%') : hp('0.03%')}
+              onPress={handleLogin}>
               <Text
                 lineHeight={Platform.OS === 'ios' ? hp('1.9%') : hp('2%')}
                 color={buttonColor}
