@@ -14,6 +14,9 @@ const colors = {
   greenBrand: '#30C4AE',
   brandYellow: '#F5A623',
   brandBlue: '#4A90E2',
+  lightGreen: '#29bf761a',
+  lightRed: '#f247501a',
+  lightBrandPrimary: '#632f7f60',
 };
 
 const images = {

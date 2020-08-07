@@ -1,3 +1,4 @@
 import createTrust from './createTrust';
+import KidsReducer from './KidsReducer';
 
-export default {createTrust};
+export default {createTrust, KidsReducer};

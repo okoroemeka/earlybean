@@ -42,6 +42,7 @@ const VerifationScreen = ({navigation: {navigate}, route}) => {
   };
 
   const handlesubmit = async () => {
+    navigate('ConfirmationScreen');
     if (values.length < 1) {
       return setError('please enter a verification code');
     }
@@ -51,7 +52,7 @@ const VerifationScreen = ({navigation: {navigate}, route}) => {
       await verifyUser({
         variables: {verificationCode: values},
       });
-      navigate('ConfirmationScreen');
+      // navigate('ConfirmationScreen');
     } catch (e) {
       if (
         e.message.includes('GraphQL error') &&

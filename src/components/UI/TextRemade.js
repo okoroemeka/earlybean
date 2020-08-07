@@ -18,31 +18,35 @@ const StyledText = styled.Text`
   font-weight: ${props => props.fontWeight || 'normal'};
   text-transform: ${props => props.textTransform || 'none'};
   margin-top: ${props => props.marginTop || hp('0%')}px;
+  margin-bottom: ${props => props.marginBottom || hp('0%')}px;
+  margin-left: ${props => props.marginLeft || wp('0%')}px;
   padding: ${props => props.paddingTopDown || hp('0%')}px
     ${props => props.paddingLeftAndRight || wp('0%')}px;
   border-bottom-width: ${props => props.borderBottomWidth || wp('0%')}px;
   border-bottom-color: ${props => props.borderBottomcolor || colors.primary};
 `;
 
-const TextWithoutLineHeight = ({
-  width,
-  textAlign,
-  fontFamily,
-  color,
-  fontSize,
-  fontStyle,
-  fontWeight,
-  marginTop,
-  borderBottomWidth,
-  borderBottomcolor,
-  children,
-  textTransform,
-  maxWidth,
-  paddingTopDown,
-  paddingLeftAndRight,
-}) => {
+const TextWithoutLineHeight = props => {
+  const {
+    width,
+    textAlign,
+    fontFamily,
+    color,
+    fontSize,
+    fontStyle,
+    fontWeight,
+    marginTop,
+    borderBottomWidth,
+    borderBottomcolor,
+    children,
+    textTransform,
+    maxWidth,
+    paddingTopDown,
+    paddingLeftAndRight,
+  } = props;
   return (
     <StyledText
+      {...props}
       width={width}
       textAlign={textAlign}
       fontFamily={fontFamily}

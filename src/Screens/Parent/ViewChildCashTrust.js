@@ -80,7 +80,7 @@ const ViewChildCashTrust = ({navigation, route}) => {
   }
   return (
     <CardWrapperWithHeader
-      handleDisplayCashTrust={() => navigation.goBack()}
+      handleGoBack={() => navigation.goBack()}
       headerText={cardTitle}>
       <StyledCardWrapper>
         <StyledImage source={images.topUPImage} resizeMode="cover" />

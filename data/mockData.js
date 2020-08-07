@@ -95,10 +95,82 @@ const initialChildrenState = [
     active: false,
   },
 ];
+const initialKidsState = [
+  {
+    id: 0,
+    imageUrl: images.userAvater,
+    firstName: 'Zara',
+    lastName: 'Lawson',
+    active: false,
+  },
+  {
+    id: 1,
+    imageUrl: images.userAvater,
+    firstName: 'Xavier',
+    lastName: 'Lawson',
+    active: false,
+  },
+  {
+    id: 2,
+    imageUrl: images.userAvater,
+    firstName: 'Zachary',
+    lastName: 'Lawson',
+    active: false,
+  },
+];
+const transactionTime = [
+  {
+    id: 1,
+    time: 'Day',
+    active: false,
+  },
+  {
+    id: 2,
+    time: 'Week',
+    active: false,
+  },
+  {
+    id: 3,
+    time: 'Month',
+    active: false,
+  },
+  {
+    id: 4,
+    time: 'Year',
+    active: false,
+  },
+];
+
+const mockTransactions = [
+  {
+    title: 'Walk the dog',
+    time: 'Yesterday 4:30pm',
+    type: 'expenses',
+    amount: '2,000',
+    totalAmount: '6,700',
+  },
+  {
+    title: 'Hans and Rene',
+    time: '23 May 2020',
+    type: 'income',
+    amount: '2,000',
+    totalAmount: '6,700',
+  },
+  {
+    title: 'tidy bedroom',
+    time: '23 May 2020',
+    type: 'expenses',
+    amount: '100',
+    totalAmount: '6,700',
+  },
+];
 export default {
   createTrustMock,
   Savings,
   initialFrequencyState,
   initialSaveMethodState,
   initialChildrenState,
+  initialKidsState,
+  transactionTime,
+  mockTransactions,
 };
