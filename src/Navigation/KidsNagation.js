@@ -1,6 +1,8 @@
 import React from 'react';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+
 import KidsDashboardScreen from '../Screens/Parent/KidsDashboardScreen';
+import ViewChildTransactions from '../Screens/Parent/ViewChildTransactions';
 
 const Stack = createStackNavigator();
 
@@ -13,6 +15,10 @@ const KidsNavigation = () => (
     headerMode="none"
     initialRouteName="KidsDashboardScreen">
     <Stack.Screen name="KidsDashboardScreen" component={KidsDashboardScreen} />
+    <Stack.Screen
+      name="ViewChildTransactions"
+      component={ViewChildTransactions}
+    />
   </Stack.Navigator>
 );
 export default KidsNavigation;
