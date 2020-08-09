@@ -18,7 +18,9 @@ import mockData from '../../../data/mockData';
 import CustomIcon from '../../core/CustomIcon';
 import {colors, images} from '../../core';
 import Button from '../../components/UI/Button';
+import ModalContainer from '../../components/UI/ModalContainer';
 import Reducers from '../../../utils/Reducers';
+import AddChildCard from '../../components/UI/AddChildCard';
 
 const StyledBodyContent = styled.ScrollView`
   padding: ${hp('4%')}px ${wp('4.8%')}px;
@@ -126,7 +128,14 @@ const KidsDashboardHomeScreen = props => {
     }),
     transactionTime,
   );
+  const [showModal, setShowModal] = useState(false);
 
+  /**
+   * Toggle modal
+   */
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
   /**
    * Handle select kid
    * @param {object} data
@@ -232,7 +241,7 @@ const KidsDashboardHomeScreen = props => {
                 </StyledChildCardWrapper>
                 <StyledAddChildCard marginLeft="auto">
                   <StyledRoundButton>
-                    <StyledPlus>+</StyledPlus>
+                    <StyledPlus onPress={toggleModal}>+</StyledPlus>
                   </StyledRoundButton>
                   <Text color={colors.primary} fontSize={wp('2%')}>
                     {' '}
@@ -535,6 +544,11 @@ const KidsDashboardHomeScreen = props => {
           </StyledBodyContent>
         </DashboardBody>
       </MainBodyContent>
+      {showModal && (
+        <ModalContainer>
+          <AddChildCard handleToggleModal={toggleModal} />
+        </ModalContainer>
+      )}
     </Fragment>
   );
 };
