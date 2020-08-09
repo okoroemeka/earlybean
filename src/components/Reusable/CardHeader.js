@@ -23,7 +23,7 @@ const StyledView = styled.View`
   margin-left: auto;
   padding-right: ${wp('3%')}px;
 `;
-const AddChildCard = ({cardTitle, handleGoback}) => {
+const AddChildCard = ({cardTitle = '', handleGoback = () => null}) => {
   return (
     <StyledHeader>
       <View height="auto" width="30%">

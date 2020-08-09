@@ -164,6 +164,40 @@ const mockTransactions = [
     totalAmount: '6,700',
   },
 ];
+const savingsMockData = [
+  {
+    id: 0,
+    title: 'savings',
+    amount: '257,000',
+    time: '09, Aug 2019',
+    iconName: 'earningIcon',
+    active: true,
+  },
+  {
+    id: 1,
+    title: 'Spendings',
+    amount: '150,000',
+    time: '09, Aug 2019',
+    iconName: 'spendingIcon',
+    active: false,
+  },
+  {
+    id: 2,
+    title: 'earnings',
+    amount: '72,000',
+    time: '09, Aug 2019',
+    iconName: 'earningIcon',
+    active: false,
+  },
+  {
+    id: 3,
+    title: 'givings',
+    amount: '70,000',
+    time: '09, Aug 2019',
+    iconName: 'givingIcon',
+    active: false,
+  },
+];
 export default {
   createTrustMock,
   Savings,
@@ -173,4 +207,5 @@ export default {
   initialKidsState,
   transactionTime,
   mockTransactions,
+  savingsMockData,
 };

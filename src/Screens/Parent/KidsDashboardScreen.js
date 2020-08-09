@@ -426,6 +426,9 @@ const KidsDashboardHomeScreen = props => {
                 justifyContent="center"
                 alignItems="center">
                 <Button
+                  handlePress={() =>
+                    props.navigation.navigate('ViewChildTransactions')
+                  }
                   flexDirection="row"
                   width="100%"
                   height={`${hp('4.3%')}px`}
