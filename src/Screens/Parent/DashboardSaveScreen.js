@@ -9,8 +9,6 @@ import styled from 'styled-components/native';
 import {colors, images} from '../../core';
 import InstructionCard from '../../components/UI/InstructionCard';
 import DashboarddHeader from '../../components/Reusable/DashboarddHeader';
-import RoundButton from '../../components/UI/RoundButton';
-import CustomIcon from '../../core/CustomIcon';
 
 const StyledHeaderStatus = styled.SafeAreaView`
   flex: 0;

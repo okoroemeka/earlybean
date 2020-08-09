@@ -38,5 +38,4 @@ function createTrustReducer(entireState = {}) {
     }
   };
 }
-// const reducer =
 export default createTrustReducer;

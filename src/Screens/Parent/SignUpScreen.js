@@ -144,6 +144,8 @@ const SignUp = ({navigation: {navigate}}) => {
 
   const handleSubmit = async () => {
     try {
+      navigate('ConfirmationScreen');
+
       setError(null);
       if (!formState.formIsValid) {
         setError('invalid form input');
@@ -158,10 +160,10 @@ const SignUp = ({navigation: {navigate}}) => {
         await signup({
           variables: {...payload},
         });
-        navigate('VerificationScreen', {
-          email: payload.email,
-          firstName: payload.firstName,
-        });
+        // navigate('VerificationScreen', {
+        //   email: payload.email,
+        //   firstName: payload.firstName,
+        // });
       }
     } catch (e) {
       if (
