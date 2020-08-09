@@ -17,6 +17,7 @@ const colors = {
   lightGreen: '#29bf761a',
   lightRed: '#f247501a',
   lightBrandPrimary: '#632f7f60',
+  modalColor: '#7e8ca3db',
 };
 
 const images = {
