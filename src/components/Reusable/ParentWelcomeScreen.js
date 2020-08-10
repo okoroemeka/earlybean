@@ -59,7 +59,7 @@ const StyledButtonWrapper = styled.View`
 const StyledButton = styled.TouchableOpacity`
   flex-direction: row;
   width: ${props => props.width || 'auto'};
-  padding: ${hp('1%')}px ${wp('15%')}px;
+  padding: ${hp('0.6%')}px ${wp('15%')}px;
   border-radius: 5px;
   background-color: ${props => props.backgroundColor || colors.primary};
   justify-content: ${props => props.justifyContent};
