@@ -430,8 +430,9 @@ const KidsDashboardHomeScreen = props => {
                     props.navigation.navigate('ViewChildTransactions')
                   }
                   flexDirection="row"
+                  alignItems="center"
                   width="100%"
-                  height={`${hp('4.3%')}px`}
+                  height={`${hp('5%')}px`}
                   backgroundColor={colors.primary}
                   borderRadius="10px">
                   <Text width="auto">view</Text>
@@ -480,8 +481,9 @@ const KidsDashboardHomeScreen = props => {
                   </StyledTimeView>
                 ))}
               </View>
-              {mockTransactions.map(transaction => (
+              {mockTransactions.map((transaction, index) => (
                 <View
+                  key={index}
                   marginTop={hp('1.6%')}
                   marginBottom={hp('1%')}
                   height="auto"
