@@ -11,16 +11,18 @@ const StyledButton = styled.TouchableOpacity`
   background-color: ${props => props.backgroundColor || colors.primary};
   border-radius: ${props => props.borderRadius || '0px'};
 `;
-const RoundButton = ({
-  buttonWidth,
-  buttonHeight,
-  buttonBorderRadius,
-  handlePress = () => null,
-  backgroundColor,
-  children,
-}) => {
+const RoundButton = props => {
+  const {
+    buttonWidth,
+    buttonHeight,
+    buttonBorderRadius,
+    handlePress = () => null,
+    backgroundColor,
+    children,
+  } = props;
   return (
     <StyledButton
+      {...props}
       backgroundColor={backgroundColor}
       onPress={handlePress}
       borderRadius={buttonBorderRadius}

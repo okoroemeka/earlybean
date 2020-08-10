@@ -71,6 +71,9 @@ const ChildTransactionScreen = props => {
     SavingsReducer,
     savingsMockData,
   );
+  const {
+    navigation: {goBack, navigate},
+  } = props;
   /**
    * Handle press
    * @param {number} id
@@ -83,9 +86,23 @@ const ChildTransactionScreen = props => {
       },
     });
   };
-  const {
-    navigation: {goBack},
-  } = props;
+
+  const actionHelper = title => {
+    switch (title.toLowerCase()) {
+      case 'earnings':
+        return () => navigate('ViewEarningsScreen');
+      case 'savings':
+        return () => navigate('ViewEarningsScreen');
+      case 'givings':
+        return () => navigate('ViewEarningsScreen');
+      case 'Spendings':
+        return () => navigate('ViewEarningsScreen');
+
+      default:
+        return;
+    }
+  };
+
   return (
     <Fragment>
       <HeaderStatus />
@@ -176,7 +193,7 @@ const ChildTransactionScreen = props => {
                 2019
               </Text>
               <View height="auto" width="30%">
-                <StyledTouchable>
+                <StyledTouchable onPress={actionHelper(item.title)}>
                   <Text
                     color={item.active ? colors.white : colors.primary}
                     width="auto"

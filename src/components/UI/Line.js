@@ -9,8 +9,16 @@ const StyledLine = styled.View`
   border-bottom-width: 1px;
   border-bottom-color: ${props => props.borderColor || colors.placeholderColor};
 `;
-const Line = ({width, height, borderColor}) => {
-  return <StyledLine width={width} height={height} borderColor={borderColor} />;
+const Line = props => {
+  const {width, height, borderColor} = props;
+  return (
+    <StyledLine
+      width={width}
+      height={height}
+      borderColor={borderColor}
+      {...props}
+    />
+  );
 };
 
 export default Line;

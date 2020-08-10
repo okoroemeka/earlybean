@@ -166,7 +166,7 @@ const mockTransactions = [
 ];
 const savingsMockData = [
   {
-    id: 0,
+    id: '0-abts',
     title: 'savings',
     amount: '257,000',
     time: '09, Aug 2019',
@@ -174,7 +174,7 @@ const savingsMockData = [
     active: true,
   },
   {
-    id: 1,
+    id: '1-adb',
     title: 'Spendings',
     amount: '150,000',
     time: '09, Aug 2019',
@@ -182,7 +182,7 @@ const savingsMockData = [
     active: false,
   },
   {
-    id: 2,
+    id: '2-adb',
     title: 'earnings',
     amount: '72,000',
     time: '09, Aug 2019',
@@ -190,12 +190,44 @@ const savingsMockData = [
     active: false,
   },
   {
-    id: 3,
+    id: '3-abt',
     title: 'givings',
     amount: '70,000',
     time: '09, Aug 2019',
     iconName: 'givingIcon',
     active: false,
+  },
+];
+const tasksMockData = [
+  {
+    id: 1,
+    title: 'read bible',
+    date: '17 monday june',
+    reward: 'bean',
+    status: 'completed',
+  },
+  {
+    id: 2,
+    title: 'clean toys',
+    date: '17 monday june',
+    reward: 'bean',
+    status: 'mixed',
+  },
+  {
+    id: 3,
+    title: 'clean shoes',
+    date: '17 monday june',
+    reward: 'cash',
+    status: 'incomplete',
+    amount: 'N1,500',
+  },
+  {
+    id: 4,
+    title: 'wash mums car',
+    date: '17 monday june',
+    reward: 'cash',
+    status: 'completed',
+    amount: 'N1,500',
   },
 ];
 export default {
@@ -208,4 +240,5 @@ export default {
   transactionTime,
   mockTransactions,
   savingsMockData,
+  tasksMockData,
 };

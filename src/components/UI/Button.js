@@ -4,6 +4,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import styled from 'styled-components/native';
+
 import {colors} from '../../core';
 
 const StyledButton = styled.TouchableOpacity`

@@ -19,10 +19,12 @@ const colors = {
   lightBrandPrimary: '#c9b0d6',
   modalColor: '#7e8ca3db',
   childImageWrapperColor: '#D74E79',
+  cancel: '#f6b488',
 };
 
 const images = {
   bean: require(`${PATH}bean.png`),
+  beanCoin: require(`${PATH}beancoin.png`),
   tradeMark: require(`${PATH}trademark.png`),
   parentBean: require(`${PATH}parentbean.png`),
   pregMom: require(`${PATH}pregMom.png`),
