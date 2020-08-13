@@ -23,7 +23,11 @@ const StyledView = styled.View`
   margin-left: auto;
   padding-right: ${wp('3%')}px;
 `;
-const AddChildCard = ({cardTitle = '', handleGoback = () => null}) => {
+const AddChildCard = ({
+  cardTitle = '',
+  handleGoback = () => null,
+  fontSize,
+}) => {
   return (
     <StyledHeader>
       <View height="auto" width="30%">
@@ -33,7 +37,7 @@ const AddChildCard = ({cardTitle = '', handleGoback = () => null}) => {
         </StyledTouchable>
       </View>
       <View height="auto" width="40%">
-        <Text fontSize={wp('3%')} marginTop={hp('1.6%')}>
+        <Text fontSize={fontSize || wp('3%')} marginTop={hp('1.6%')}>
           {cardTitle}
         </Text>
       </View>

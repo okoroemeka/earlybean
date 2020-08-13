@@ -8,6 +8,8 @@ import {
 const StyledView = styled.View`
   width: ${props => props.width || '100%'};
   height: ${props => props.height || '100%'};
+  padding-right: ${props => props.paddingRight || wp('0%')}px;
+  padding-left: ${props => props.paddingLeft || wp('0%')}px;
   margin-top: ${props => props.marginTop || hp('0%')}px;
   margin-bottom: ${props => props.marginBottom || hp('0%')}px;
   margin-right: ${props => props.marginRight || wp('0%')}px;
