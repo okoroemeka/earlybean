@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import styled from 'styled-components/native';
 import {
   widthPercentageToDP as wp,
@@ -16,6 +16,8 @@ import {colors, images} from '../../core';
 import CardHeader from '../../components/Reusable/CardHeader';
 import Line from '../../components/UI/Line';
 import RoundButton from '../../components/UI/RoundButton';
+import ModalContainer from '../../components/UI/ModalContainer';
+import EditCompoundInterest from '../../components/UI/EditCompoundInterest';
 
 const StyledHeaderWrapper = styled.View`
   width: 100%;
@@ -79,6 +81,7 @@ const StyledIconWrapper = styled.View`
   border-radius: 20px;
   background-color: ${colors.lightBrandPrimary};
 `;
+const {tasksMockData} = mockData;
 
 function taskItem({item}) {
   return (
@@ -201,8 +204,19 @@ function taskItem({item}) {
     </View>
   );
 }
-const {tasksMockData} = mockData;
 const ViewEarningsScreen = props => {
+  const [showModal, setShowModal] = useState(false);
+  const [editAllowance, setEditAllowance] = useState(false);
+  const [editCompoundInterest, setEditCompoundInterest] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+  const handleEditCompoundInterest = () => {
+    console.log('called here===');
+    toggleModal();
+    setEditCompoundInterest(!editCompoundInterest);
+  };
   const {
     navigation: {goBack},
   } = props;
@@ -307,7 +321,7 @@ const ViewEarningsScreen = props => {
               allowance
             </Text>
             <StyledView>
-              <StyledTouchable>
+              <StyledTouchable onPress={() => null}>
                 <CustomIcon
                   name="editIcon"
                   color={colors.placeholderColor}
@@ -350,7 +364,7 @@ const ViewEarningsScreen = props => {
               Compound Interest
             </Text>
             <StyledView>
-              <StyledTouchable>
+              <StyledTouchable onPress={handleEditCompoundInterest}>
                 <CustomIcon
                   name="editIcon"
                   color={colors.placeholderColor}
@@ -458,6 +472,11 @@ const ViewEarningsScreen = props => {
           </View>
         </View>
       </StyledBodyContent>
+      {showModal && (
+        <ModalContainer>
+          <EditCompoundInterest handleToggleModal={toggleModal} />
+        </ModalContainer>
+      )}
     </Fragment>
   );
 };

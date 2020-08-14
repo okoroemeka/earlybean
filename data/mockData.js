@@ -230,6 +230,28 @@ const tasksMockData = [
     amount: 'N1,500',
   },
 ];
+const compoundInteresList = [
+  {
+    id: 1,
+    interest: 1,
+    active: false,
+  },
+  {
+    id: 2,
+    interest: 3.5,
+    active: false,
+  },
+  {
+    id: 3,
+    interest: 5.5,
+    active: false,
+  },
+  {
+    id: 4,
+    interest: 7,
+    active: false,
+  },
+];
 export default {
   createTrustMock,
   Savings,
@@ -241,4 +263,5 @@ export default {
   mockTransactions,
   savingsMockData,
   tasksMockData,
+  compoundInteresList,
 };
