@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState} from 'react';
 
 import styled from 'styled-components/native';
 import {Platform} from 'react-native';
@@ -10,10 +10,7 @@ import {colors, images} from '../../core';
 import CardHeader from '../Reusable/CardHeader';
 import View from './View';
 import Text from './TextRemade';
-import Button from './Button';
 import ImageRemade from './ImageRemade';
-import CustomIcon from '../../core/CustomIcon';
-import mockData from '../../../data/mockData';
 import ChooseFrequency from '../UI/ChooseFrequency';
 
 const StyledCardWrapper = styled.View`
@@ -38,8 +35,10 @@ const StyledDisplayArea = styled.View`
 const StyledTextContainer = styled.TouchableOpacity`
   width: 33.33%;
   height: 100%;
+  flex-direction: ${props => props.flexDirection || 'column'};
   justify-content: center;
   align-items: center;
+  padding: 0 ${props => props.paddingLeftRight || 0};
   border-width: 0.3px;
   border-right-color: ${props => props.borderRightColor || colors.primary};
   border-left-color: ${props => props.borderLeftColor || colors.primary};
@@ -206,10 +205,22 @@ const AddAllowance = ({handleToggleModal, getSelectedAllowance}) => {
                 0
               </Text>
             </StyledTextContainer>
-            <StyledTextContainer onPress={handleSave}>
+            <StyledTextContainer
+              flexDirection="row"
+              onPress={handleSave}
+              paddingLeftRight={`${wp('2%')}px`}>
               <Text width="auto" fontSize={wp('5%')}>
                 Save
               </Text>
+              <ImageRemade
+                imageUrl={images.nextIcon}
+                imageWidth={`${wp('7.1')}px`}
+                imageHeight={`${
+                  Platform.OS == 'ios' ? hp('1.8%') : hp('2.3')
+                }px`}
+                marginLeft="auto"
+                marginTop={`${hp('0.25%')}px`}
+              />
             </StyledTextContainer>
           </View>
         </View>
