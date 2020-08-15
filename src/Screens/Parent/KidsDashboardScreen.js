@@ -244,7 +244,6 @@ const KidsDashboardHomeScreen = props => {
                     <StyledPlus onPress={toggleModal}>+</StyledPlus>
                   </StyledRoundButton>
                   <Text color={colors.primary} fontSize={wp('2%')}>
-                    {' '}
                     Add a child
                   </Text>
                 </StyledAddChildCard>
