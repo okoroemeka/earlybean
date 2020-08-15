@@ -14,7 +14,7 @@ const StyledHeader = styled.View`
   align-items: center;
   width: 100%;
   height: ${hp('7%')}px;
-  background-color: ${colors.primary};
+  background-color: ${props => props.backgroundColor || colors.primary};
 `;
 const StyledTouchable = styled.TouchableOpacity`
   padding-left: ${wp('3%')}px;
@@ -27,23 +27,37 @@ const AddChildCard = ({
   cardTitle = '',
   handleGoback = () => null,
   fontSize,
+  backTextColor,
+  backIconColor,
+  cardTitleColor,
+  logoColor,
+  backgroundColor,
 }) => {
   return (
-    <StyledHeader>
+    <StyledHeader backgroundColor={backgroundColor}>
       <View height="auto" width="30%">
-        <Text fontSize={wp('3%')}>Back</Text>
+        <Text fontSize={wp('3%')} color={backTextColor}>
+          Back
+        </Text>
         <StyledTouchable onPress={handleGoback}>
-          <CustomIcon name="backIcon" size={8} color={colors.white} />
+          <CustomIcon
+            name="backIcon"
+            size={8}
+            color={backIconColor || colors.white}
+          />
         </StyledTouchable>
       </View>
       <View height="auto" width="40%">
-        <Text fontSize={fontSize || wp('3%')} marginTop={hp('1.6%')}>
+        <Text
+          fontSize={fontSize || wp('3%')}
+          marginTop={hp('1.6%')}
+          color={cardTitleColor}>
           {cardTitle}
         </Text>
       </View>
       <View height="auto" width="30%">
         <StyledView>
-          <CustomIcon name="logo" size={30} color={colors.white} />
+          <CustomIcon name="logo" size={30} color={logoColor || colors.white} />
         </StyledView>
       </View>
     </StyledHeader>

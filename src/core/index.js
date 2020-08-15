@@ -20,6 +20,7 @@ const colors = {
   modalColor: '#7e8ca3db',
   childImageWrapperColor: '#D74E79',
   cancel: '#f6b488',
+  ashBlack: '#4A4A4A',
 };
 
 const images = {

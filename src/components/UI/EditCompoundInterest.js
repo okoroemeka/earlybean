@@ -9,7 +9,6 @@ import {
 import {colors, images} from '../../core';
 import CardHeader from '../Reusable/CardHeader';
 import View from './View';
-import TextInput from './TextInput';
 import Text from './TextRemade';
 import Button from './Button';
 import ImageRemade from './ImageRemade';
