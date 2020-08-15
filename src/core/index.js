@@ -58,6 +58,7 @@ const images = {
   masterCard: require(`${PATH}mastercard.png`),
   forward: require(`${PATH}forward.png`),
   tick: require(`${PATH}tick.png`),
+  mark: require(`${PATH}mark.png`),
 };
 
 export {colors, images};
