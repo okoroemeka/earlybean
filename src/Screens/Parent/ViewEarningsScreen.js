@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import styled from 'styled-components/native';
 import {
   widthPercentageToDP as wp,
@@ -18,6 +18,7 @@ import Line from '../../components/UI/Line';
 import RoundButton from '../../components/UI/RoundButton';
 import ModalContainer from '../../components/UI/ModalContainer';
 import EditCompoundInterest from '../../components/UI/EditCompoundInterest';
+import AddAllowance from '../../components/UI/AddAllowance';
 
 const StyledHeaderWrapper = styled.View`
   width: 100%;
@@ -206,20 +207,45 @@ function taskItem({item}) {
 }
 const ViewEarningsScreen = props => {
   const [showModal, setShowModal] = useState(false);
+  const [allowance, setAllowance] = useState('0');
   const [editAllowance, setEditAllowance] = useState(false);
   const [editCompoundInterest, setEditCompoundInterest] = useState(false);
-
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
-  const handleEditCompoundInterest = () => {
-    console.log('called here===');
-    toggleModal();
-    setEditCompoundInterest(!editCompoundInterest);
-  };
   const {
     navigation: {goBack},
   } = props;
+
+  /**
+   * Toggle modal
+   */
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
+  /**
+   * Handles edit allowance
+   */
+  const handleEditCompoundInterest = () => {
+    toggleModal();
+    setEditAllowance(!editAllowance);
+    setEditCompoundInterest(!editCompoundInterest);
+  };
+
+  /**
+   * Handle add allowance
+   */
+  const handleAddAllowance = () => {
+    toggleModal();
+    setEditCompoundInterest(!editCompoundInterest);
+    setEditAllowance(!editAllowance);
+  };
+
+  /**
+   * Updates selected allowance
+   * @param {string} newAllowance
+   */
+  const handleSelectAllowance = newAllowance => {
+    setAllowance(newAllowance);
+  };
 
   return (
     <Fragment>
@@ -321,7 +347,7 @@ const ViewEarningsScreen = props => {
               allowance
             </Text>
             <StyledView>
-              <StyledTouchable onPress={() => null}>
+              <StyledTouchable onPress={handleAddAllowance}>
                 <CustomIcon
                   name="editIcon"
                   color={colors.placeholderColor}
@@ -334,8 +360,7 @@ const ViewEarningsScreen = props => {
                 fontWeight="bold"
                 width="auto"
                 fontSize={wp('3%')}>
-                {' '}
-                N10,000
+                N{allowance}
               </Text>
               <Text
                 textTransform="capitalize"
@@ -474,7 +499,14 @@ const ViewEarningsScreen = props => {
       </StyledBodyContent>
       {showModal && (
         <ModalContainer>
-          <EditCompoundInterest handleToggleModal={toggleModal} />
+          {editAllowance ? (
+            <AddAllowance
+              handleToggleModal={toggleModal}
+              getSelectedAllowance={handleSelectAllowance}
+            />
+          ) : (
+            <EditCompoundInterest handleToggleModal={toggleModal} />
+          )}
         </ModalContainer>
       )}
     </Fragment>
