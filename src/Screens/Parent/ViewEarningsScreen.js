@@ -211,7 +211,7 @@ const ViewEarningsScreen = props => {
   const [editAllowance, setEditAllowance] = useState(false);
   const [editCompoundInterest, setEditCompoundInterest] = useState(false);
   const {
-    navigation: {goBack},
+    navigation: {goBack, navigate},
   } = props;
 
   /**
@@ -226,7 +226,7 @@ const ViewEarningsScreen = props => {
    */
   const handleEditCompoundInterest = () => {
     toggleModal();
-    setEditAllowance(!editAllowance);
+    setEditAllowance(false);
     setEditCompoundInterest(!editCompoundInterest);
   };
 
@@ -235,7 +235,7 @@ const ViewEarningsScreen = props => {
    */
   const handleAddAllowance = () => {
     toggleModal();
-    setEditCompoundInterest(!editCompoundInterest);
+    setEditCompoundInterest(false);
     setEditAllowance(!editAllowance);
   };
 
@@ -367,7 +367,6 @@ const ViewEarningsScreen = props => {
                 fontSize={wp('3.5%')}
                 width="auto"
                 color={colors.placeholderColor}>
-                {' '}
                 /week
               </Text>
             </StyledView>
@@ -480,7 +479,7 @@ const ViewEarningsScreen = props => {
             </View>
             <View height="auto" alignItems="center" marginTop={hp('2.5%')}>
               <RoundButton
-                handlePress={() => null}
+                handlePress={() => navigate('AddTaskScreen')}
                 backgroundColor={colors.buttonColor}
                 buttonWidth="30px"
                 buttonHeight="30px"

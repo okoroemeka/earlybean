@@ -4,6 +4,7 @@ import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import KidsDashboardScreen from '../Screens/Parent/KidsDashboardScreen';
 import ViewChildTransactions from '../Screens/Parent/ViewChildTransactions';
 import ViewEarningsScreen from '../Screens/Parent/ViewEarningsScreen';
+import AddTaskScreen from '../Screens/Parent/AddTask';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const KidsNavigation = () => (
       component={ViewChildTransactions}
     />
     <Stack.Screen name="ViewEarningsScreen" component={ViewEarningsScreen} />
+    <Stack.Screen name="AddTaskScreen" component={AddTaskScreen} />
   </Stack.Navigator>
 );
 export default KidsNavigation;
