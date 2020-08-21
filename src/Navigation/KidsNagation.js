@@ -5,6 +5,7 @@ import KidsDashboardScreen from '../Screens/Parent/KidsDashboardScreen';
 import ViewChildTransactions from '../Screens/Parent/ViewChildTransactions';
 import ViewEarningsScreen from '../Screens/Parent/ViewEarningsScreen';
 import AddTaskScreen from '../Screens/Parent/AddTask';
+import NewTaskScreen from '../Screens/Parent/NewTaskScreen';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,7 @@ const KidsNavigation = () => (
     />
     <Stack.Screen name="ViewEarningsScreen" component={ViewEarningsScreen} />
     <Stack.Screen name="AddTaskScreen" component={AddTaskScreen} />
+    <Stack.Screen name="NewTaskScreen" component={NewTaskScreen} />
   </Stack.Navigator>
 );
 export default KidsNavigation;
