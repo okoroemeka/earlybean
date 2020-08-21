@@ -92,7 +92,7 @@ const ChildTransactionScreen = props => {
       case 'earnings':
         return () => navigate('ViewEarningsScreen');
       case 'savings':
-        return () => navigate('ViewEarningsScreen');
+        return () => navigate('ViewChildSavings');
       case 'givings':
         return () => navigate('ViewEarningsScreen');
       case 'Spendings':

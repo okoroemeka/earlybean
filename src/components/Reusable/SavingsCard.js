@@ -27,6 +27,14 @@ const StyledView = styled.View`
 
 const StyledTouchable = styled.TouchableOpacity``;
 
+const StyledEditIconWrapper = styled.View`
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: ${hp('1%')}px;
+  right: ${wp('1%')}px;
+`;
+
 const StyledLineView = styled.View`
   width: ${props => props.width || '100%'};
   height: ${Platform.OS == 'ios' ? hp('0.8%') : hp('1.1%')}px;
@@ -38,6 +46,8 @@ const StyledLineView = styled.View`
 `;
 
 const SavingsCard = ({
+  isNotInterestRate = false,
+  isEditIcon,
   purpose,
   amount,
   completionRate,
@@ -78,7 +88,7 @@ const SavingsCard = ({
                 fontSize={wp('5%')}>
                 {purpose}
               </TextRemade>
-              {formatedCompletionRate < 100 && (
+              {formatedCompletionRate < 100 && !isNotInterestRate && (
                 <StyledView
                   width="auto"
                   paddingTop={Platform.OS == 'ios' ? hp('1%') : hp('1.4%')}
@@ -87,6 +97,17 @@ const SavingsCard = ({
                 </StyledView>
               )}
             </StyledView>
+            {isEditIcon && (
+              <StyledEditIconWrapper>
+                <StyledTouchable>
+                  <CustomIcon
+                    name="editIcon"
+                    size={12}
+                    color={colors.placeholderColor}
+                  />
+                </StyledTouchable>
+              </StyledEditIconWrapper>
+            )}
           </StyledView>
           <StyledView height="auto" marginTop={hp('2.5%')}>
             <StyledView>
@@ -164,7 +185,7 @@ const SavingsCard = ({
                   </Button>
                 </StyledView>
               </StyledView>
-              {formatedCompletionRate !== 100 && (
+              {formatedCompletionRate !== 100 && !isNotInterestRate && (
                 <StyledView
                   width="auto"
                   paddingLeft={wp('2%')}
