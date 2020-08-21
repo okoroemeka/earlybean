@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from 'react';
+import React, {Fragment, useState} from 'react';
 import styled from 'styled-components/native';
 import {
   widthPercentageToDP as wp,
@@ -50,7 +50,6 @@ const StyledUserDetials = styled.View`
 `;
 const StyledBodyContent = styled.ScrollView`
   width: 100%;
-  /* padding: ${hp('2%')}px ${wp('4.8%')}px; */
   background-color: ${colors.milkWhite};
 `;
 const StyledView = styled.View`

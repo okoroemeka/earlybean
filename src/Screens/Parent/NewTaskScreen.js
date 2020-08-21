@@ -110,7 +110,6 @@ const AddNewTask = props => {
     setEnableBean(prevState => !prevState);
     setEnableMoney(false);
   };
-  console.log('enableMoney', enableMoney);
   return (
     <Fragment>
       <HeaderStatus />
