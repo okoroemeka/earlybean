@@ -60,11 +60,12 @@ const ChooseFrequency = ({
   backgroundColor,
   buttonWrapperColor,
   buttonColor,
-  borderColor,
   buttonWrapperBorderColor,
   getSelectedFrequency,
+  operationData = data,
+  textColor,
 }) => {
-  const [frequencyData, dispatch] = useReducer(reducer, data);
+  const [frequencyData, dispatch] = useReducer(reducer, operationData);
   const [selectedFrequency, setSelectedFrequency] = useState('');
 
   const handlePress = dataItem => {
@@ -102,7 +103,11 @@ const ChooseFrequency = ({
               <StyledFrequency buttonColor={buttonColor} />
             )}
           </StyledFrequencyWrapper>
-          <Text width="auto" marginLeft={wp('2%')} fontSize={wp('3.5%')}>
+          <Text
+            width="auto"
+            marginLeft={wp('2%')}
+            fontSize={wp('3.5%')}
+            color={textColor || colors.white}>
             {frequencyItem.name}
           </Text>
         </View>

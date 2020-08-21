@@ -252,6 +252,35 @@ const compoundInteresList = [
     active: false,
   },
 ];
+const monetryReward = [
+  {
+    id: 1,
+    amount: 200,
+    active: false,
+  },
+  {
+    id: 2,
+    amount: 500,
+    active: false,
+  },
+];
+const beanReward = [
+  {
+    id: 1,
+    amount: 10,
+    active: false,
+  },
+  {
+    id: 2,
+    amount: 50,
+    active: false,
+  },
+  {
+    id: 3,
+    amount: 100,
+    active: false,
+  },
+];
 export default {
   createTrustMock,
   Savings,
@@ -264,4 +293,6 @@ export default {
   savingsMockData,
   tasksMockData,
   compoundInteresList,
+  monetryReward,
+  beanReward,
 };

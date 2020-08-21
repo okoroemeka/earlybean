@@ -65,7 +65,8 @@ const AddTask = props => {
                 using beancoins
               </Text>
               <View height="auto" marginTop={hp('2%')} marginBottom={hp('2%')}>
-                <StyledTouchable>
+                <StyledTouchable
+                  onPress={() => props.navigation.navigate('NewTaskScreen')}>
                   <Text
                     width="auto"
                     color={colors.placeholderColor}
