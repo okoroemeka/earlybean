@@ -281,6 +281,57 @@ const beanReward = [
     active: false,
   },
 ];
+
+const transactionHistoryMock = [
+  {
+    id: '1-ghtyr',
+    title: 'account top up for zara',
+    time: 'Yesterday 4:30pm',
+    type: 'expenses',
+    amount: '2,000',
+    totalAmount: '6,700',
+  },
+  {
+    id: '2-ghtyr',
+    title: "xavier's allowance",
+    time: 'Yesterday 4:30pm',
+    type: 'expenses',
+    amount: '3,000',
+    totalAmount: '6,700',
+  },
+  {
+    id: '3-ghtyr',
+    title: "zara's allowance",
+    time: 'Yesterday 4:30pm',
+    type: 'expenses',
+    amount: '4,000',
+    totalAmount: '6,700',
+  },
+  {
+    id: '4-ghtyr',
+    title: "xavier's interest",
+    time: 'Yesterday 4:30pm',
+    type: 'expenses',
+    amount: '5,000',
+    totalAmount: '6,700',
+  },
+  {
+    id: '5-ghtyr',
+    title: "xavier's interest",
+    time: 'Yesterday 4:30pm',
+    type: 'expenses',
+    amount: '5,000',
+    totalAmount: '6,700',
+  },
+  {
+    id: '6-ghtyr',
+    title: "xavier's interest",
+    time: 'Yesterday 4:30pm',
+    type: 'expenses',
+    amount: '2,000',
+    totalAmount: '6,700',
+  },
+];
 export default {
   createTrustMock,
   Savings,
@@ -295,4 +346,5 @@ export default {
   compoundInteresList,
   monetryReward,
   beanReward,
+  transactionHistoryMock,
 };

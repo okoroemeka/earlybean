@@ -8,9 +8,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {colors} from '../core';
 import DashboardScreen from '../Screens/Parent/Dashboard';
-// import DashboardSaveScreen from '../Screens/Parent/DashboardSaveScreen';
 import SavingsNavigation from './SavingsNavigation';
 import KidsNagation from './KidsNagation';
+import History from '../Screens/Parent/History';
 import CustomIcon from '../core/CustomIcon';
 
 const StyledTouchable = styled.TouchableOpacity`
@@ -114,7 +114,7 @@ const DashboardNavigator = () => {
       <Tab.Screen name="Home" component={DashboardScreen} />
       <Tab.Screen name="Save" component={SavingsNavigation} />
       <Tab.Screen name="Kids" component={KidsNagation} />
-      <Tab.Screen name="History" component={DashboardScreen} />
+      <Tab.Screen name="History" component={History} />
       <Tab.Screen name="Wallet" component={DashboardScreen} />
     </Tab.Navigator>
   );

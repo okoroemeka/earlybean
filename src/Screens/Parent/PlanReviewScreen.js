@@ -8,7 +8,6 @@ import styled from 'styled-components/native';
 
 import {colors, images} from '../../core';
 import TextRemade from '../../components/UI/TextRemade';
-import CustomIcon from '../../core/CustomIcon';
 import CardWrapperWithHeader from '../../components/Reusable/CardWrapperWithHeader';
 import Button from '../../components/UI/Button';
 import View from '../../components/UI/View';
