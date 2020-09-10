@@ -12,6 +12,7 @@ import SavingsNavigation from './SavingsNavigation';
 import KidsNagation from './KidsNagation';
 import History from '../Screens/Parent/History';
 import CustomIcon from '../core/CustomIcon';
+import Wallet from '../Screens/Parent/Wallet';
 
 const StyledTouchable = styled.TouchableOpacity`
   width: 60px;
@@ -115,7 +116,7 @@ const DashboardNavigator = () => {
       <Tab.Screen name="Save" component={SavingsNavigation} />
       <Tab.Screen name="Kids" component={KidsNagation} />
       <Tab.Screen name="History" component={History} />
-      <Tab.Screen name="Wallet" component={DashboardScreen} />
+      <Tab.Screen name="Wallet" component={Wallet} />
     </Tab.Navigator>
   );
 };
