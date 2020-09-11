@@ -208,6 +208,7 @@ const Wallet = ({navigation}) => {
           paddingLeft={wp('4%')}
           paddingRight={wp('4%')}>
           <Button
+            handlePress={() => navigation.navigate('TransferMoney')}
             alignItems="center"
             borderRadius="20px"
             borderWidth="2px"
