@@ -10,9 +10,9 @@ import {colors} from '../core';
 import DashboardScreen from '../Screens/Parent/Dashboard';
 import SavingsNavigation from './SavingsNavigation';
 import KidsNagation from './KidsNagation';
+import Wallet from './Wallet';
 import History from '../Screens/Parent/History';
 import CustomIcon from '../core/CustomIcon';
-import Wallet from '../Screens/Parent/Wallet';
 
 const StyledTouchable = styled.TouchableOpacity`
   width: 60px;

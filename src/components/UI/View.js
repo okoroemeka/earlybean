@@ -16,6 +16,9 @@ const StyledView = styled.View`
   margin-bottom: ${props => props.marginBottom || hp('0%')}px;
   margin-right: ${props => props.marginRight || wp('0%')}px;
   margin-left: ${props => props.marginLeft || wp('0%')}px;
+  border-radius: ${props => props.borderRadius || '0px'};
+  overflow: ${props => props.overFlow || 'visible'};
+  position: ${props => props.position || 'relative'};
 `;
 
 const View = props => {
