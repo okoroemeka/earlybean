@@ -83,7 +83,7 @@ const FundWaller = ({navigation}) => {
           borderRadius="20px"
           overFlow="hidden">
           <ImageRemade imageUrl={images.topUPImage} />
-          <Styledview>
+          <Styledview onPress={() => navigation.navigate('TransferToBank')}>
             <View width="80%" height="auto" alignItems="flex-start">
               <TextRemade
                 color={colors.primary}

@@ -3,16 +3,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {Platform} from 'react-native';
 import styled from 'styled-components/native';
 
 import {colors, images} from '../../core';
 import TextRemade from '../../components/UI/TextRemade';
-import CustomIcon from '../../core/CustomIcon';
-import CardWrapperWithHeader from '../../components/Reusable/CardWrapperWithHeader';
-import Image from '../../components/UI/Image';
-import Button from '../../components/UI/Button';
-import TextInput from '../../components/UI/TextInput';
 import ImageRemade from '../../components/UI/ImageRemade';
 import ViewHelper from '../../components/UI/View';
 import mockData from '../../../data/mockData';
