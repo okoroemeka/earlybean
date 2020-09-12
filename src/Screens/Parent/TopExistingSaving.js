@@ -88,12 +88,14 @@ const StyledButtonContianer = styled.View`
   bottom: ${hp('6%')}px;
   left: ${wp('33%')}px;
 `;
+
 const StyledImageContainer = styled.View`
   width: 100%;
   margin-top: ${Platform.OS == 'android' ? hp('0.4%') : hp('0.25')}px;
   padding-right: ${Platform.OS == 'ios' ? wp('2%') : wp('13%')}px;
   align-items: flex-end;
 `;
+
 const initialPlansState = [
   {plan: 'Personal savings', active: true},
   {plan: 'Family savings', active: false},

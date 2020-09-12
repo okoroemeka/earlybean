@@ -92,6 +92,7 @@ const initialState = {
 };
 
 const FORM_IN_UPDATAE = 'FORM_IN_UPDATAE';
+
 const formReducer = (state, action) => {
   switch (action.type) {
     case FORM_IN_UPDATAE:
