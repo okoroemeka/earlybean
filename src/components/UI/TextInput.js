@@ -16,14 +16,17 @@ const StyledInput = styled.TextInput`
     ${props => props.paddingLeftAndRight || wp('1%')}px;
   border: ${props => props.border || 'none'};
   border-bottom-color: ${props => props.borderBottomColor || colors.primary};
-  border-bottom-width: 1px;
+  border-bottom-width: ${props => props.borderBottomWidth || '1px'};
 `;
+
 const StyledView = styled.View`
   margin-top: 5px;
 `;
+
 const StyledFormControl = styled.View`
   width: ${props => props.width || '100%'};
 `;
+
 const StyledText = styled.Text`
   color: red;
   font-size: 13px;

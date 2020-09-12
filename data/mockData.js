@@ -332,6 +332,19 @@ const transactionHistoryMock = [
     totalAmount: '6,700',
   },
 ];
+
+const initialPlansState = [
+  {plan: 'Personal savings', active: true},
+  {plan: 'Family savings', active: false},
+  {plan: 'Cash trust', active: false},
+];
+
+const transferMethod = [
+  {plan: 'Transfer directly from bank card', active: true},
+  {plan: 'Fund from personal wallet', active: false},
+  {plan: 'Transfer from family wallet', active: false},
+];
+
 export default {
   createTrustMock,
   Savings,
@@ -347,4 +360,6 @@ export default {
   monetryReward,
   beanReward,
   transactionHistoryMock,
+  initialPlansState,
+  transferMethod,
 };

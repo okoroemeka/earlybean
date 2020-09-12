@@ -11,7 +11,6 @@ import TextRemade from '../../components/UI/TextRemade';
 import CustomIcon from '../../core/CustomIcon';
 import CardWrapperWithHeader from '../../components/Reusable/CardWrapperWithHeader';
 import View from '../../components/UI/View';
-import Button from '../../components/UI/Button';
 import ImageRemade from '../../components/UI/ImageRemade';
 
 const StyledBody = styled.View`
@@ -57,7 +56,7 @@ const FundWaller = ({navigation}) => {
           borderRadius="20px"
           overFlow="hidden">
           <ImageRemade imageUrl={images.topUPImage} />
-          <Styledview>
+          <Styledview onPress={() => navigation.navigate('SavingsPlanScreen')}>
             <View width="80%" height="auto" alignItems="flex-start">
               <TextRemade
                 color={colors.primary}
