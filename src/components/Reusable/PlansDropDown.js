@@ -29,7 +29,7 @@ const StyledDropdownItemsContainer = styled.View`
   position: absolute;
   top: ${props => props.top || hp('1%')}px;
   right: ${props => props.right || wp('1%')}px;
-  z-index: 10;
+  z-index: 90;
   background-color: ${colors.white};
 `;
 
@@ -55,6 +55,7 @@ const DropDown = ({
   planReducer,
   getSelctedPlan,
   dropDownRightPosition,
+  dropDownTopPosition,
 }) => {
   const [displayPlanDropDown, setDisplayPlanDropDown] = useState(false);
   const [activePlan, setActivePlan] = useState(placeHolderText);
@@ -95,7 +96,9 @@ const DropDown = ({
               ? dropDownRightPosition || wp('5.5%')
               : wp('4.2%')
           }
-          top={Platform.OS == 'ios' ? hp('4%') : hp('5%')}>
+          top={
+            Platform.OS == 'ios' ? dropDownTopPosition || hp('4%') : hp('5%')
+          }>
           {plans.map(({plan, active}, index) => (
             <StyledTouchable
               key={index}

@@ -33,7 +33,7 @@ const Styledview = styled.TouchableOpacity`
   background: transparent;
 `;
 
-const FundWaller = ({navigation}) => {
+const FundWallet = ({navigation}) => {
   return (
     <CardWrapperWithHeader
       handleGoBack={() => navigation.goBack()}
@@ -110,7 +110,7 @@ const FundWaller = ({navigation}) => {
           borderRadius="20px"
           overFlow="hidden">
           <ImageRemade imageUrl={images.topUPImage} />
-          <Styledview>
+          <Styledview onPress={() => navigation.navigate('TransferToChildren')}>
             <View width="80%" height="auto" alignItems="flex-start">
               <TextRemade
                 color={colors.primary}
@@ -135,4 +135,4 @@ const FundWaller = ({navigation}) => {
   );
 };
 
-export default FundWaller;
+export default FundWallet;

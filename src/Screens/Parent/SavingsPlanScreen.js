@@ -33,7 +33,6 @@ const SavingsPlanForm = ({navigation}) => {
   const [selectedPlan, setSeletedPlan] = React.useState('');
   const [selectedTransferMethod, setTransferMethod] = React.useState('');
 
-  console.log('setTransferMethod', selectedTransferMethod, selectedPlan);
   return (
     <CardWrapperWithHeader
       handleGoBack={() => navigation.goBack()}
@@ -82,28 +81,28 @@ const SavingsPlanForm = ({navigation}) => {
             dropDownRightPosition={wp('-0.08%')}
           />
         </View>
-        <View
-          height="auto"
-          flexDirection="row"
-          justifyContent="center"
-          paddingTop={hp('5%')}
-          paddingLeft={wp('4%')}
-          paddingRight={wp('4%')}>
-          <Button
-            alignItems="center"
-            borderRadius="20px"
-            borderWidth="2px"
-            width={`${wp('30%')}px`}
-            borderColor={colors.primary}
-            backgroundColor={colors.primary}
-            paddingLeftRight={wp('1%')}
-            paddingTopBottom={hp('0%')}>
-            <TextRemade width="auto" color={colors.white} fontSize={wp('3.5%')}>
-              Transfer
-            </TextRemade>
-          </Button>
-        </View>
       </StyledCardWrapper>
+      <View
+        height="auto"
+        flexDirection="row"
+        justifyContent="center"
+        paddingTop={hp('5%')}
+        paddingLeft={wp('4%')}
+        paddingRight={wp('4%')}>
+        <Button
+          alignItems="center"
+          borderRadius="20px"
+          borderWidth="2px"
+          width={`${wp('30%')}px`}
+          borderColor={colors.primary}
+          backgroundColor={colors.primary}
+          paddingLeftRight={wp('1%')}
+          paddingTopBottom={hp('0%')}>
+          <TextRemade width="auto" color={colors.white} fontSize={wp('3.5%')}>
+            Transfer
+          </TextRemade>
+        </Button>
+      </View>
     </CardWrapperWithHeader>
   );
 };
