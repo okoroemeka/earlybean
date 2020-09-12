@@ -9,6 +9,7 @@ const StyledButton = styled.TouchableOpacity`
   width: ${props => props.width || 'auto'};
   height: ${props => props.height || 'auto'};
   background-color: ${props => props.backgroundColor || colors.primary};
+  border: ${props => props.border || 'none'};
   border-radius: ${props => props.borderRadius || '0px'};
 `;
 const RoundButton = props => {

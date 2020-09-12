@@ -57,7 +57,7 @@ const Wallet = ({navigation}) => {
             paddingBottom={hp('1%')}
             backgroundColor={colors.primary}
             boxShadow="0px 7px 32px rgba(0, 0, 0, 0.0637566)"
-            borderRadius={30}>
+            borderRadius="30px">
             <TextRemade textTransform="uppercase" fontSize={wp('2.5%')}>
               family balance
             </TextRemade>

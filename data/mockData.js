@@ -344,6 +344,10 @@ const transferMethod = [
   {plan: 'Fund from personal wallet', active: false},
   {plan: 'Transfer from family wallet', active: false},
 ];
+const banks = [
+  {plan: 'Providus Bank', active: true},
+  {plan: 'Access Bank', active: false},
+];
 
 export default {
   createTrustMock,
@@ -362,4 +366,5 @@ export default {
   transactionHistoryMock,
   initialPlansState,
   transferMethod,
+  banks,
 };
